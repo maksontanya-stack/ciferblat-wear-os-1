@@ -13,14 +13,13 @@ w = ET.parse(xml).getroot()
 resources = root / 'watchface/src/main/res/drawable-nodpi'
 for theme in ('dark', 'light'):
     for kind, count in [('hour', 24), ('minute', 60)]:
-        font = w.find(f"BitmapFonts/BitmapFont[@name='{kind}_{theme}']")
-        if font is None: raise SystemExit('Missing bitmap family')
-        words = {x.attrib['name'] for x in font.findall('Word')}
-        if words != {f'{n:02}' for n in range(count)}:
-            raise SystemExit(f'{kind}_{theme}: incomplete time coverage')
-        for word in font:
-            if not (resources/(word.attrib['resource']+'.png')).is_file():
-                raise SystemExit('Missing bitmap image')
+        expected = {f'{kind}_{theme}_{n:02}' for n in range(count)}
+        group = w.find(f"Scene/Group[@name='interactive']/ListConfiguration/ListOption/Group[@name='{theme}']/Group[@name='active_{theme}_{kind}']")
+        if group is None: raise SystemExit('Missing live time group')
+        images = {x.attrib['resource'] for x in group.iter('Image')}
+        if images != expected: raise SystemExit(f'{kind}_{theme}: incomplete time coverage')
+        for resource in expected:
+            if not (resources/(resource+'.png')).is_file(): raise SystemExit('Missing time image')
 slots = list(w.iter('ComplicationSlot'))
 if len({s.attrib['slotId'] for s in slots}) != 5: raise SystemExit('Invalid data slot IDs')
 for slot in slots:
