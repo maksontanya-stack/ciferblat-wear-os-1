@@ -15,6 +15,11 @@ adb shell input keyevent KEYCODE_WAKEUP
 adb shell wm dismiss-keyguard
 adb shell am broadcast -a com.google.android.wearable.app.DEBUG_SURFACE --es operation set-watchface --es watchFaceId ru.meta.wearos.classic1
 sleep 15
+# Activate the face through the same picker confirmation used on a watch.
+adb shell input swipe 227 227 227 227 1500
+sleep 2
+adb shell input tap 227 227
+sleep 3
 adb exec-out screencap -p > smoke-output/active-first.png
 adb shell date > smoke-output/time-first.txt
 sleep 65
