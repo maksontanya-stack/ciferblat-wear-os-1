@@ -18,7 +18,7 @@ def click(tree,labels):
  return False
 # Editor is open on complication page after the shell harness taps Customize.
 tree=state('editor-five-fields')
-if sum(n.get('clickable')=='true' and ('complication' in n.get('content-desc','').lower() or n.get('content-desc','').strip()) for n in tree.iter('node'))<5:
+if sum(bool(n.get('clickable')=='true' and ('complication' in n.get('content-desc','').lower() or n.get('content-desc','').strip())) for n in tree.iter('node'))<5:
  print('Inspect editor XML for all five field outlines')
 adb('shell','input','swipe','360','227','90','227','400');time.sleep(2)
 tree=state('editor-options')
