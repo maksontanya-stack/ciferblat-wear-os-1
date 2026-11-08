@@ -13,6 +13,11 @@ for theme in dark light; do
  fi
  magick design/runtime-fill.png design/dynamic-mask.png -alpha off -compose CopyOpacity -composite design/runtime-overlay.png
  magick "design/$theme-master.png" design/runtime-overlay.png -compose Over -composite "$r/background_$theme.png"
+ # Numeric masks must never cut through the arc layer.
+ magick "$r/background_$theme.png" design/runtime-fill.png -fx 'abs(hypot(i-460,j-452)-300)<9 ? v : u' "$r/background_$theme.png"
+ arc_ink='#ddddda'; [ "$theme" = light ] && arc_ink='#222a31'
+ magick -background none design/continuous-arcs.svg -channel RGB -fill "$arc_ink" -colorize 100 +channel design/arc-overlay.png
+ magick "$r/background_$theme.png" design/arc-overlay.png -compose Over -composite "$r/background_$theme.png"
 done
 # Exact original hour and minute 10; opaque backing intentionally matches its theme.
 for theme in dark light; do
@@ -41,6 +46,6 @@ for theme in dark light; do
  magick "$r/background_$theme.png" -resize 450x450 "$r/background_$theme.png"
 done
 cp design/dark-450.png "$r/preview.png"
-rm -f design/runtime-fill.png design/runtime-overlay.png design/stripe-pattern.png design/hour-working.png "$r"/digit_*.png "$r"/striped_*.png
+rm -f design/arc-overlay.png design/runtime-fill.png design/runtime-overlay.png design/stripe-pattern.png design/hour-working.png "$r"/digit_*.png "$r"/striped_*.png
 
 magick mogrify -strip "$r"/*.png

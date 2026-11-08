@@ -6,6 +6,7 @@ mkdir -p smoke-output
 sleep 60
 adb shell input keyevent KEYCODE_HOME
 sleep 2
+adb install -r testprovider/build/outputs/apk/debug/testprovider-debug.apk
 adb install -r watchface/build/outputs/apk/debug/watchface-debug.apk
 adb shell settings put system screen_off_timeout 1800000
 adb shell settings put global stay_on_while_plugged_in 3
@@ -33,3 +34,5 @@ sleep 4
 adb exec-out screencap -p > smoke-output/editor.png
 adb shell uiautomator dump /sdcard/editor.xml
 adb pull /sdcard/editor.xml smoke-output/editor.xml
+
+python3 scripts/editor_ui.py

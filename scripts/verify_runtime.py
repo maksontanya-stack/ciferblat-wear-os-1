@@ -22,7 +22,7 @@ for theme in ('dark', 'light'):
             if not (resources/(word.attrib['resource']+'.png')).is_file():
                 raise SystemExit('Missing bitmap image')
 slots = list(w.iter('ComplicationSlot'))
-if len({s.attrib['slotId'] for s in slots}) != 3: raise SystemExit('Invalid data slot IDs')
+if len({s.attrib['slotId'] for s in slots}) != 5: raise SystemExit('Invalid data slot IDs')
 for slot in slots:
     if slot.find("Complication[@type='EMPTY']") is None:
         raise SystemExit('Missing empty-data fallback')
@@ -35,4 +35,4 @@ for file in resources.glob('*.png'):
     if data[:8] != b'\x89PNG\r\n\x1a\n': raise SystemExit('Invalid PNG')
     width,height = struct.unpack('>II', data[16:24])
     byte_count += width*height*4
-print(f'PASS: complete 24h/60min bitmap coverage, three unique slots, empty fallbacks, AOD; all decoded bitmaps total {byte_count/1024/1024:.2f} MiB')
+print(f'PASS: complete 24h/60min bitmap coverage, five unique slots, empty fallbacks, AOD; all decoded bitmaps total {byte_count/1024/1024:.2f} MiB')

@@ -18,7 +18,9 @@ jobs:
           packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
           log-accepted-android-sdk-licenses: false
       - uses: gradle/actions/setup-gradle@v4
-      - run: ./gradlew :watchface:assembleDebug --console=plain
+      - run: |
+          python3 scripts/generate_test_overlay.py
+          ./gradlew :watchface:assembleDebug :testprovider:assembleDebug --console=plain
       - name: Enable KVM for the emulator
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules

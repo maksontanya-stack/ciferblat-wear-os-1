@@ -181,13 +181,16 @@
     </BitmapFont>
   </BitmapFonts>
   <UserConfigurations>
-    <BooleanConfiguration id="light" displayName="light" defaultValue="FALSE" />
+    <ListConfiguration id="theme" displayName="theme" defaultValue="dark">
+      <ListOption id="dark" displayName="dark" />
+      <ListOption id="light" displayName="light" />
+    </ListConfiguration>
   </UserConfigurations>
   <Scene backgroundColor="#000000">
     <Group name="interactive" x="0" y="0" width="920" height="920">
       <Variant mode="AMBIENT" target="alpha" value="0" />
-      <BooleanConfiguration id="light">
-        <BooleanOption id="FALSE">
+      <ListConfiguration id="theme">
+        <ListOption id="dark">
           <Group name="dark" x="0" y="0" width="920" height="920">
             <PartImage x="0" y="0" width="920" height="920">
               <Image resource="background_dark" />
@@ -212,39 +215,9 @@
                 </Font>
               </Text>
             </PartText>
-            <PartText x="470" y="747" width="133" height="62" angle="-6">
-              <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                <Font family="oswald" size="47" weight="BOLD" color="#ddddda">
-                  <Template>%d%%<Parameter expression="[BATTERY_PERCENT]" />
-                  </Template>
-                </Font>
-              </Text>
-            </PartText>
-            <Condition>
-              <Expressions>
-                <Expression name="has_steps">[STEP_COUNT] != null &amp;&amp; [STEP_COUNT] &gt;= 0</Expression>
-              </Expressions>
-              <Compare expression="has_steps">
-                <PartText x="690" y="539" width="171" height="62" angle="-62">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                      <Template>%d<Parameter expression="[STEP_COUNT]" />
-                      </Template>
-                    </Font>
-                  </Text>
-                </PartText>
-              </Compare>
-              <Default>
-                <PartText x="690" y="539" width="171" height="62" angle="-62">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
-                  </Text>
-                </PartText>
-              </Default>
-            </Condition>
           </Group>
-        </BooleanOption>
-        <BooleanOption id="TRUE">
+        </ListOption>
+        <ListOption id="light">
           <Group name="light" x="0" y="0" width="920" height="920">
             <PartImage x="0" y="0" width="920" height="920">
               <Image resource="background_light" />
@@ -269,78 +242,198 @@
                 </Font>
               </Text>
             </PartText>
-            <PartText x="470" y="747" width="133" height="62" angle="-6">
-              <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                <Font family="oswald" size="47" weight="BOLD" color="#222a31">
-                  <Template>%d%%<Parameter expression="[BATTERY_PERCENT]" />
-                  </Template>
-                </Font>
-              </Text>
-            </PartText>
-            <Condition>
-              <Expressions>
-                <Expression name="has_steps">[STEP_COUNT] != null &amp;&amp; [STEP_COUNT] &gt;= 0</Expression>
-              </Expressions>
-              <Compare expression="has_steps">
-                <PartText x="690" y="539" width="171" height="62" angle="-62">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                      <Template>%d<Parameter expression="[STEP_COUNT]" />
-                      </Template>
-                    </Font>
-                  </Text>
-                </PartText>
-              </Compare>
-              <Default>
-                <PartText x="690" y="539" width="171" height="62" angle="-62">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
-                  </Text>
-                </PartText>
-              </Default>
-            </Condition>
           </Group>
-        </BooleanOption>
-      </BooleanConfiguration>
+        </ListOption>
+      </ListConfiguration>
     </Group>
-    <ComplicationSlot slotId="1" displayName="heart" x="498" y="91" width="92" height="65" angle="15" supportedTypes="SHORT_TEXT EMPTY" isCustomizable="TRUE">
+    <ComplicationSlot slotId="1" displayName="heart" x="498" y="91" width="92" height="65" angle="15" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
       <Variant mode="AMBIENT" target="alpha" value="0" />
       <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
       <BoundingBox x="0" y="0" width="92" height="65" />
       <Complication type="SHORT_TEXT">
         <Group name="heart_SHORT_TEXT" x="0" y="0" width="92" height="65">
-          <BooleanConfiguration id="light">
-            <BooleanOption id="FALSE">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="92" height="65" angle="0">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                      <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
-                      </Template>
-                    </Font>
-                  </Text>
-                </PartText>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
               </Group>
-            </BooleanOption>
-            <BooleanOption id="TRUE">
+            </ListOption>
+            <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="92" height="65" angle="0">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                      <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
-                      </Template>
-                    </Font>
-                  </Text>
-                </PartText>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
               </Group>
-            </BooleanOption>
-          </BooleanConfiguration>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="RANGED_VALUE">
+        <Group name="heart_RANGED_VALUE" x="0" y="0" width="92" height="65">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="LONG_TEXT">
+        <Group name="heart_LONG_TEXT" x="0" y="0" width="92" height="65">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
         </Group>
       </Complication>
       <Complication type="EMPTY">
         <Group name="heart_EMPTY" x="0" y="0" width="92" height="65">
-          <BooleanConfiguration id="light">
-            <BooleanOption id="FALSE">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <PartText x="0" y="0" width="92" height="65" angle="0">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
@@ -348,8 +441,8 @@
                   </Text>
                 </PartText>
               </Group>
-            </BooleanOption>
-            <BooleanOption id="TRUE">
+            </ListOption>
+            <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
                 <PartText x="0" y="0" width="92" height="65" angle="0">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
@@ -357,28 +450,42 @@
                   </Text>
                 </PartText>
               </Group>
-            </BooleanOption>
-          </BooleanConfiguration>
+            </ListOption>
+          </ListConfiguration>
         </Group>
       </Complication>
     </ComplicationSlot>
-    <ComplicationSlot slotId="2" displayName="weather" x="140" y="165" width="160" height="180" angle="0" supportedTypes="SHORT_TEXT EMPTY" isCustomizable="TRUE">
+    <ComplicationSlot slotId="2" displayName="weather" x="140" y="165" width="160" height="180" angle="0" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
       <Variant mode="AMBIENT" target="alpha" value="0" />
       <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
       <BoundingBox x="0" y="0" width="160" height="180" />
       <Complication type="SHORT_TEXT">
         <Group name="weather_SHORT_TEXT" x="0" y="0" width="160" height="180">
-          <BooleanConfiguration id="light">
-            <BooleanOption id="FALSE">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
-                <PartText x="20" y="20" width="140" height="65" angle="-45">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                      <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
-                      </Template>
-                    </Font>
-                  </Text>
-                </PartText>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
                 <Condition>
                   <Expressions>
                     <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
@@ -390,17 +497,31 @@
                   </Compare>
                 </Condition>
               </Group>
-            </BooleanOption>
-            <BooleanOption id="TRUE">
+            </ListOption>
+            <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
-                <PartText x="20" y="20" width="140" height="65" angle="-45">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                      <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
-                      </Template>
-                    </Font>
-                  </Text>
-                </PartText>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
                 <Condition>
                   <Expressions>
                     <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
@@ -412,14 +533,176 @@
                   </Compare>
                 </Condition>
               </Group>
-            </BooleanOption>
-          </BooleanConfiguration>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="RANGED_VALUE">
+        <Group name="weather_RANGED_VALUE" x="0" y="0" width="160" height="180">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_weather_icon">
+                    <PartImage x="0" y="100" width="72" height="72" tintColor="#ddddda">
+                      <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
+                    </PartImage>
+                  </Compare>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_weather_icon">
+                    <PartImage x="0" y="100" width="72" height="72" tintColor="#222a31">
+                      <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
+                    </PartImage>
+                  </Compare>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="LONG_TEXT">
+        <Group name="weather_LONG_TEXT" x="0" y="0" width="160" height="180">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_weather_icon">
+                    <PartImage x="0" y="100" width="72" height="72" tintColor="#ddddda">
+                      <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
+                    </PartImage>
+                  </Compare>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_weather_icon">
+                    <PartImage x="0" y="100" width="72" height="72" tintColor="#222a31">
+                      <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
+                    </PartImage>
+                  </Compare>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
         </Group>
       </Complication>
       <Complication type="EMPTY">
         <Group name="weather_EMPTY" x="0" y="0" width="160" height="180">
-          <BooleanConfiguration id="light">
-            <BooleanOption id="FALSE">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <PartText x="20" y="20" width="140" height="65" angle="-45">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
@@ -427,8 +710,8 @@
                   </Text>
                 </PartText>
               </Group>
-            </BooleanOption>
-            <BooleanOption id="TRUE">
+            </ListOption>
+            <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
                 <PartText x="20" y="20" width="140" height="65" angle="-45">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
@@ -436,49 +719,199 @@
                   </Text>
                 </PartText>
               </Group>
-            </BooleanOption>
-          </BooleanConfiguration>
+            </ListOption>
+          </ListConfiguration>
         </Group>
       </Complication>
     </ComplicationSlot>
-    <ComplicationSlot slotId="3" displayName="floors" x="200" y="660" width="86" height="70" angle="47" supportedTypes="SHORT_TEXT EMPTY" isCustomizable="TRUE">
+    <ComplicationSlot slotId="3" displayName="floors" x="200" y="660" width="86" height="70" angle="47" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
       <Variant mode="AMBIENT" target="alpha" value="0" />
       <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
       <BoundingBox x="0" y="0" width="86" height="70" />
       <Complication type="SHORT_TEXT">
         <Group name="floors_SHORT_TEXT" x="0" y="0" width="86" height="70">
-          <BooleanConfiguration id="light">
-            <BooleanOption id="FALSE">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="86" height="65" angle="0">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                      <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
-                      </Template>
-                    </Font>
-                  </Text>
-                </PartText>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
               </Group>
-            </BooleanOption>
-            <BooleanOption id="TRUE">
+            </ListOption>
+            <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="86" height="65" angle="0">
-                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                    <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                      <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
-                      </Template>
-                    </Font>
-                  </Text>
-                </PartText>
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
               </Group>
-            </BooleanOption>
-          </BooleanConfiguration>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="RANGED_VALUE">
+        <Group name="floors_RANGED_VALUE" x="0" y="0" width="86" height="70">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="LONG_TEXT">
+        <Group name="floors_LONG_TEXT" x="0" y="0" width="86" height="70">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
         </Group>
       </Complication>
       <Complication type="EMPTY">
         <Group name="floors_EMPTY" x="0" y="0" width="86" height="70">
-          <BooleanConfiguration id="light">
-            <BooleanOption id="FALSE">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <PartText x="0" y="0" width="86" height="65" angle="0">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
@@ -486,8 +919,8 @@
                   </Text>
                 </PartText>
               </Group>
-            </BooleanOption>
-            <BooleanOption id="TRUE">
+            </ListOption>
+            <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
                 <PartText x="0" y="0" width="86" height="65" angle="0">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
@@ -495,8 +928,426 @@
                   </Text>
                 </PartText>
               </Group>
-            </BooleanOption>
-          </BooleanConfiguration>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+    </ComplicationSlot>
+    <ComplicationSlot slotId="4" displayName="battery" x="470" y="747" width="133" height="62" angle="-6" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
+      <Variant mode="AMBIENT" target="alpha" value="0" />
+      <DefaultProviderPolicy defaultSystemProvider="WATCH_BATTERY" defaultSystemProviderType="SHORT_TEXT" />
+      <BoundingBox x="0" y="0" width="133" height="62" />
+      <Complication type="SHORT_TEXT">
+        <Group name="battery_SHORT_TEXT" x="0" y="0" width="133" height="62">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="RANGED_VALUE">
+        <Group name="battery_RANGED_VALUE" x="0" y="0" width="133" height="62">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="LONG_TEXT">
+        <Group name="battery_LONG_TEXT" x="0" y="0" width="133" height="62">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="EMPTY">
+        <Group name="battery_EMPTY" x="0" y="0" width="133" height="62">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <PartText x="0" y="0" width="133" height="65" angle="0">
+                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                    <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                  </Text>
+                </PartText>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <PartText x="0" y="0" width="133" height="65" angle="0">
+                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                    <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                  </Text>
+                </PartText>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+    </ComplicationSlot>
+    <ComplicationSlot slotId="5" displayName="steps" x="690" y="539" width="171" height="62" angle="-62" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
+      <Variant mode="AMBIENT" target="alpha" value="0" />
+      <DefaultProviderPolicy defaultSystemProvider="STEP_COUNT" defaultSystemProviderType="SHORT_TEXT" />
+      <BoundingBox x="0" y="0" width="171" height="62" />
+      <Complication type="SHORT_TEXT">
+        <Group name="steps_SHORT_TEXT" x="0" y="0" width="171" height="62">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="RANGED_VALUE">
+        <Group name="steps_RANGED_VALUE" x="0" y="0" width="171" height="62">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="LONG_TEXT">
+        <Group name="steps_LONG_TEXT" x="0" y="0" width="171" height="62">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <Condition>
+                  <Expressions>
+                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                  </Expressions>
+                  <Compare expression="has_display_text">
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          </Template>
+                        </Font>
+                      </Text>
+                    </PartText>
+                  </Compare>
+                  <Default>
+                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                      <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                        <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                      </Text>
+                    </PartText>
+                  </Default>
+                </Condition>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="EMPTY">
+        <Group name="steps_EMPTY" x="0" y="0" width="171" height="62">
+          <ListConfiguration id="theme">
+            <ListOption id="dark">
+              <Group name="dark" x="0" y="0" width="920" height="920">
+                <PartText x="0" y="0" width="171" height="65" angle="0">
+                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                    <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                  </Text>
+                </PartText>
+              </Group>
+            </ListOption>
+            <ListOption id="light">
+              <Group name="light" x="0" y="0" width="920" height="920">
+                <PartText x="0" y="0" width="171" height="65" angle="0">
+                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                    <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                  </Text>
+                </PartText>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
         </Group>
       </Complication>
     </ComplicationSlot>

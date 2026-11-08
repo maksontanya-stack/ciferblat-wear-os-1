@@ -13,7 +13,9 @@ for theme in ('dark','light'):
    text=f'{n:02}'
    S(f,'Word',name=text,resource=f'{kind}_{theme}_{text}',width=str(width),height=str(height))
 u=S(w,'UserConfigurations')
-S(u,'BooleanConfiguration',id='light',displayName='light',defaultValue='FALSE')
+theme_config=S(u,'ListConfiguration',id='theme',displayName='theme',defaultValue='dark')
+S(theme_config,'ListOption',id='dark',displayName='dark')
+S(theme_config,'ListOption',id='light',displayName='light')
 scene=S(w,'Scene',backgroundColor='#000000')
 
 def ambient(el,value='0'):
@@ -21,9 +23,9 @@ def ambient(el,value='0'):
 def group(el,name,x=0,y=0,width=920,height=920,**kw):
  return S(el,'Group',name=name,x=str(x),y=str(y),width=str(width),height=str(height),**kw)
 def themed(parent):
- choice=S(parent,'BooleanConfiguration',id='light')
- for theme,flag,fg in [('dark','FALSE','#ddddda'),('light','TRUE','#222a31')]:
-  option=S(choice,'BooleanOption',id=flag)
+ choice=S(parent,'ListConfiguration',id='theme')
+ for theme,flag,fg in [('dark','dark','#ddddda'),('light','light','#222a31')]:
+  option=S(choice,'ListOption',id=flag)
   yield theme,fg,group(option,theme)
 def text(el,x,y,width,height,size,fg,fmt,params=(),angle=0):
  p=S(el,'PartText',x=str(x),y=str(y),width=str(width),height=str(height),angle=str(angle))
@@ -48,20 +50,14 @@ for theme,fg,g in themed(interactive):
  t=S(p,'Text',align='CENTER'); f=S(t,'Font',family='oswald',size='43',weight='BOLD',color=fg)
  up=S(f,'Upper'); template=S(up,'Template');template.text='%s %s.%s'
  for value in ['[DAY_OF_WEEK_S]','[DAY_Z]','[MONTH_Z]']:S(template,'Parameter',expression=value)
- text(g,470,747,133,62,47,fg,'%d%%',('[BATTERY_PERCENT]',),-6)
- condition=S(g,'Condition'); expressions=S(condition,'Expressions')
- e=S(expressions,'Expression',name='has_steps');e.text='[STEP_COUNT] != null &amp;&amp; [STEP_COUNT] >= 0'.replace('&amp;','&')
- compare=S(condition,'Compare',expression='has_steps')
- text(compare,690,539,171,62,43,fg,'%d',('[STEP_COUNT]',),-62)
- default=S(condition,'Default')
- text(default,690,539,171,62,43,fg,'—',angle=-62)
 # Slots are deliberately outside the interactive Group: WFF owns the data-source editor.
-for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'weather',140,165,160,180,0),(3,'floors',200,660,86,70,47)]:
- slot=S(scene,'ComplicationSlot',slotId=str(slot_id),displayName=label,x=str(x),y=str(y),width=str(width),height=str(height),angle=str(angle),supportedTypes='SHORT_TEXT EMPTY',isCustomizable='TRUE')
+for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'weather',140,165,160,180,0),(3,'floors',200,660,86,70,47),(4,'battery',470,747,133,62,-6),(5,'steps',690,539,171,62,-62)]:
+ slot=S(scene,'ComplicationSlot',slotId=str(slot_id),displayName=label,x=str(x),y=str(y),width=str(width),height=str(height),angle=str(angle),supportedTypes='SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY',isCustomizable='TRUE')
  ambient(slot)
- S(slot,'DefaultProviderPolicy',defaultSystemProvider='EMPTY',defaultSystemProviderType='EMPTY')
+ provider={'battery':'WATCH_BATTERY','steps':'STEP_COUNT'}.get(label,'EMPTY')
+ S(slot,'DefaultProviderPolicy',defaultSystemProvider=provider,defaultSystemProviderType='SHORT_TEXT' if provider!='EMPTY' else 'EMPTY')
  S(slot,'BoundingBox',x='0',y='0',width=str(width),height=str(height))
- for ctype in ['SHORT_TEXT','EMPTY']:
+ for ctype in ['SHORT_TEXT','RANGED_VALUE','LONG_TEXT','EMPTY']:
   comp=S(slot,'Complication',type=ctype)
   # Group is permitted inside Complication; it lets both themes use the same slot ID.
   cg=group(comp,f'{label}_{ctype}',width=width,height=height)
@@ -69,7 +65,15 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
    if ctype=='EMPTY':
     text(g,20 if label=='weather' else 0,20 if label=='weather' else 0,140 if label=='weather' else width,65,43,fg,'—',angle=-45 if label=='weather' else 0)
    else:
-    text(g,20 if label=='weather' else 0,20 if label=='weather' else 0,140 if label=='weather' else width,65,43,fg,'%s',('[COMPLICATION.TEXT]',),angle=-45 if label=='weather' else 0)
+    condition=S(g,'Condition'); expressions=S(condition,'Expressions')
+    e=S(expressions,'Expression',name='has_display_text');e.text='[COMPLICATION.TEXT] != null'
+    present=S(condition,'Compare',expression='has_display_text')
+    text(present,20 if label=='weather' else 0,20 if label=='weather' else 0,140 if label=='weather' else width,65,43,fg,'%s',('[COMPLICATION.TEXT]',),angle=-45 if label=='weather' else 0)
+    fallback=S(condition,'Default')
+    if ctype=='RANGED_VALUE':
+     text(fallback,0,0,width,65,43,fg,'%.0f',('[COMPLICATION.RANGED_VALUE_VALUE]',))
+    else:
+     text(fallback,0,0,width,65,43,fg,'—')
     if label=='weather':
      condition=S(g,'Condition');ex=S(condition,'Expressions')
      e=S(ex,'Expression',name='has_weather_icon');e.text='[COMPLICATION.MONOCHROMATIC_IMAGE] != null'
