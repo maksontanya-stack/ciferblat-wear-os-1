@@ -3,9 +3,12 @@ import re,subprocess,time,xml.etree.ElementTree as ET
 from pathlib import Path
 p=Path('smoke-output')
 def adb(*args):return subprocess.check_output(['adb',*args])
-def state(name):
- adb('shell','uiautomator','dump','/sdcard/window.xml')
- data=adb('shell','cat','/sdcard/window.xml');(p/f'{name}.xml').write_bytes(data)
+def state(name,ui=True):
+ if ui:
+  command('dump')
+  data=adb('shell','run-as','ru.meta.wearos.classic1.fixtures','cat','files/window.xml')
+ else: data=b'<hierarchy capture="screenshot-only" />'
+ (p/f'{name}.xml').write_bytes(data)
  (p/f'{name}.png').write_bytes(adb('exec-out','screencap','-p'))
  return ET.fromstring(data)
 def command(action,text=''):
@@ -31,14 +34,14 @@ state('editor-light-selected')
 adb('shell','input','keyevent','KEYCODE_STEM_PRIMARY');time.sleep(3)
 adb('shell','input','keyevent','KEYCODE_HOME');time.sleep(2)
 adb('shell','settings','put','secure','accessibility_enabled','0');time.sleep(2)
-state('active-light')
+state('active-light',ui=False)
 from PIL import Image
 img=Image.open(p/'active-light.png').convert('RGB')
 if min(img.getpixel((img.width//2,round(img.height*.72))))<120:
  raise SystemExit('Selecting Light in the editor did not change the actual watchface background')
 # Samsung-style payload can put temperature in TITLE and location in TEXT.
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','true');time.sleep(3)
-state('active-light-weather-swapped')
+state('active-light-weather-swapped',ui=False)
 from PIL import ImageChops
 weather=Image.open(p/'active-light-weather-swapped.png').convert('RGB')
 box=(round(img.width*.18),round(img.height*.17),round(img.width*.30),round(img.height*.30))
@@ -47,7 +50,7 @@ if sum(max(v)>30 for v in ImageChops.difference(img.crop(box),weather.crop(box))
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','false');time.sleep(3)
 # Real complication update changes both its title and value in the same sector.
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','true');time.sleep(4)
-state('active-light-altitude')
+state('active-light-altitude',ui=False)
 from PIL import ImageChops
 alt=Image.open(p/'active-light-altitude.png').convert('RGB')
 roi=(round(img.width*.37),round(img.height*.09),round(img.width*.54),round(img.height*.18))

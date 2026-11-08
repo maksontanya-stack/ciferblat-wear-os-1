@@ -32,12 +32,8 @@ sleep 2
 adb shell input swipe 227 227 227 227 1500
 sleep 3
 adb exec-out screencap -p > smoke-output/picker.png
-adb shell uiautomator dump /sdcard/picker.xml
-adb pull /sdcard/picker.xml smoke-output/picker.xml
 adb shell input tap 227 380
 sleep 4
 adb exec-out screencap -p > smoke-output/editor.png
-adb shell uiautomator dump /sdcard/editor.xml
-adb pull /sdcard/editor.xml smoke-output/editor.xml
 
 python3 scripts/editor_ui.py
