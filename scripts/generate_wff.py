@@ -44,7 +44,13 @@ def replace_caption(parent,label,theme,fg,slot_x,slot_y,slot_w,slot_h,angle,kind
  condition=S(parent,'Condition'); expressions=S(condition,'Expressions')
  caption_expression=f'caption_{label}_{kind}_{theme}'
  e=S(expressions,'Expression',name=caption_expression)
- e.text=f'[COMPLICATION.TITLE] != null && [COMPLICATION.TITLE] != "{original}"'
+ aliases={
+  'heart':['ПУЛЬС','Пульс','пульс','Heart rate','Heart Rate','HEART RATE','Pulse','PULSE'],
+  'floors':['ЭТАЖИ','Этажи','этажи','Floors','FLOORS','Floors climbed','FLOORS CLIMBED'],
+  'battery':['ЗАРЯД','Заряд','заряд','Батарея','Аккумулятор','Battery','BATTERY','Watch battery','WATCH BATTERY'],
+  'steps':['ШАГИ','Шаги','шаги','Steps','STEPS','Step count','STEP COUNT']
+ }[label]
+ e.text='[COMPLICATION.TITLE] != null && textLength([COMPLICATION.TITLE]) > 0 && '+' && '.join(f'[COMPLICATION.TITLE] != "{name}"' for name in aliases)
  compare=S(condition,'Compare',expression=caption_expression)
  world=group(compare,'caption_'+label+'_'+theme)
  patch=json.loads((ROOT/'design/caption-layout.json').read_text())[label]

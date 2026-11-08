@@ -257,7 +257,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_heart_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС" &amp;&amp; [COMPLICATION.TITLE] != "Пульс" &amp;&amp; [COMPLICATION.TITLE] != "пульс" &amp;&amp; [COMPLICATION.TITLE] != "Heart rate" &amp;&amp; [COMPLICATION.TITLE] != "Heart Rate" &amp;&amp; [COMPLICATION.TITLE] != "HEART RATE" &amp;&amp; [COMPLICATION.TITLE] != "Pulse" &amp;&amp; [COMPLICATION.TITLE] != "PULSE"</Expression>
                   </Expressions>
                   <Compare expression="caption_heart_SHORT_TEXT_dark">
                     <Group name="caption_heart_dark" x="0" y="0" width="920" height="920">
@@ -305,7 +305,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_heart_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС" &amp;&amp; [COMPLICATION.TITLE] != "Пульс" &amp;&amp; [COMPLICATION.TITLE] != "пульс" &amp;&amp; [COMPLICATION.TITLE] != "Heart rate" &amp;&amp; [COMPLICATION.TITLE] != "Heart Rate" &amp;&amp; [COMPLICATION.TITLE] != "HEART RATE" &amp;&amp; [COMPLICATION.TITLE] != "Pulse" &amp;&amp; [COMPLICATION.TITLE] != "PULSE"</Expression>
                   </Expressions>
                   <Compare expression="caption_heart_SHORT_TEXT_light">
                     <Group name="caption_heart_light" x="0" y="0" width="920" height="920">
@@ -359,7 +359,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_heart_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС" &amp;&amp; [COMPLICATION.TITLE] != "Пульс" &amp;&amp; [COMPLICATION.TITLE] != "пульс" &amp;&amp; [COMPLICATION.TITLE] != "Heart rate" &amp;&amp; [COMPLICATION.TITLE] != "Heart Rate" &amp;&amp; [COMPLICATION.TITLE] != "HEART RATE" &amp;&amp; [COMPLICATION.TITLE] != "Pulse" &amp;&amp; [COMPLICATION.TITLE] != "PULSE"</Expression>
                   </Expressions>
                   <Compare expression="caption_heart_RANGED_VALUE_dark">
                     <Group name="caption_heart_dark" x="0" y="0" width="920" height="920">
@@ -410,7 +410,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_heart_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС" &amp;&amp; [COMPLICATION.TITLE] != "Пульс" &amp;&amp; [COMPLICATION.TITLE] != "пульс" &amp;&amp; [COMPLICATION.TITLE] != "Heart rate" &amp;&amp; [COMPLICATION.TITLE] != "Heart Rate" &amp;&amp; [COMPLICATION.TITLE] != "HEART RATE" &amp;&amp; [COMPLICATION.TITLE] != "Pulse" &amp;&amp; [COMPLICATION.TITLE] != "PULSE"</Expression>
                   </Expressions>
                   <Compare expression="caption_heart_RANGED_VALUE_light">
                     <Group name="caption_heart_light" x="0" y="0" width="920" height="920">
@@ -467,7 +467,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_heart_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС" &amp;&amp; [COMPLICATION.TITLE] != "Пульс" &amp;&amp; [COMPLICATION.TITLE] != "пульс" &amp;&amp; [COMPLICATION.TITLE] != "Heart rate" &amp;&amp; [COMPLICATION.TITLE] != "Heart Rate" &amp;&amp; [COMPLICATION.TITLE] != "HEART RATE" &amp;&amp; [COMPLICATION.TITLE] != "Pulse" &amp;&amp; [COMPLICATION.TITLE] != "PULSE"</Expression>
                   </Expressions>
                   <Compare expression="caption_heart_LONG_TEXT_dark">
                     <Group name="caption_heart_dark" x="0" y="0" width="920" height="920">
@@ -515,7 +515,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_heart_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС" &amp;&amp; [COMPLICATION.TITLE] != "Пульс" &amp;&amp; [COMPLICATION.TITLE] != "пульс" &amp;&amp; [COMPLICATION.TITLE] != "Heart rate" &amp;&amp; [COMPLICATION.TITLE] != "Heart Rate" &amp;&amp; [COMPLICATION.TITLE] != "HEART RATE" &amp;&amp; [COMPLICATION.TITLE] != "Pulse" &amp;&amp; [COMPLICATION.TITLE] != "PULSE"</Expression>
                   </Expressions>
                   <Compare expression="caption_heart_LONG_TEXT_light">
                     <Group name="caption_heart_light" x="0" y="0" width="920" height="920">
@@ -867,7 +867,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_floors_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ" &amp;&amp; [COMPLICATION.TITLE] != "Этажи" &amp;&amp; [COMPLICATION.TITLE] != "этажи" &amp;&amp; [COMPLICATION.TITLE] != "Floors" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS" &amp;&amp; [COMPLICATION.TITLE] != "Floors climbed" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS CLIMBED"</Expression>
                   </Expressions>
                   <Compare expression="caption_floors_SHORT_TEXT_dark">
                     <Group name="caption_floors_dark" x="0" y="0" width="920" height="920">
@@ -915,7 +915,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_floors_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ" &amp;&amp; [COMPLICATION.TITLE] != "Этажи" &amp;&amp; [COMPLICATION.TITLE] != "этажи" &amp;&amp; [COMPLICATION.TITLE] != "Floors" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS" &amp;&amp; [COMPLICATION.TITLE] != "Floors climbed" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS CLIMBED"</Expression>
                   </Expressions>
                   <Compare expression="caption_floors_SHORT_TEXT_light">
                     <Group name="caption_floors_light" x="0" y="0" width="920" height="920">
@@ -969,7 +969,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_floors_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ" &amp;&amp; [COMPLICATION.TITLE] != "Этажи" &amp;&amp; [COMPLICATION.TITLE] != "этажи" &amp;&amp; [COMPLICATION.TITLE] != "Floors" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS" &amp;&amp; [COMPLICATION.TITLE] != "Floors climbed" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS CLIMBED"</Expression>
                   </Expressions>
                   <Compare expression="caption_floors_RANGED_VALUE_dark">
                     <Group name="caption_floors_dark" x="0" y="0" width="920" height="920">
@@ -1020,7 +1020,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_floors_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ" &amp;&amp; [COMPLICATION.TITLE] != "Этажи" &amp;&amp; [COMPLICATION.TITLE] != "этажи" &amp;&amp; [COMPLICATION.TITLE] != "Floors" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS" &amp;&amp; [COMPLICATION.TITLE] != "Floors climbed" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS CLIMBED"</Expression>
                   </Expressions>
                   <Compare expression="caption_floors_RANGED_VALUE_light">
                     <Group name="caption_floors_light" x="0" y="0" width="920" height="920">
@@ -1077,7 +1077,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_floors_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ" &amp;&amp; [COMPLICATION.TITLE] != "Этажи" &amp;&amp; [COMPLICATION.TITLE] != "этажи" &amp;&amp; [COMPLICATION.TITLE] != "Floors" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS" &amp;&amp; [COMPLICATION.TITLE] != "Floors climbed" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS CLIMBED"</Expression>
                   </Expressions>
                   <Compare expression="caption_floors_LONG_TEXT_dark">
                     <Group name="caption_floors_dark" x="0" y="0" width="920" height="920">
@@ -1125,7 +1125,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_floors_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ" &amp;&amp; [COMPLICATION.TITLE] != "Этажи" &amp;&amp; [COMPLICATION.TITLE] != "этажи" &amp;&amp; [COMPLICATION.TITLE] != "Floors" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS" &amp;&amp; [COMPLICATION.TITLE] != "Floors climbed" &amp;&amp; [COMPLICATION.TITLE] != "FLOORS CLIMBED"</Expression>
                   </Expressions>
                   <Compare expression="caption_floors_LONG_TEXT_light">
                     <Group name="caption_floors_light" x="0" y="0" width="920" height="920">
@@ -1208,7 +1208,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_battery_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД" &amp;&amp; [COMPLICATION.TITLE] != "Заряд" &amp;&amp; [COMPLICATION.TITLE] != "заряд" &amp;&amp; [COMPLICATION.TITLE] != "Батарея" &amp;&amp; [COMPLICATION.TITLE] != "Аккумулятор" &amp;&amp; [COMPLICATION.TITLE] != "Battery" &amp;&amp; [COMPLICATION.TITLE] != "BATTERY" &amp;&amp; [COMPLICATION.TITLE] != "Watch battery" &amp;&amp; [COMPLICATION.TITLE] != "WATCH BATTERY"</Expression>
                   </Expressions>
                   <Compare expression="caption_battery_SHORT_TEXT_dark">
                     <Group name="caption_battery_dark" x="0" y="0" width="920" height="920">
@@ -1256,7 +1256,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_battery_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД" &amp;&amp; [COMPLICATION.TITLE] != "Заряд" &amp;&amp; [COMPLICATION.TITLE] != "заряд" &amp;&amp; [COMPLICATION.TITLE] != "Батарея" &amp;&amp; [COMPLICATION.TITLE] != "Аккумулятор" &amp;&amp; [COMPLICATION.TITLE] != "Battery" &amp;&amp; [COMPLICATION.TITLE] != "BATTERY" &amp;&amp; [COMPLICATION.TITLE] != "Watch battery" &amp;&amp; [COMPLICATION.TITLE] != "WATCH BATTERY"</Expression>
                   </Expressions>
                   <Compare expression="caption_battery_SHORT_TEXT_light">
                     <Group name="caption_battery_light" x="0" y="0" width="920" height="920">
@@ -1310,7 +1310,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_battery_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД" &amp;&amp; [COMPLICATION.TITLE] != "Заряд" &amp;&amp; [COMPLICATION.TITLE] != "заряд" &amp;&amp; [COMPLICATION.TITLE] != "Батарея" &amp;&amp; [COMPLICATION.TITLE] != "Аккумулятор" &amp;&amp; [COMPLICATION.TITLE] != "Battery" &amp;&amp; [COMPLICATION.TITLE] != "BATTERY" &amp;&amp; [COMPLICATION.TITLE] != "Watch battery" &amp;&amp; [COMPLICATION.TITLE] != "WATCH BATTERY"</Expression>
                   </Expressions>
                   <Compare expression="caption_battery_RANGED_VALUE_dark">
                     <Group name="caption_battery_dark" x="0" y="0" width="920" height="920">
@@ -1361,7 +1361,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_battery_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД" &amp;&amp; [COMPLICATION.TITLE] != "Заряд" &amp;&amp; [COMPLICATION.TITLE] != "заряд" &amp;&amp; [COMPLICATION.TITLE] != "Батарея" &amp;&amp; [COMPLICATION.TITLE] != "Аккумулятор" &amp;&amp; [COMPLICATION.TITLE] != "Battery" &amp;&amp; [COMPLICATION.TITLE] != "BATTERY" &amp;&amp; [COMPLICATION.TITLE] != "Watch battery" &amp;&amp; [COMPLICATION.TITLE] != "WATCH BATTERY"</Expression>
                   </Expressions>
                   <Compare expression="caption_battery_RANGED_VALUE_light">
                     <Group name="caption_battery_light" x="0" y="0" width="920" height="920">
@@ -1418,7 +1418,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_battery_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД" &amp;&amp; [COMPLICATION.TITLE] != "Заряд" &amp;&amp; [COMPLICATION.TITLE] != "заряд" &amp;&amp; [COMPLICATION.TITLE] != "Батарея" &amp;&amp; [COMPLICATION.TITLE] != "Аккумулятор" &amp;&amp; [COMPLICATION.TITLE] != "Battery" &amp;&amp; [COMPLICATION.TITLE] != "BATTERY" &amp;&amp; [COMPLICATION.TITLE] != "Watch battery" &amp;&amp; [COMPLICATION.TITLE] != "WATCH BATTERY"</Expression>
                   </Expressions>
                   <Compare expression="caption_battery_LONG_TEXT_dark">
                     <Group name="caption_battery_dark" x="0" y="0" width="920" height="920">
@@ -1466,7 +1466,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_battery_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД" &amp;&amp; [COMPLICATION.TITLE] != "Заряд" &amp;&amp; [COMPLICATION.TITLE] != "заряд" &amp;&amp; [COMPLICATION.TITLE] != "Батарея" &amp;&amp; [COMPLICATION.TITLE] != "Аккумулятор" &amp;&amp; [COMPLICATION.TITLE] != "Battery" &amp;&amp; [COMPLICATION.TITLE] != "BATTERY" &amp;&amp; [COMPLICATION.TITLE] != "Watch battery" &amp;&amp; [COMPLICATION.TITLE] != "WATCH BATTERY"</Expression>
                   </Expressions>
                   <Compare expression="caption_battery_LONG_TEXT_light">
                     <Group name="caption_battery_light" x="0" y="0" width="920" height="920">
@@ -1549,7 +1549,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_steps_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ" &amp;&amp; [COMPLICATION.TITLE] != "Шаги" &amp;&amp; [COMPLICATION.TITLE] != "шаги" &amp;&amp; [COMPLICATION.TITLE] != "Steps" &amp;&amp; [COMPLICATION.TITLE] != "STEPS" &amp;&amp; [COMPLICATION.TITLE] != "Step count" &amp;&amp; [COMPLICATION.TITLE] != "STEP COUNT"</Expression>
                   </Expressions>
                   <Compare expression="caption_steps_SHORT_TEXT_dark">
                     <Group name="caption_steps_dark" x="0" y="0" width="920" height="920">
@@ -1597,7 +1597,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_steps_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ" &amp;&amp; [COMPLICATION.TITLE] != "Шаги" &amp;&amp; [COMPLICATION.TITLE] != "шаги" &amp;&amp; [COMPLICATION.TITLE] != "Steps" &amp;&amp; [COMPLICATION.TITLE] != "STEPS" &amp;&amp; [COMPLICATION.TITLE] != "Step count" &amp;&amp; [COMPLICATION.TITLE] != "STEP COUNT"</Expression>
                   </Expressions>
                   <Compare expression="caption_steps_SHORT_TEXT_light">
                     <Group name="caption_steps_light" x="0" y="0" width="920" height="920">
@@ -1651,7 +1651,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_steps_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ" &amp;&amp; [COMPLICATION.TITLE] != "Шаги" &amp;&amp; [COMPLICATION.TITLE] != "шаги" &amp;&amp; [COMPLICATION.TITLE] != "Steps" &amp;&amp; [COMPLICATION.TITLE] != "STEPS" &amp;&amp; [COMPLICATION.TITLE] != "Step count" &amp;&amp; [COMPLICATION.TITLE] != "STEP COUNT"</Expression>
                   </Expressions>
                   <Compare expression="caption_steps_RANGED_VALUE_dark">
                     <Group name="caption_steps_dark" x="0" y="0" width="920" height="920">
@@ -1702,7 +1702,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_steps_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ" &amp;&amp; [COMPLICATION.TITLE] != "Шаги" &amp;&amp; [COMPLICATION.TITLE] != "шаги" &amp;&amp; [COMPLICATION.TITLE] != "Steps" &amp;&amp; [COMPLICATION.TITLE] != "STEPS" &amp;&amp; [COMPLICATION.TITLE] != "Step count" &amp;&amp; [COMPLICATION.TITLE] != "STEP COUNT"</Expression>
                   </Expressions>
                   <Compare expression="caption_steps_RANGED_VALUE_light">
                     <Group name="caption_steps_light" x="0" y="0" width="920" height="920">
@@ -1759,7 +1759,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_steps_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ" &amp;&amp; [COMPLICATION.TITLE] != "Шаги" &amp;&amp; [COMPLICATION.TITLE] != "шаги" &amp;&amp; [COMPLICATION.TITLE] != "Steps" &amp;&amp; [COMPLICATION.TITLE] != "STEPS" &amp;&amp; [COMPLICATION.TITLE] != "Step count" &amp;&amp; [COMPLICATION.TITLE] != "STEP COUNT"</Expression>
                   </Expressions>
                   <Compare expression="caption_steps_LONG_TEXT_dark">
                     <Group name="caption_steps_dark" x="0" y="0" width="920" height="920">
@@ -1807,7 +1807,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="caption_steps_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt; 0 &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ" &amp;&amp; [COMPLICATION.TITLE] != "Шаги" &amp;&amp; [COMPLICATION.TITLE] != "шаги" &amp;&amp; [COMPLICATION.TITLE] != "Steps" &amp;&amp; [COMPLICATION.TITLE] != "STEPS" &amp;&amp; [COMPLICATION.TITLE] != "Step count" &amp;&amp; [COMPLICATION.TITLE] != "STEP COUNT"</Expression>
                   </Expressions>
                   <Compare expression="caption_steps_LONG_TEXT_light">
                     <Group name="caption_steps_light" x="0" y="0" width="920" height="920">
