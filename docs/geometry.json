@@ -1,0 +1,14 @@
+{
+  "title": "циферблат wear os 1",
+  "device": "Samsung Galaxy Watch4 Classic 46 mm",
+  "canvas": [450, 450],
+  "source": "references/29937.jpg",
+  "sourceCrop": {"x":139,"y":140,"width":920,"height":920},
+  "uniformScale": 0.4891304347826087,
+  "typefaceReplacement": false,
+  "stripeRedrawing": false,
+  "textureSource": "references/29886.jpg",
+  "textureSample": {"x":550,"y":655,"width":110,"height":70},
+  "textureMethod": "repeat original photograph sample; not full-surface reconstruction",
+  "status": "static artwork; wearable runtime not implemented"
+}
