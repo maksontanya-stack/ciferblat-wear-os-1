@@ -41,15 +41,15 @@ def radial_text(parent,label,fg,expression,scope):
  if label=='weather': start+=16 # Leave room for the provider icon at the left end.
  clockwise=label in ('heart','weather')
  if not clockwise: start,end=end,start
- # Oswald's widest supported glyph at this weight is bounded by 0.91 em.
+ # Oswald's widest supported glyph at this weight is bounded by 1.06 em.
  # Choose the largest size whose conservative line width fits the available arc.
  capacity=math.radians(abs(end-start))*330
  cond=S(parent,'Condition');exprs=S(cond,'Expressions')
  sizes=[43,38,34,30,26,22,18,14,10,7,4,2,1]
  for size in sizes[:-1]:
   key=f'fit_{scope}_{size}'
-  e=S(exprs,'Expression',name=key);e.text=f'textLength({expression}) * {size} * 0.91 <= {capacity:.3f}'
-  if size!=sizes[0]: e.text+=f' && textLength({expression}) * {sizes[sizes.index(size)-1]} * 0.91 > {capacity:.3f}'
+  e=S(exprs,'Expression',name=key);e.text=f'textLength({expression}) * {size} * 1.06 <= {capacity:.3f}'
+  if size!=sizes[0]: e.text+=f' && textLength({expression}) * {sizes[sizes.index(size)-1]} * 1.06 > {capacity:.3f}'
  for size in sizes:
   dest=S(cond,'Compare',expression=f'fit_{scope}_{size}') if size!=1 else S(cond,'Default')
   part=S(dest,'PartText',x='0',y='0',width='920',height='920')
