@@ -90,7 +90,13 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
     condition=S(g,'Condition'); expressions=S(condition,'Expressions')
     e=S(expressions,'Expression',name='has_display_text');e.text='[COMPLICATION.TEXT] != null'
     present=S(condition,'Compare',expression='has_display_text')
-    text(present,20 if label=='weather' else 0,20 if label=='weather' else 0,140 if label=='weather' else width,65,43,fg,'%s',('[COMPLICATION.TEXT]',),angle=-45 if label=='weather' else 0)
+    display_value='[COMPLICATION.TEXT]'
+    if label=='weather':
+     title='[COMPLICATION.TITLE]'
+     length=f'textLength({title})'
+     temperature=f'{title} != null && {length} >= 2 && (subText({title}, {length}-1, {length}) == "°" || subText({title}, {length}-2, {length}) == "°C" || subText({title}, {length}-2, {length}) == "°F")'
+     display_value=f'({temperature}) ? {title} : [COMPLICATION.TEXT]'
+    text(present,20 if label=='weather' else 0,20 if label=='weather' else 0,140 if label=='weather' else width,65,43,fg,'%s',(display_value,),angle=-45 if label=='weather' else 0)
     fallback=S(condition,'Default')
     if ctype=='RANGED_VALUE':
      text(fallback,0,0,width,65,43,fg,'%.0f',('[COMPLICATION.RANGED_VALUE_VALUE]',))

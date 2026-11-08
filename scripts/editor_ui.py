@@ -40,6 +40,15 @@ from PIL import Image
 img=Image.open(p/'active-light.png').convert('RGB')
 if min(img.getpixel((img.width//2,round(img.height*.72))))<120:
  raise SystemExit('Selecting Light in the editor did not change the actual watchface background')
+# Samsung-style payload can put temperature in TITLE and location in TEXT.
+adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','true');time.sleep(3)
+state('active-light-weather-swapped')
+from PIL import ImageChops
+weather=Image.open(p/'active-light-weather-swapped.png').convert('RGB')
+box=(round(img.width*.18),round(img.height*.17),round(img.width*.30),round(img.height*.30))
+if sum(max(v)>30 for v in ImageChops.difference(img.crop(box),weather.crop(box)).getdata())>20:
+ raise SystemExit('Weather swapped TITLE/TEXT payload changed temperature into the city name')
+adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','false');time.sleep(3)
 # Real complication update changes both its title and value in the same sector.
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','true');time.sleep(4)
 state('active-light-altitude')

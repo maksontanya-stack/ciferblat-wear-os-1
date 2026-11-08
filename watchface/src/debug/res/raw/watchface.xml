@@ -248,7 +248,7 @@
     </Group>
     <ComplicationSlot slotId="1" displayName="heart" x="498" y="91" width="92" height="65" angle="15" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
       <Variant mode="AMBIENT" target="alpha" value="0" />
-      <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="ru.meta.wearos.classic1.fixtures/ru.meta.wearos.classic1.fixtures.FixtureService$Heart" primaryProviderType="SHORT_TEXT" />
+      <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="ru.meta.wearos.classic1.fixtures/ru.meta.wearos.classic1.fixtures.FixtureService$Heart" primaryProviderType="RANGED_VALUE" />
       <BoundingBox x="0" y="0" width="92" height="65" />
       <Complication type="SHORT_TEXT">
         <Group name="heart_SHORT_TEXT" x="0" y="0" width="92" height="65">
@@ -604,7 +604,7 @@
                     <PartText x="20" y="20" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
                           </Template>
                         </Font>
                       </Text>
@@ -640,7 +640,7 @@
                     <PartText x="20" y="20" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
                           </Template>
                         </Font>
                       </Text>
@@ -682,7 +682,7 @@
                     <PartText x="20" y="20" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
                           </Template>
                         </Font>
                       </Text>
@@ -721,7 +721,7 @@
                     <PartText x="20" y="20" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
                           </Template>
                         </Font>
                       </Text>
@@ -766,7 +766,7 @@
                     <PartText x="20" y="20" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
                           </Template>
                         </Font>
                       </Text>
@@ -802,7 +802,7 @@
                     <PartText x="20" y="20" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
+                          <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
                           </Template>
                         </Font>
                       </Text>

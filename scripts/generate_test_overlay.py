@@ -7,6 +7,6 @@ for slot in w.iter('ComplicationSlot'):
  name=slot.attrib['displayName'].title()
  policy=slot.find('DefaultProviderPolicy')
  policy.set('primaryProvider',f'ru.meta.wearos.classic1.fixtures/ru.meta.wearos.classic1.fixtures.FixtureService${name}')
- policy.set('primaryProviderType','SHORT_TEXT')
+ policy.set('primaryProviderType','RANGED_VALUE' if name=='Heart' else 'SHORT_TEXT')
 folder=root/'watchface/src/debug/res/raw';folder.mkdir(parents=True,exist_ok=True)
 ET.indent(w);w.write(folder/'watchface.xml',encoding='utf-8',xml_declaration=True)
