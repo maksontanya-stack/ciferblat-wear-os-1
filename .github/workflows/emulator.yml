@@ -1,6 +1,11 @@
 name: Wear OS emulator smoke test
 on:
   workflow_dispatch:
+    inputs:
+      api_level:
+        description: Android API level (33 Wear OS 4, 34 Wear OS 5)
+        required: true
+        default: "33"
 permissions:
   contents: read
 jobs:
@@ -36,7 +41,7 @@ jobs:
       - name: Install and render on Wear OS 4
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 33
+          api-level: ${{ inputs.api_level }}
           target: android-wear
           arch: x86_64
           profile: wearos_large_round
