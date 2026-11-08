@@ -1,11 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="watch_face_name">Циферблат Wear OS 1</string>
-    <string name="theme">Тема</string>
-    <string name="dark">Тёмная</string>
-    <string name="light">Светлая</string>
-    <string name="heart">Пульс</string>
-    <string name="weather">Погода</string>
-    <string name="floors">Этажи</string>
-    <string name="battery">Заряд</string>
-    <string name="steps">Шаги</string>
+  <string name="watch_face_name">Циферблат Wear OS 1</string>
+  <string name="theme">Тема</string>
+  <string name="dark">Тёмная</string>
+  <string name="light">Светлая</string>
+  <string name="heart">Верхний сектор</string>
+  <string name="weather">Левый верхний сектор</string>
+  <string name="floors">Левый нижний сектор</string>
+  <string name="battery">Нижний сектор</string>
+  <string name="steps">Правый нижний сектор</string>
 </resources>
