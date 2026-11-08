@@ -6,6 +6,10 @@ on:
         description: Android API level (33 Wear OS 4, 34 Wear OS 5)
         required: true
         default: "33"
+      gpu_mode:
+        description: Emulator graphics backend
+        required: false
+        default: swiftshader_indirect
 permissions:
   contents: read
 jobs:
@@ -47,7 +51,7 @@ jobs:
           profile: wearos_large_round
           ram-size: 2048M
           heap-size: 256M
-          emulator-options: -no-window -gpu swiftshader_indirect -feature -Vulkan -no-snapshot -noaudio -no-boot-anim
+          emulator-options: -no-window -gpu ${{ inputs.gpu_mode || 'swiftshader_indirect' }} -feature -Vulkan -no-snapshot -noaudio -no-boot-anim
           disable-animations: false
           script: bash scripts/emulator-smoke.sh
       - uses: actions/upload-artifact@v4

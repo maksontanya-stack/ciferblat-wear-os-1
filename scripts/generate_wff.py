@@ -35,15 +35,15 @@ def text(el,x,y,width,height,size,fg,fmt,params=(),angle=0):
 # of each red marker; all geometry uses the same reference center and radii.
 SECTORS={'heart':(330,390),'weather':(270,330),'floors':(210,270),'battery':(150,210),'steps':(90,150)}
 
-def radial_text(parent,label,fg,fmt,params,scope,width_em=None,known=False):
+def radial_text(parent,label,fg,fmt,params,scope,width_em=None,known=False,weather_icon=False):
  import math
  start,end=SECTORS[label]; start+=4;end-=4
- if label=='weather': start+=16
+ if weather_icon: start+=16
  clockwise=label in ('heart','weather')
  if not clockwise: start,end=end,start
  capacity=math.radians(abs(end-start))*350
  if width_em is None: width_em=" + ".join(f"textLength({param}) * 1.06" for param in params)+" + 0.3"
- sizes=[43,34,24,12,4,0.25] if known else [43,34,26,18,12,8,6,3,1,0.25]
+ sizes=[43,34,24,12,4,1] if known else [43,34,26,18,12,8,6,3,1]
  cond=S(parent,'Condition');exprs=S(cond,'Expressions')
  for index,size in enumerate(sizes[:-1]):
   e=S(exprs,'Expression',name=f'fit_{scope}_{index}');e.text=f'({width_em}) * {size} <= {capacity:.3f}'
@@ -126,18 +126,25 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
     for index,names in enumerate(bands):
      dest=S(metric,'Compare',expression=f'metric_{scope}_{index}')
      if label=='weather' and names==['ПОГОДА']:
-      radial_text(dest,label,fg,'%s',(value,),scope+f'_metric_{index}',known=True)
+      radial_text(dest,label,fg,'%s',(value,),scope+f'_metric_{index}',known=True,weather_icon=True)
      else:
       caption=json.dumps(names[-1],ensure_ascii=False)
       for name in reversed(names[:-1]): caption=f'(({matches(catalog[name])}) ? '+json.dumps(name,ensure_ascii=False)+f' : {caption})'
       prefix=max(catalog[name]['prefix_em'] for name in names)
       radial_text(dest,label,fg,'%s %s',(caption,value),scope+f'_metric_{index}',f'{prefix} + textLength({value}) * 1.06',known=True)
     dest=S(metric,'Default')
-    radial_text(dest,label,fg,'%s %s',(title,value),scope+'_unknown')
+    if label=='weather':
+     fallback_icon=S(dest,'Condition');fex=S(fallback_icon,'Expressions')
+     expr=S(fex,'Expression',name='fallback_icon_'+scope);expr.text=f'[COMPLICATION.MONOCHROMATIC_IMAGE] != null && !({has_title})'
+     yes=S(fallback_icon,'Compare',expression='fallback_icon_'+scope)
+     radial_text(yes,label,fg,'%s',(value,),scope+'_unknown_icon',weather_icon=True)
+     no=S(fallback_icon,'Default')
+     radial_text(no,label,fg,'%s %s',(title,value),scope+'_unknown')
+    else: radial_text(dest,label,fg,'%s %s',(title,value),scope+'_unknown')
     if label=='weather':
      condition=S(g,'Condition');ex=S(condition,'Expressions')
      icon_expression=f'icon_{label}_{ctype}_{theme}'
-     e=S(ex,'Expression',name=icon_expression);e.text='[COMPLICATION.MONOCHROMATIC_IMAGE] != null'
+     e=S(ex,'Expression',name=icon_expression);e.text=f'[COMPLICATION.MONOCHROMATIC_IMAGE] != null && (({matches(catalog["ПОГОДА"])}) || ({temperature}) || !({has_title}))'
      compare=S(condition,'Compare',expression=icon_expression)
      pi=S(compare,'PartImage',x='90',y='357',width='60',height='60',angle='-80',tintColor=fg)
      S(pi,'Image',resource='[COMPLICATION.MONOCHROMATIC_IMAGE]')
