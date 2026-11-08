@@ -67,6 +67,15 @@ for attempt in range(15):
  if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),alt.crop(roi)).getdata())>=30: break
  time.sleep(2)
 else: raise SystemExit('Changing the source title did not update the sector caption within 30 seconds')
+# A long provider title must remain inside its radial sector.
+adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','long_title','--ez','enabled','true')
+for attempt in range(15):
+ if 'МАКСИМАЛЬНАЯ ВЫСОТА' in adb('logcat','-d').decode(errors='replace'): break
+ time.sleep(2)
+else: raise SystemExit('Long-title fixture was not delivered')
+time.sleep(3)
+state('active-light-long-title',ui=False)
+adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','long_title','--ez','enabled','false');time.sleep(3)
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
 # Reopen native editor and capture real provider chooser (no simulated UI).
 adb('shell','settings','put','secure','accessibility_enabled','1');time.sleep(2)
