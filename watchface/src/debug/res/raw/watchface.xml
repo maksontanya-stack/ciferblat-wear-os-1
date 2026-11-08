@@ -246,12 +246,12 @@
         </ListOption>
       </ListConfiguration>
     </Group>
-    <ComplicationSlot slotId="1" displayName="heart" x="498" y="91" width="92" height="65" angle="15" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
+    <ComplicationSlot slotId="1" displayName="heart" x="0" y="0" width="920" height="920" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
       <Variant mode="AMBIENT" target="alpha" value="0" />
       <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="ru.meta.wearos.classic1.fixtures/ru.meta.wearos.classic1.fixtures.FixtureService$Heart" primaryProviderType="RANGED_VALUE" />
-      <BoundingBox x="0" y="0" width="92" height="65" />
+      <BoundingBox x="320" y="55" width="280" height="110" />
       <Complication type="SHORT_TEXT">
-        <Group name="heart_SHORT_TEXT" x="0" y="0" width="92" height="65">
+        <Group name="heart_SHORT_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -260,7 +260,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_heart_dark" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
+                    <Group name="caption_heart_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_dark" />
                       </PartImage>
@@ -282,7 +282,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -292,7 +292,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -308,7 +308,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_heart_light" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
+                    <Group name="caption_heart_light" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_light" />
                       </PartImage>
@@ -330,7 +330,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -340,7 +340,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -353,7 +353,7 @@
         </Group>
       </Complication>
       <Complication type="RANGED_VALUE">
-        <Group name="heart_RANGED_VALUE" x="0" y="0" width="92" height="65">
+        <Group name="heart_RANGED_VALUE" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -362,7 +362,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_heart_dark" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
+                    <Group name="caption_heart_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_dark" />
                       </PartImage>
@@ -384,7 +384,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -394,7 +394,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -413,7 +413,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_heart_light" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
+                    <Group name="caption_heart_light" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_light" />
                       </PartImage>
@@ -435,7 +435,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -445,7 +445,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -461,7 +461,7 @@
         </Group>
       </Complication>
       <Complication type="LONG_TEXT">
-        <Group name="heart_LONG_TEXT" x="0" y="0" width="92" height="65">
+        <Group name="heart_LONG_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -470,7 +470,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_heart_dark" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
+                    <Group name="caption_heart_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_dark" />
                       </PartImage>
@@ -492,7 +492,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -502,7 +502,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -518,7 +518,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_heart_light" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
+                    <Group name="caption_heart_light" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_light" />
                       </PartImage>
@@ -540,7 +540,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -550,7 +550,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="92" height="65" angle="0">
+                    <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -563,11 +563,11 @@
         </Group>
       </Complication>
       <Complication type="EMPTY">
-        <Group name="heart_EMPTY" x="0" y="0" width="92" height="65">
+        <Group name="heart_EMPTY" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="92" height="65" angle="0">
+                <PartText x="498" y="91" width="92" height="65" angle="15">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                   </Text>
@@ -576,7 +576,7 @@
             </ListOption>
             <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="92" height="65" angle="0">
+                <PartText x="498" y="91" width="92" height="65" angle="15">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                   </Text>
@@ -587,12 +587,12 @@
         </Group>
       </Complication>
     </ComplicationSlot>
-    <ComplicationSlot slotId="2" displayName="weather" x="140" y="165" width="160" height="180" angle="0" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
+    <ComplicationSlot slotId="2" displayName="weather" x="0" y="0" width="920" height="920" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
       <Variant mode="AMBIENT" target="alpha" value="0" />
       <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="ru.meta.wearos.classic1.fixtures/ru.meta.wearos.classic1.fixtures.FixtureService$Weather" primaryProviderType="SHORT_TEXT" />
-      <BoundingBox x="0" y="0" width="160" height="180" />
+      <BoundingBox x="100" y="145" width="200" height="205" />
       <Complication type="SHORT_TEXT">
-        <Group name="weather_SHORT_TEXT" x="0" y="0" width="160" height="180">
+        <Group name="weather_SHORT_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -601,7 +601,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
@@ -611,7 +611,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -623,7 +623,7 @@
                     <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="has_weather_icon">
-                    <PartImage x="0" y="100" width="72" height="72" tintColor="#ddddda">
+                    <PartImage x="140" y="265" width="72" height="72" tintColor="#ddddda">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -637,7 +637,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
@@ -647,7 +647,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -659,7 +659,7 @@
                     <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="has_weather_icon">
-                    <PartImage x="0" y="100" width="72" height="72" tintColor="#222a31">
+                    <PartImage x="140" y="265" width="72" height="72" tintColor="#222a31">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -670,7 +670,7 @@
         </Group>
       </Complication>
       <Complication type="RANGED_VALUE">
-        <Group name="weather_RANGED_VALUE" x="0" y="0" width="160" height="180">
+        <Group name="weather_RANGED_VALUE" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -679,7 +679,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
@@ -689,7 +689,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -704,7 +704,7 @@
                     <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="has_weather_icon">
-                    <PartImage x="0" y="100" width="72" height="72" tintColor="#ddddda">
+                    <PartImage x="140" y="265" width="72" height="72" tintColor="#ddddda">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -718,7 +718,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
@@ -728,7 +728,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -743,7 +743,7 @@
                     <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="has_weather_icon">
-                    <PartImage x="0" y="100" width="72" height="72" tintColor="#222a31">
+                    <PartImage x="140" y="265" width="72" height="72" tintColor="#222a31">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -754,7 +754,7 @@
         </Group>
       </Complication>
       <Complication type="LONG_TEXT">
-        <Group name="weather_LONG_TEXT" x="0" y="0" width="160" height="180">
+        <Group name="weather_LONG_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -763,7 +763,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
@@ -773,7 +773,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -785,7 +785,7 @@
                     <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="has_weather_icon">
-                    <PartImage x="0" y="100" width="72" height="72" tintColor="#ddddda">
+                    <PartImage x="140" y="265" width="72" height="72" tintColor="#ddddda">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -799,7 +799,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="20" y="20" width="140" height="65" angle="-45">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == &quot;°&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°C&quot; || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == &quot;°F&quot;)) ? [COMPLICATION.TITLE] : [COMPLICATION.TEXT]" />
@@ -809,7 +809,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="160" height="65" angle="0">
+                    <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -821,7 +821,7 @@
                     <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="has_weather_icon">
-                    <PartImage x="0" y="100" width="72" height="72" tintColor="#222a31">
+                    <PartImage x="140" y="265" width="72" height="72" tintColor="#222a31">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -832,11 +832,11 @@
         </Group>
       </Complication>
       <Complication type="EMPTY">
-        <Group name="weather_EMPTY" x="0" y="0" width="160" height="180">
+        <Group name="weather_EMPTY" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
-                <PartText x="20" y="20" width="140" height="65" angle="-45">
+                <PartText x="160" y="185" width="140" height="65" angle="-45">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                   </Text>
@@ -845,7 +845,7 @@
             </ListOption>
             <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
-                <PartText x="20" y="20" width="140" height="65" angle="-45">
+                <PartText x="160" y="185" width="140" height="65" angle="-45">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                   </Text>
@@ -856,12 +856,12 @@
         </Group>
       </Complication>
     </ComplicationSlot>
-    <ComplicationSlot slotId="3" displayName="floors" x="200" y="660" width="86" height="70" angle="47" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
+    <ComplicationSlot slotId="3" displayName="floors" x="0" y="0" width="920" height="920" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
       <Variant mode="AMBIENT" target="alpha" value="0" />
       <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="ru.meta.wearos.classic1.fixtures/ru.meta.wearos.classic1.fixtures.FixtureService$Floors" primaryProviderType="SHORT_TEXT" />
-      <BoundingBox x="0" y="0" width="86" height="70" />
+      <BoundingBox x="70" y="510" width="220" height="220" />
       <Complication type="SHORT_TEXT">
-        <Group name="floors_SHORT_TEXT" x="0" y="0" width="86" height="70">
+        <Group name="floors_SHORT_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -870,7 +870,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_floors_dark" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
+                    <Group name="caption_floors_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_dark" />
                       </PartImage>
@@ -892,7 +892,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -902,7 +902,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -918,7 +918,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_floors_light" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
+                    <Group name="caption_floors_light" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_light" />
                       </PartImage>
@@ -940,7 +940,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -950,7 +950,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -963,7 +963,7 @@
         </Group>
       </Complication>
       <Complication type="RANGED_VALUE">
-        <Group name="floors_RANGED_VALUE" x="0" y="0" width="86" height="70">
+        <Group name="floors_RANGED_VALUE" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -972,7 +972,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_floors_dark" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
+                    <Group name="caption_floors_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_dark" />
                       </PartImage>
@@ -994,7 +994,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1004,7 +1004,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -1023,7 +1023,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_floors_light" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
+                    <Group name="caption_floors_light" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_light" />
                       </PartImage>
@@ -1045,7 +1045,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1055,7 +1055,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -1071,7 +1071,7 @@
         </Group>
       </Complication>
       <Complication type="LONG_TEXT">
-        <Group name="floors_LONG_TEXT" x="0" y="0" width="86" height="70">
+        <Group name="floors_LONG_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -1080,7 +1080,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_floors_dark" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
+                    <Group name="caption_floors_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_dark" />
                       </PartImage>
@@ -1102,7 +1102,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1112,7 +1112,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -1128,7 +1128,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_floors_light" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
+                    <Group name="caption_floors_light" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_light" />
                       </PartImage>
@@ -1150,7 +1150,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1160,7 +1160,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="86" height="65" angle="0">
+                    <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -1173,11 +1173,11 @@
         </Group>
       </Complication>
       <Complication type="EMPTY">
-        <Group name="floors_EMPTY" x="0" y="0" width="86" height="70">
+        <Group name="floors_EMPTY" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="86" height="65" angle="0">
+                <PartText x="200" y="660" width="86" height="65" angle="47">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                   </Text>
@@ -1186,7 +1186,7 @@
             </ListOption>
             <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="86" height="65" angle="0">
+                <PartText x="200" y="660" width="86" height="65" angle="47">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                   </Text>
@@ -1197,12 +1197,12 @@
         </Group>
       </Complication>
     </ComplicationSlot>
-    <ComplicationSlot slotId="4" displayName="battery" x="470" y="747" width="133" height="62" angle="-6" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
+    <ComplicationSlot slotId="4" displayName="battery" x="0" y="0" width="920" height="920" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
       <Variant mode="AMBIENT" target="alpha" value="0" />
       <DefaultProviderPolicy defaultSystemProvider="WATCH_BATTERY" defaultSystemProviderType="SHORT_TEXT" primaryProvider="ru.meta.wearos.classic1.fixtures/ru.meta.wearos.classic1.fixtures.FixtureService$Battery" primaryProviderType="SHORT_TEXT" />
-      <BoundingBox x="0" y="0" width="133" height="62" />
+      <BoundingBox x="280" y="735" width="350" height="120" />
       <Complication type="SHORT_TEXT">
-        <Group name="battery_SHORT_TEXT" x="0" y="0" width="133" height="62">
+        <Group name="battery_SHORT_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -1211,7 +1211,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_battery_dark" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
+                    <Group name="caption_battery_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_dark" />
                       </PartImage>
@@ -1233,7 +1233,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1243,7 +1243,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -1259,7 +1259,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_battery_light" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
+                    <Group name="caption_battery_light" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_light" />
                       </PartImage>
@@ -1281,7 +1281,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1291,7 +1291,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -1304,7 +1304,7 @@
         </Group>
       </Complication>
       <Complication type="RANGED_VALUE">
-        <Group name="battery_RANGED_VALUE" x="0" y="0" width="133" height="62">
+        <Group name="battery_RANGED_VALUE" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -1313,7 +1313,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_battery_dark" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
+                    <Group name="caption_battery_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_dark" />
                       </PartImage>
@@ -1335,7 +1335,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1345,7 +1345,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -1364,7 +1364,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_battery_light" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
+                    <Group name="caption_battery_light" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_light" />
                       </PartImage>
@@ -1386,7 +1386,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1396,7 +1396,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -1412,7 +1412,7 @@
         </Group>
       </Complication>
       <Complication type="LONG_TEXT">
-        <Group name="battery_LONG_TEXT" x="0" y="0" width="133" height="62">
+        <Group name="battery_LONG_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -1421,7 +1421,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_battery_dark" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
+                    <Group name="caption_battery_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_dark" />
                       </PartImage>
@@ -1443,7 +1443,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1453,7 +1453,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -1469,7 +1469,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_battery_light" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
+                    <Group name="caption_battery_light" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_light" />
                       </PartImage>
@@ -1491,7 +1491,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1501,7 +1501,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="133" height="65" angle="0">
+                    <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -1514,11 +1514,11 @@
         </Group>
       </Complication>
       <Complication type="EMPTY">
-        <Group name="battery_EMPTY" x="0" y="0" width="133" height="62">
+        <Group name="battery_EMPTY" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="133" height="65" angle="0">
+                <PartText x="470" y="747" width="133" height="65" angle="-6">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                   </Text>
@@ -1527,7 +1527,7 @@
             </ListOption>
             <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="133" height="65" angle="0">
+                <PartText x="470" y="747" width="133" height="65" angle="-6">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                   </Text>
@@ -1538,12 +1538,12 @@
         </Group>
       </Complication>
     </ComplicationSlot>
-    <ComplicationSlot slotId="5" displayName="steps" x="690" y="539" width="171" height="62" angle="-62" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
+    <ComplicationSlot slotId="5" displayName="steps" x="0" y="0" width="920" height="920" supportedTypes="SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY" isCustomizable="TRUE">
       <Variant mode="AMBIENT" target="alpha" value="0" />
       <DefaultProviderPolicy defaultSystemProvider="STEP_COUNT" defaultSystemProviderType="SHORT_TEXT" primaryProvider="ru.meta.wearos.classic1.fixtures/ru.meta.wearos.classic1.fixtures.FixtureService$Steps" primaryProviderType="SHORT_TEXT" />
-      <BoundingBox x="0" y="0" width="171" height="62" />
+      <BoundingBox x="640" y="480" width="215" height="260" />
       <Complication type="SHORT_TEXT">
-        <Group name="steps_SHORT_TEXT" x="0" y="0" width="171" height="62">
+        <Group name="steps_SHORT_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -1552,7 +1552,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_steps_dark" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
+                    <Group name="caption_steps_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_dark" />
                       </PartImage>
@@ -1574,7 +1574,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1584,7 +1584,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -1600,7 +1600,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_steps_light" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
+                    <Group name="caption_steps_light" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_light" />
                       </PartImage>
@@ -1622,7 +1622,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1632,7 +1632,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -1645,7 +1645,7 @@
         </Group>
       </Complication>
       <Complication type="RANGED_VALUE">
-        <Group name="steps_RANGED_VALUE" x="0" y="0" width="171" height="62">
+        <Group name="steps_RANGED_VALUE" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -1654,7 +1654,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_steps_dark" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
+                    <Group name="caption_steps_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_dark" />
                       </PartImage>
@@ -1676,7 +1676,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1686,7 +1686,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -1705,7 +1705,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_steps_light" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
+                    <Group name="caption_steps_light" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_light" />
                       </PartImage>
@@ -1727,7 +1727,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1737,7 +1737,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%.0f<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE]" />
@@ -1753,7 +1753,7 @@
         </Group>
       </Complication>
       <Complication type="LONG_TEXT">
-        <Group name="steps_LONG_TEXT" x="0" y="0" width="171" height="62">
+        <Group name="steps_LONG_TEXT" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
@@ -1762,7 +1762,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_steps_dark" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
+                    <Group name="caption_steps_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_dark" />
                       </PartImage>
@@ -1784,7 +1784,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1794,7 +1794,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                       </Text>
@@ -1810,7 +1810,7 @@
                     <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
                   <Compare expression="changed_caption">
-                    <Group name="caption_steps_light" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
+                    <Group name="caption_steps_light" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_light" />
                       </PartImage>
@@ -1832,7 +1832,7 @@
                     <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
                   <Compare expression="has_display_text">
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                           <Template>%s<Parameter expression="[COMPLICATION.TEXT]" />
@@ -1842,7 +1842,7 @@
                     </PartText>
                   </Compare>
                   <Default>
-                    <PartText x="0" y="0" width="171" height="65" angle="0">
+                    <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                       </Text>
@@ -1855,11 +1855,11 @@
         </Group>
       </Complication>
       <Complication type="EMPTY">
-        <Group name="steps_EMPTY" x="0" y="0" width="171" height="62">
+        <Group name="steps_EMPTY" x="0" y="0" width="920" height="920">
           <ListConfiguration id="theme">
             <ListOption id="dark">
               <Group name="dark" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="171" height="65" angle="0">
+                <PartText x="690" y="539" width="171" height="65" angle="-62">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
                   </Text>
@@ -1868,7 +1868,7 @@
             </ListOption>
             <ListOption id="light">
               <Group name="light" x="0" y="0" width="920" height="920">
-                <PartText x="0" y="0" width="171" height="65" angle="0">
+                <PartText x="690" y="539" width="171" height="65" angle="-62">
                   <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                     <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
                   </Text>

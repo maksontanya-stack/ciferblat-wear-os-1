@@ -45,7 +45,7 @@ def replace_caption(parent,label,theme,fg,slot_x,slot_y,slot_w,slot_h,angle):
  e=S(expressions,'Expression',name='changed_caption')
  e.text=f'[COMPLICATION.TITLE] != null && [COMPLICATION.TITLE] != "{original}"'
  compare=S(condition,'Compare',expression='changed_caption')
- world=group(compare,'caption_'+label+'_'+theme,x=-slot_x,y=-slot_y,angle=str(-angle),pivotX=str((slot_x+slot_w/2)/920),pivotY=str((slot_y+slot_h/2)/920))
+ world=group(compare,'caption_'+label+'_'+theme)
  patch=json.loads((ROOT/'design/caption-layout.json').read_text())[label]
  image=S(world,'PartImage',**{key:str(value) for key,value in patch.items()})
  S(image,'Image',resource='caption_'+label+'_'+theme)
@@ -71,43 +71,44 @@ for theme,fg,g in themed(interactive):
  t=S(p,'Text',align='CENTER'); f=S(t,'Font',family='oswald',size='43',weight='BOLD',color=fg)
  up=S(f,'Upper'); template=S(up,'Template');template.text='%s %s.%s'
  for value in ['[DAY_OF_WEEK_S]','[DAY_Z]','[MONTH_Z]']:S(template,'Parameter',expression=value)
-# Slots are deliberately outside the interactive Group: WFF owns the data-source editor.
+# Each slot uses scene coordinates so captions and data have a shared, stable transform.
+slot_bounds={'heart':(320,55,280,110),'weather':(100,145,200,205),'floors':(70,510,220,220),'battery':(280,735,350,120),'steps':(640,480,215,260)}
 for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'weather',140,165,160,180,0),(3,'floors',200,660,86,70,47),(4,'battery',470,747,133,62,-6),(5,'steps',690,539,171,62,-62)]:
- slot=S(scene,'ComplicationSlot',slotId=str(slot_id),displayName=label,x=str(x),y=str(y),width=str(width),height=str(height),angle=str(angle),supportedTypes='SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY',isCustomizable='TRUE')
+ slot=S(scene,'ComplicationSlot',slotId=str(slot_id),displayName=label,x='0',y='0',width='920',height='920',supportedTypes='SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY',isCustomizable='TRUE')
  ambient(slot)
  provider={'battery':'WATCH_BATTERY','steps':'STEP_COUNT'}.get(label,'EMPTY')
  S(slot,'DefaultProviderPolicy',defaultSystemProvider=provider,defaultSystemProviderType='SHORT_TEXT' if provider!='EMPTY' else 'EMPTY')
- S(slot,'BoundingBox',x='0',y='0',width=str(width),height=str(height))
+ bx,by,bw,bh=slot_bounds[label]
+ S(slot,'BoundingBox',x=str(bx),y=str(by),width=str(bw),height=str(bh))
  for ctype in ['SHORT_TEXT','RANGED_VALUE','LONG_TEXT','EMPTY']:
   comp=S(slot,'Complication',type=ctype)
-  # Group is permitted inside Complication; it lets both themes use the same slot ID.
-  cg=group(comp,f'{label}_{ctype}',width=width,height=height)
+  cg=group(comp,f'{label}_{ctype}')
   for theme,fg,g in themed(cg):
-   if ctype!='EMPTY': replace_caption(g,label,theme,fg,x,y,width,height,angle)
+   def slot_text(parent,fmt,params=()):
+    return text(parent,x+(20 if label=='weather' else 0),y+(20 if label=='weather' else 0),140 if label=='weather' else width,65,43,fg,fmt,params,angle=-45 if label=='weather' else angle)
    if ctype=='EMPTY':
-    text(g,20 if label=='weather' else 0,20 if label=='weather' else 0,140 if label=='weather' else width,65,43,fg,'—',angle=-45 if label=='weather' else 0)
+    slot_text(g,'—')
    else:
+    replace_caption(g,label,theme,fg,x,y,width,height,angle)
     condition=S(g,'Condition'); expressions=S(condition,'Expressions')
     e=S(expressions,'Expression',name='has_display_text');e.text='[COMPLICATION.TEXT] != null'
     present=S(condition,'Compare',expression='has_display_text')
     display_value='[COMPLICATION.TEXT]'
     if label=='weather':
-     title='[COMPLICATION.TITLE]'
-     length=f'textLength({title})'
+     title='[COMPLICATION.TITLE]';length=f'textLength({title})'
      temperature=f'{title} != null && {length} >= 2 && (subText({title}, {length}-1, {length}) == "°" || subText({title}, {length}-2, {length}) == "°C" || subText({title}, {length}-2, {length}) == "°F")'
      display_value=f'({temperature}) ? {title} : [COMPLICATION.TEXT]'
-    text(present,20 if label=='weather' else 0,20 if label=='weather' else 0,140 if label=='weather' else width,65,43,fg,'%s',(display_value,),angle=-45 if label=='weather' else 0)
+    slot_text(present,'%s',(display_value,))
     fallback=S(condition,'Default')
-    if ctype=='RANGED_VALUE':
-     text(fallback,0,0,width,65,43,fg,'%.0f',('[COMPLICATION.RANGED_VALUE_VALUE]',))
-    else:
-     text(fallback,0,0,width,65,43,fg,'—')
+    if ctype=='RANGED_VALUE': slot_text(fallback,'%.0f',('[COMPLICATION.RANGED_VALUE_VALUE]',))
+    else: slot_text(fallback,'—')
     if label=='weather':
      condition=S(g,'Condition');ex=S(condition,'Expressions')
      e=S(ex,'Expression',name='has_weather_icon');e.text='[COMPLICATION.MONOCHROMATIC_IMAGE] != null'
      compare=S(condition,'Compare',expression='has_weather_icon')
-     pi=S(compare,'PartImage',x='0',y='100',width='72',height='72',tintColor=fg)
+     pi=S(compare,'PartImage',x=str(x),y=str(y+100),width='72',height='72',tintColor=fg)
      S(pi,'Image',resource='[COMPLICATION.MONOCHROMATIC_IMAGE]')
+
 # AMOLED ambient: no light background and no active complication rendering.
 aod=group(scene,'ambient',alpha='0');ambient(aod,'255')
 clock=S(aod,'DigitalClock',x='0',y='0',width='920',height='920')
