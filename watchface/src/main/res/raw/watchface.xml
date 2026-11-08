@@ -1461,7 +1461,7 @@
                     <Expression name="icon_weather_SHORT_TEXT_dark">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="icon_weather_SHORT_TEXT_dark">
-                    <PartImage x="140" y="265" width="72" height="72" tintColor="#ddddda">
+                    <PartImage x="135" y="235" width="64" height="64" angle="-45" tintColor="#ddddda">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -1497,7 +1497,7 @@
                     <Expression name="icon_weather_SHORT_TEXT_light">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="icon_weather_SHORT_TEXT_light">
-                    <PartImage x="140" y="265" width="72" height="72" tintColor="#222a31">
+                    <PartImage x="135" y="235" width="64" height="64" angle="-45" tintColor="#222a31">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -1542,7 +1542,7 @@
                     <Expression name="icon_weather_RANGED_VALUE_dark">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="icon_weather_RANGED_VALUE_dark">
-                    <PartImage x="140" y="265" width="72" height="72" tintColor="#ddddda">
+                    <PartImage x="135" y="235" width="64" height="64" angle="-45" tintColor="#ddddda">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -1581,7 +1581,7 @@
                     <Expression name="icon_weather_RANGED_VALUE_light">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="icon_weather_RANGED_VALUE_light">
-                    <PartImage x="140" y="265" width="72" height="72" tintColor="#222a31">
+                    <PartImage x="135" y="235" width="64" height="64" angle="-45" tintColor="#222a31">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -1623,7 +1623,7 @@
                     <Expression name="icon_weather_LONG_TEXT_dark">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="icon_weather_LONG_TEXT_dark">
-                    <PartImage x="140" y="265" width="72" height="72" tintColor="#ddddda">
+                    <PartImage x="135" y="235" width="64" height="64" angle="-45" tintColor="#ddddda">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>
@@ -1659,7 +1659,7 @@
                     <Expression name="icon_weather_LONG_TEXT_light">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
                   <Compare expression="icon_weather_LONG_TEXT_light">
-                    <PartImage x="140" y="265" width="72" height="72" tintColor="#222a31">
+                    <PartImage x="135" y="235" width="64" height="64" angle="-45" tintColor="#222a31">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
                   </Compare>

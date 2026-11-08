@@ -121,7 +121,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
      icon_expression=f'icon_{label}_{ctype}_{theme}'
      e=S(ex,'Expression',name=icon_expression);e.text='[COMPLICATION.MONOCHROMATIC_IMAGE] != null'
      compare=S(condition,'Compare',expression=icon_expression)
-     pi=S(compare,'PartImage',x=str(x),y=str(y+100),width='72',height='72',tintColor=fg)
+     pi=S(compare,'PartImage',x=str(x-5),y=str(y+70),width='64',height='64',angle='-45',tintColor=fg)
      S(pi,'Image',resource='[COMPLICATION.MONOCHROMATIC_IMAGE]')
 
 # AMOLED ambient: no light background and no active complication rendering.
