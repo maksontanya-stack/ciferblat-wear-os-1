@@ -1,0 +1,26 @@
+{
+  "heart": {
+    "width": 195,
+    "height": 93,
+    "x": 331,
+    "y": 73
+  },
+  "floors": {
+    "width": 152,
+    "height": 200,
+    "x": 89,
+    "y": 516
+  },
+  "battery": {
+    "width": 183,
+    "height": 104,
+    "x": 297,
+    "y": 728
+  },
+  "steps": {
+    "width": 141,
+    "height": 142,
+    "x": 634,
+    "y": 623
+  }
+}

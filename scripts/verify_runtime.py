@@ -13,16 +13,15 @@ w = ET.parse(xml).getroot()
 resources = root / 'watchface/src/main/res/drawable-nodpi'
 for theme in ('dark', 'light'):
     for kind, count in [('hour', 24), ('minute', 60)]:
-        font = w.find(f"BitmapFonts/BitmapFont[@name='{kind}_{theme}']")
-        if font is None: raise SystemExit('Missing bitmap family')
-        words = {x.attrib['name'] for x in font}
-        if words != {f'{n:02}' for n in range(count)}:
-            raise SystemExit(f'{kind}_{theme}: incomplete time coverage')
-        for word in font:
-            if not (resources/(word.attrib['resource']+'.png')).is_file():
-                raise SystemExit('Missing bitmap image')
+        expected = {f'{kind}_{theme}_{n:02}' for n in range(count)}
+        group = w.find(f"Scene/Group[@name='interactive']/ListConfiguration/ListOption/Group[@name='{theme}']/Group[@name='active_{theme}_{kind}']")
+        if group is None: raise SystemExit('Missing live time group')
+        images = {x.attrib['resource'] for x in group.iter('Image')}
+        if images != expected: raise SystemExit(f'{kind}_{theme}: incomplete time coverage')
+        for resource in expected:
+            if not (resources/(resource+'.png')).is_file(): raise SystemExit('Missing time image')
 slots = list(w.iter('ComplicationSlot'))
-if len({s.attrib['slotId'] for s in slots}) != 3: raise SystemExit('Invalid data slot IDs')
+if len({s.attrib['slotId'] for s in slots}) != 5: raise SystemExit('Invalid data slot IDs')
 for slot in slots:
     if slot.find("Complication[@type='EMPTY']") is None:
         raise SystemExit('Missing empty-data fallback')
@@ -35,4 +34,4 @@ for file in resources.glob('*.png'):
     if data[:8] != b'\x89PNG\r\n\x1a\n': raise SystemExit('Invalid PNG')
     width,height = struct.unpack('>II', data[16:24])
     byte_count += width*height*4
-print(f'PASS: complete 24h/60min bitmap coverage, three unique slots, empty fallbacks, AOD; all decoded bitmaps total {byte_count/1024/1024:.2f} MiB')
+print(f'PASS: complete 24h/60min bitmap coverage, five unique slots, empty fallbacks, AOD; all decoded bitmaps total {byte_count/1024/1024:.2f} MiB')

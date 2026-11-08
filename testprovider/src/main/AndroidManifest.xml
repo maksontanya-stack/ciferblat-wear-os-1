@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <uses-feature android:name="android.hardware.type.watch" />
+  <application android:label="TEST providers — emulator only" android:allowBackup="false">
+    <meta-data android:name="com.google.android.wearable.standalone" android:value="true" />
+    <service android:name=".FixtureService$Heart" android:exported="true" android:label="TEST Heart" android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+      <intent-filter>
+        <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+      </intent-filter>
+      <meta-data android:name="android.support.wearable.complications.SUPPORTED_TYPES" android:value="SHORT_TEXT,RANGED_VALUE" />
+      <meta-data android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS" android:value="0" />
+      <meta-data android:name="android.support.wearable.complications.SAFE_WATCH_FACES" android:value="ru.meta.wearos.classic1,com.google.wear.watchface.runtime" />
+    </service>
+    <service android:name=".FixtureService$Weather" android:exported="true" android:label="TEST Weather" android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+      <intent-filter>
+        <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+      </intent-filter>
+      <meta-data android:name="android.support.wearable.complications.SUPPORTED_TYPES" android:value="SHORT_TEXT" />
+      <meta-data android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS" android:value="0" />
+      <meta-data android:name="android.support.wearable.complications.SAFE_WATCH_FACES" android:value="ru.meta.wearos.classic1,com.google.wear.watchface.runtime" />
+    </service>
+    <service android:name=".FixtureService$Floors" android:exported="true" android:label="TEST Floors" android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+      <intent-filter>
+        <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+      </intent-filter>
+      <meta-data android:name="android.support.wearable.complications.SUPPORTED_TYPES" android:value="SHORT_TEXT" />
+      <meta-data android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS" android:value="0" />
+      <meta-data android:name="android.support.wearable.complications.SAFE_WATCH_FACES" android:value="ru.meta.wearos.classic1,com.google.wear.watchface.runtime" />
+    </service>
+    <service android:name=".FixtureService$Battery" android:exported="true" android:label="TEST Battery" android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+      <intent-filter>
+        <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+      </intent-filter>
+      <meta-data android:name="android.support.wearable.complications.SUPPORTED_TYPES" android:value="SHORT_TEXT" />
+      <meta-data android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS" android:value="0" />
+      <meta-data android:name="android.support.wearable.complications.SAFE_WATCH_FACES" android:value="ru.meta.wearos.classic1,com.google.wear.watchface.runtime" />
+    </service>
+    <service android:name=".FixtureService$Steps" android:exported="true" android:label="TEST Steps" android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+      <intent-filter>
+        <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+      </intent-filter>
+      <meta-data android:name="android.support.wearable.complications.SUPPORTED_TYPES" android:value="SHORT_TEXT" />
+      <meta-data android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS" android:value="0" />
+      <meta-data android:name="android.support.wearable.complications.SAFE_WATCH_FACES" android:value="ru.meta.wearos.classic1,com.google.wear.watchface.runtime" />
+    </service>
+  <service android:name=".EditorAccessibilityService" android:exported="true" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+<intent-filter><action android:name="android.accessibilityservice.AccessibilityService" /></intent-filter>
+<meta-data android:name="android.accessibilityservice" android:resource="@xml/editor_accessibility" />
+</service>
+<receiver android:name=".EditorReceiver" android:exported="true" />
+</application>
+</manifest>

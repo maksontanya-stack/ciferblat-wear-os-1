@@ -6,4 +6,6 @@
     <string name="heart">Пульс</string>
     <string name="weather">Погода</string>
     <string name="floors">Этажи</string>
+    <string name="battery">Заряд</string>
+    <string name="steps">Шаги</string>
 </resources>

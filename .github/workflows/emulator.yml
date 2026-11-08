@@ -1,6 +1,11 @@
 name: Wear OS emulator smoke test
 on:
   workflow_dispatch:
+    inputs:
+      api_level:
+        description: Android API level (33 Wear OS 4, 34 Wear OS 5)
+        required: true
+        default: "33"
 permissions:
   contents: read
 jobs:
@@ -18,7 +23,14 @@ jobs:
           packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
           log-accepted-android-sdk-licenses: false
       - uses: gradle/actions/setup-gradle@v4
-      - run: ./gradlew :watchface:assembleDebug --console=plain
+      - name: Validate WFF before emulator startup
+        run: |
+          python3 scripts/verify_runtime.py
+          curl --fail --location --retry 3 https://github.com/google/watchface/releases/download/release/wff-validator.jar --output "$RUNNER_TEMP/wff-validator.jar"
+          java -jar "$RUNNER_TEMP/wff-validator.jar" 1 --stop-on-fail watchface/src/main/res/raw/watchface.xml
+      - run: |
+          python3 scripts/generate_test_overlay.py
+          ./gradlew :watchface:assembleDebug :testprovider:assembleDebug --console=plain
       - name: Enable KVM for the emulator
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -26,17 +38,17 @@ jobs:
           sudo udevadm trigger --name-match=kvm
       - name: Install screenshot verifier
         run: python3 -m pip install Pillow==11.3.0
-      - name: Install and render on Wear OS 4
+      - name: Install and render on Wear OS
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 33
+          api-level: ${{ inputs.api_level }}
           target: android-wear
           arch: x86_64
           profile: wearos_large_round
           ram-size: 2048M
           heap-size: 256M
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -feature -Vulkan -no-snapshot -noaudio -no-boot-anim
+          disable-animations: false
           script: bash scripts/emulator-smoke.sh
       - uses: actions/upload-artifact@v4
         if: always()
