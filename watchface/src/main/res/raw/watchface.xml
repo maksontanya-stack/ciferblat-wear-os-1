@@ -475,13 +475,16 @@
     <Group name="ambient" x="0" y="0" width="920" height="920" alpha="0">
       <Variant mode="AMBIENT" target="alpha" value="255" />
       <DigitalClock x="0" y="0" width="920" height="920">
-        <TimeText x="190" y="345" width="540" height="165" format="hh:mm" hourFormat="24" align="CENTER">
-          <Font family="oswald" size="125" weight="LIGHT" color="#999999" />
+        <TimeText x="267" y="337" width="310" height="260" format="hh" hourFormat="24" align="CENTER" alpha="100">
+          <BitmapFont family="hour_dark" size="260" />
+        </TimeText>
+        <TimeText x="610" y="309" width="162" height="122" format="mm" hourFormat="24" align="CENTER" alpha="100">
+          <BitmapFont family="minute_dark" size="122" />
         </TimeText>
       </DigitalClock>
-      <PartText x="280" y="530" width="360" height="60" angle="0">
+      <PartText x="599" y="237" width="170" height="52" angle="0">
         <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-          <Font family="oswald" size="36" weight="BOLD" color="#777777">
+          <Font family="oswald" size="43" weight="BOLD" color="#777777">
             <Template>%s.%s<Parameter expression="[DAY_Z]" />
               <Parameter expression="[MONTH_Z]" />
             </Template>

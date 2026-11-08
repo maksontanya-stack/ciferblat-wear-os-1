@@ -74,8 +74,10 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
 # AMOLED ambient: no light background and no active complication rendering.
 aod=group(scene,'ambient',alpha='0');ambient(aod,'255')
 clock=S(aod,'DigitalClock',x='0',y='0',width='920',height='920')
-t=S(clock,'TimeText',x='190',y='345',width='540',height='165',format='hh:mm',hourFormat='24',align='CENTER')
-S(t,'Font',family='oswald',size='125',weight='LIGHT',color='#999999')
-text(aod,280,530,360,60,36,'#777777','%s.%s',('[DAY_Z]','[MONTH_Z]'))
+# Ambient keeps the same measured positions and sizes; only brightness and background change.
+for kind,x,y,width,height,size,fmt in [('hour',267,337,310,260,260,'hh'),('minute',610,309,162,122,122,'mm')]:
+ t=S(clock,'TimeText',x=str(x),y=str(y),width=str(width),height=str(height),format=fmt,hourFormat='24',align='CENTER',alpha='100')
+ S(t,'BitmapFont',family=f'{kind}_dark',size=str(size))
+text(aod,599,237,170,52,43,'#777777','%s.%s',('[DAY_Z]','[MONTH_Z]'))
 indent(w)
 ElementTree(w).write(ROOT/'watchface/src/main/res/raw/watchface.xml',encoding='utf-8',xml_declaration=True)
