@@ -30,15 +30,20 @@ command('tap','Тёмная')
 tree=state('editor-theme-options')
 command('tap','Светлая')
 state('editor-light-selected')
-# The native editor explicitly says to press the crown to confirm changes.
-adb('shell','input','keyevent','KEYCODE_STEM_PRIMARY');time.sleep(3)
+# Finish the editor Activity so the style transaction is committed, then show Home.
+adb('shell','input','keyevent','KEYCODE_BACK');time.sleep(3)
+tree=state('after-editor-confirm')
+if any('Customize Watch Faces' in n.get('content-desc','') for n in tree.iter('node')):
+ adb('shell','input','keyevent','KEYCODE_BACK');time.sleep(2)
 adb('shell','input','keyevent','KEYCODE_HOME');time.sleep(2)
 adb('shell','settings','put','secure','accessibility_enabled','0');time.sleep(2)
-state('active-light',ui=False)
 from PIL import Image
-img=Image.open(p/'active-light.png').convert('RGB')
-if min(img.getpixel((img.width//2,round(img.height*.72))))<120:
- raise SystemExit('Selecting Light in the editor did not change the actual watchface background')
+for attempt in range(8):
+ state('active-light',ui=False)
+ img=Image.open(p/'active-light.png').convert('RGB')
+ if min(img.getpixel((img.width//2,round(img.height*.72))))>=120: break
+ time.sleep(2)
+else: raise SystemExit('Selecting Light in the editor did not persist on the actual watchface')
 # Samsung-style payload can put temperature in TITLE and location in TEXT.
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','true');time.sleep(3)
 state('active-light-weather-swapped',ui=False)
