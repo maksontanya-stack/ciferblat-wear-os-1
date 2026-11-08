@@ -38,22 +38,24 @@ def text(el,x,y,width,height,size,fg,fmt,params=(),angle=0):
  else:f.text=fmt
  return p
 
-def replace_caption(parent,label,theme,fg,slot_x,slot_y,slot_w,slot_h,angle):
+def replace_caption(parent,label,theme,fg,slot_x,slot_y,slot_w,slot_h,angle,kind):
  if label=='weather': return  # Weather is identified by the provider icon, not a baked caption.
  original={'heart':'ПУЛЬС','floors':'ЭТАЖИ','battery':'ЗАРЯД','steps':'ШАГИ'}[label]
  condition=S(parent,'Condition'); expressions=S(condition,'Expressions')
- e=S(expressions,'Expression',name='changed_caption')
+ caption_expression=f'caption_{label}_{kind}_{theme}'
+ e=S(expressions,'Expression',name=caption_expression)
  e.text=f'[COMPLICATION.TITLE] != null && [COMPLICATION.TITLE] != "{original}"'
- compare=S(condition,'Compare',expression='changed_caption')
+ compare=S(condition,'Compare',expression=caption_expression)
  world=group(compare,'caption_'+label+'_'+theme)
  patch=json.loads((ROOT/'design/caption-layout.json').read_text())[label]
  image=S(world,'PartImage',**{key:str(value) for key,value in patch.items()})
  S(image,'Image',resource='caption_'+label+'_'+theme)
- angles={'heart':(340,370,'CLOCKWISE',640),'floors':(258,226,'COUNTER_CLOCKWISE',730),'battery':(205,178,'COUNTER_CLOCKWISE',730),'steps':(145.5,125,'COUNTER_CLOCKWISE',730)}
- start,end,direction,diameter=angles[label]
- part=S(world,'PartText',x='0',y='0',width='920',height='920')
- curved=S(part,'TextCircular',centerX='460',centerY='452',width=str(diameter),height=str(diameter),startAngle=str(start),endAngle=str(end),direction=direction,align='CENTER',ellipsis='TRUE')
- font=S(curved,'Font',family='oswald',size='43',weight='BOLD',color=fg)
+ # Native straight text avoids circular-layout invalidation issues with initially empty titles.
+ positions={'heart':(345,90,170,60,-5),'floors':(95,585,180,65,50),'battery':(320,752,180,65,4),'steps':(600,625,180,65,-50)}
+ tx,ty,tw,th,rotation=positions[label]
+ part=S(world,'PartText',x=str(tx),y=str(ty),width=str(tw),height=str(th),angle=str(rotation))
+ plain=S(part,'Text',align='CENTER',ellipsis='TRUE',maxLines='1')
+ font=S(plain,'Font',family='oswald',size='43',weight='BOLD',color=fg)
  upper=S(font,'Upper'); template=S(upper,'Template');template.text='%s'
  S(template,'Parameter',expression='[COMPLICATION.TITLE]')
 
@@ -89,10 +91,11 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
    if ctype=='EMPTY':
     slot_text(g,'—')
    else:
-    replace_caption(g,label,theme,fg,x,y,width,height,angle)
+    replace_caption(g,label,theme,fg,x,y,width,height,angle,ctype)
     condition=S(g,'Condition'); expressions=S(condition,'Expressions')
-    e=S(expressions,'Expression',name='has_display_text');e.text='[COMPLICATION.TEXT] != null'
-    present=S(condition,'Compare',expression='has_display_text')
+    text_expression=f'text_{label}_{ctype}_{theme}'
+    e=S(expressions,'Expression',name=text_expression);e.text='[COMPLICATION.TEXT] != null'
+    present=S(condition,'Compare',expression=text_expression)
     display_value='[COMPLICATION.TEXT]'
     if label=='weather':
      title='[COMPLICATION.TITLE]';length=f'textLength({title})'
@@ -104,8 +107,9 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
     else: slot_text(fallback,'—')
     if label=='weather':
      condition=S(g,'Condition');ex=S(condition,'Expressions')
-     e=S(ex,'Expression',name='has_weather_icon');e.text='[COMPLICATION.MONOCHROMATIC_IMAGE] != null'
-     compare=S(condition,'Compare',expression='has_weather_icon')
+     icon_expression=f'icon_{label}_{ctype}_{theme}'
+     e=S(ex,'Expression',name=icon_expression);e.text='[COMPLICATION.MONOCHROMATIC_IMAGE] != null'
+     compare=S(condition,'Compare',expression=icon_expression)
      pi=S(compare,'PartImage',x=str(x),y=str(y+100),width='72',height='72',tintColor=fg)
      S(pi,'Image',resource='[COMPLICATION.MONOCHROMATIC_IMAGE]')
 

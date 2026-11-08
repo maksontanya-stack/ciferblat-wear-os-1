@@ -257,31 +257,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_heart_SHORT_TEXT_dark">
                     <Group name="caption_heart_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="640" height="640" startAngle="340" endAngle="370" direction="CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="345" y="90" width="170" height="60" angle="-5">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_heart_SHORT_TEXT_dark">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -305,31 +305,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_heart_SHORT_TEXT_light">
                     <Group name="caption_heart_light" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="640" height="640" startAngle="340" endAngle="370" direction="CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="345" y="90" width="170" height="60" angle="-5">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_heart_SHORT_TEXT_light">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -359,31 +359,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_heart_RANGED_VALUE_dark">
                     <Group name="caption_heart_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="640" height="640" startAngle="340" endAngle="370" direction="CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="345" y="90" width="170" height="60" angle="-5">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_heart_RANGED_VALUE_dark">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -410,31 +410,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_heart_RANGED_VALUE_light">
                     <Group name="caption_heart_light" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="640" height="640" startAngle="340" endAngle="370" direction="CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="345" y="90" width="170" height="60" angle="-5">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_heart_RANGED_VALUE_light">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -467,31 +467,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_heart_LONG_TEXT_dark">
                     <Group name="caption_heart_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="640" height="640" startAngle="340" endAngle="370" direction="CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="345" y="90" width="170" height="60" angle="-5">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_heart_LONG_TEXT_dark">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -515,31 +515,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
+                    <Expression name="caption_heart_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ПУЛЬС"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_heart_LONG_TEXT_light">
                     <Group name="caption_heart_light" x="0" y="0" width="920" height="920">
                       <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="640" height="640" startAngle="340" endAngle="370" direction="CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="345" y="90" width="170" height="60" angle="-5">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_heart_LONG_TEXT_light">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -598,9 +598,9 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_weather_SHORT_TEXT_dark">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -620,9 +620,9 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                    <Expression name="icon_weather_SHORT_TEXT_dark">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_weather_icon">
+                  <Compare expression="icon_weather_SHORT_TEXT_dark">
                     <PartImage x="140" y="265" width="72" height="72" tintColor="#ddddda">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
@@ -634,9 +634,9 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_weather_SHORT_TEXT_light">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -656,9 +656,9 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                    <Expression name="icon_weather_SHORT_TEXT_light">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_weather_icon">
+                  <Compare expression="icon_weather_SHORT_TEXT_light">
                     <PartImage x="140" y="265" width="72" height="72" tintColor="#222a31">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
@@ -676,9 +676,9 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_weather_RANGED_VALUE_dark">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -701,9 +701,9 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                    <Expression name="icon_weather_RANGED_VALUE_dark">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_weather_icon">
+                  <Compare expression="icon_weather_RANGED_VALUE_dark">
                     <PartImage x="140" y="265" width="72" height="72" tintColor="#ddddda">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
@@ -715,9 +715,9 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_weather_RANGED_VALUE_light">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -740,9 +740,9 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                    <Expression name="icon_weather_RANGED_VALUE_light">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_weather_icon">
+                  <Compare expression="icon_weather_RANGED_VALUE_light">
                     <PartImage x="140" y="265" width="72" height="72" tintColor="#222a31">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
@@ -760,9 +760,9 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_weather_LONG_TEXT_dark">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -782,9 +782,9 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                    <Expression name="icon_weather_LONG_TEXT_dark">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_weather_icon">
+                  <Compare expression="icon_weather_LONG_TEXT_dark">
                     <PartImage x="140" y="265" width="72" height="72" tintColor="#ddddda">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
@@ -796,9 +796,9 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_weather_LONG_TEXT_light">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -818,9 +818,9 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_weather_icon">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                    <Expression name="icon_weather_LONG_TEXT_light">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_weather_icon">
+                  <Compare expression="icon_weather_LONG_TEXT_light">
                     <PartImage x="140" y="265" width="72" height="72" tintColor="#222a31">
                       <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
                     </PartImage>
@@ -867,31 +867,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_floors_SHORT_TEXT_dark">
                     <Group name="caption_floors_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="258" endAngle="226" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="95" y="585" width="180" height="65" angle="50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_floors_SHORT_TEXT_dark">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -915,31 +915,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_floors_SHORT_TEXT_light">
                     <Group name="caption_floors_light" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="258" endAngle="226" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="95" y="585" width="180" height="65" angle="50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_floors_SHORT_TEXT_light">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -969,31 +969,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_floors_RANGED_VALUE_dark">
                     <Group name="caption_floors_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="258" endAngle="226" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="95" y="585" width="180" height="65" angle="50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_floors_RANGED_VALUE_dark">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -1020,31 +1020,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_floors_RANGED_VALUE_light">
                     <Group name="caption_floors_light" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="258" endAngle="226" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="95" y="585" width="180" height="65" angle="50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_floors_RANGED_VALUE_light">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -1077,31 +1077,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_floors_LONG_TEXT_dark">
                     <Group name="caption_floors_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="258" endAngle="226" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="95" y="585" width="180" height="65" angle="50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_floors_LONG_TEXT_dark">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -1125,31 +1125,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
+                    <Expression name="caption_floors_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЭТАЖИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_floors_LONG_TEXT_light">
                     <Group name="caption_floors_light" x="0" y="0" width="920" height="920">
                       <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="258" endAngle="226" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="95" y="585" width="180" height="65" angle="50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_floors_LONG_TEXT_light">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -1208,31 +1208,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_battery_SHORT_TEXT_dark">
                     <Group name="caption_battery_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="205" endAngle="178" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="320" y="752" width="180" height="65" angle="4">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_battery_SHORT_TEXT_dark">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -1256,31 +1256,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_battery_SHORT_TEXT_light">
                     <Group name="caption_battery_light" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="205" endAngle="178" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="320" y="752" width="180" height="65" angle="4">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_battery_SHORT_TEXT_light">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -1310,31 +1310,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_battery_RANGED_VALUE_dark">
                     <Group name="caption_battery_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="205" endAngle="178" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="320" y="752" width="180" height="65" angle="4">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_battery_RANGED_VALUE_dark">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -1361,31 +1361,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_battery_RANGED_VALUE_light">
                     <Group name="caption_battery_light" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="205" endAngle="178" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="320" y="752" width="180" height="65" angle="4">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_battery_RANGED_VALUE_light">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -1418,31 +1418,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_battery_LONG_TEXT_dark">
                     <Group name="caption_battery_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="205" endAngle="178" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="320" y="752" width="180" height="65" angle="4">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_battery_LONG_TEXT_dark">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -1466,31 +1466,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
+                    <Expression name="caption_battery_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ЗАРЯД"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_battery_LONG_TEXT_light">
                     <Group name="caption_battery_light" x="0" y="0" width="920" height="920">
                       <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="205" endAngle="178" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="320" y="752" width="180" height="65" angle="4">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_battery_LONG_TEXT_light">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -1549,31 +1549,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_SHORT_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_steps_SHORT_TEXT_dark">
                     <Group name="caption_steps_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="145.5" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="600" y="625" width="180" height="65" angle="-50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_steps_SHORT_TEXT_dark">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -1597,31 +1597,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_SHORT_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_steps_SHORT_TEXT_light">
                     <Group name="caption_steps_light" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="145.5" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="600" y="625" width="180" height="65" angle="-50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_steps_SHORT_TEXT_light">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -1651,31 +1651,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_RANGED_VALUE_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_steps_RANGED_VALUE_dark">
                     <Group name="caption_steps_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="145.5" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="600" y="625" width="180" height="65" angle="-50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_steps_RANGED_VALUE_dark">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -1702,31 +1702,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_RANGED_VALUE_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_steps_RANGED_VALUE_light">
                     <Group name="caption_steps_light" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="145.5" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="600" y="625" width="180" height="65" angle="-50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_steps_RANGED_VALUE_light">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -1759,31 +1759,31 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_LONG_TEXT_dark">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_steps_LONG_TEXT_dark">
                     <Group name="caption_steps_dark" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_dark" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="145.5" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="600" y="625" width="180" height="65" angle="-50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_steps_LONG_TEXT_dark">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -1807,31 +1807,31 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="changed_caption">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
+                    <Expression name="caption_steps_LONG_TEXT_light">[COMPLICATION.TITLE] != null &amp;&amp; [COMPLICATION.TITLE] != "ШАГИ"</Expression>
                   </Expressions>
-                  <Compare expression="changed_caption">
+                  <Compare expression="caption_steps_LONG_TEXT_light">
                     <Group name="caption_steps_light" x="0" y="0" width="920" height="920">
                       <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_light" />
                       </PartImage>
-                      <PartText x="0" y="0" width="920" height="920">
-                        <TextCircular centerX="460" centerY="452" width="730" height="730" startAngle="145.5" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER" ellipsis="TRUE">
+                      <PartText x="600" y="625" width="180" height="65" angle="-50">
+                        <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                           <Font family="oswald" size="43" weight="BOLD" color="#222a31">
                             <Upper>
                               <Template>%s<Parameter expression="[COMPLICATION.TITLE]" />
                               </Template>
                             </Upper>
                           </Font>
-                        </TextCircular>
+                        </Text>
                       </PartText>
                     </Group>
                   </Compare>
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="has_display_text">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
                   </Expressions>
-                  <Compare expression="has_display_text">
+                  <Compare expression="text_steps_LONG_TEXT_light">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
