@@ -22,3 +22,14 @@ adb exec-out screencap -p > smoke-output/active-next-minute.png
 adb shell date > smoke-output/time-second.txt
 adb logcat -d > smoke-output/logcat.txt
 python3 scripts/verify_screenshots.py
+# Capture the real native watchface editor after Editable=true.
+adb shell input swipe 227 227 227 227 1500
+sleep 3
+adb exec-out screencap -p > smoke-output/picker.png
+adb shell uiautomator dump /sdcard/picker.xml
+adb pull /sdcard/picker.xml smoke-output/picker.xml
+adb shell input tap 227 380
+sleep 4
+adb exec-out screencap -p > smoke-output/editor.png
+adb shell uiautomator dump /sdcard/editor.xml
+adb pull /sdcard/editor.xml smoke-output/editor.xml

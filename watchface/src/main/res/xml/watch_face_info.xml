@@ -1,1 +1,4 @@
-<WatchFaceInfo><Preview value="@drawable/preview" /></WatchFaceInfo>
+<WatchFaceInfo>
+    <Preview value="@drawable/preview" />
+    <Editable value="true" />
+</WatchFaceInfo>
