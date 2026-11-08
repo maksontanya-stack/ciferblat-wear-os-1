@@ -35,7 +35,7 @@ def text(el,x,y,width,height,size,fg,fmt,params=(),angle=0):
 # of each red marker; all geometry uses the same reference center and radii.
 SECTORS={'heart':(330,390),'weather':(270,330),'floors':(210,270),'battery':(150,210),'steps':(90,150)}
 
-def radial_text(parent,label,fg,expression,scope):
+def radial_text(parent,label,fg,fmt,params,scope,width_em=None):
  import math
  start,end=SECTORS[label]; start+=4;end-=4
  if label=='weather': start+=16 # Leave room for the provider icon at the left end.
@@ -43,20 +43,21 @@ def radial_text(parent,label,fg,expression,scope):
  if not clockwise: start,end=end,start
  # Oswald's widest supported glyph at this weight is bounded by 1.06 em.
  # Choose the largest size whose conservative line width fits the available arc.
- capacity=math.radians(abs(end-start))*330
+ capacity=math.radians(abs(end-start))*350
+ if width_em is None: width_em=" + ".join(f"textLength({param}) * 1.06" for param in params)+" + 0.3"
  cond=S(parent,'Condition');exprs=S(cond,'Expressions')
- sizes=[43,38,34,30,26,22,18,14,10,7,4,2,1]
+ sizes=[43,34,26,18,12,8,4,1]
  for size in sizes[:-1]:
   key=f'fit_{scope}_{size}'
-  e=S(exprs,'Expression',name=key);e.text=f'textLength({expression}) * {size} * 1.06 <= {capacity:.3f}'
-  if size!=sizes[0]: e.text+=f' && textLength({expression}) * {sizes[sizes.index(size)-1]} * 1.06 > {capacity:.3f}'
+  e=S(exprs,'Expression',name=key);e.text=f'({width_em}) * {size} <= {capacity:.3f}'
+  if size!=sizes[0]: e.text+=f' && ({width_em}) * {sizes[sizes.index(size)-1]} > {capacity:.3f}'
  for size in sizes:
   dest=S(cond,'Compare',expression=f'fit_{scope}_{size}') if size!=1 else S(cond,'Default')
   part=S(dest,'PartText',x='0',y='0',width='920',height='920')
   circular=S(part,'TextCircular',centerX='460',centerY='452',width='700',height='700',startAngle=str(start),endAngle=str(end),direction='CLOCKWISE' if clockwise else 'COUNTER_CLOCKWISE',align='CENTER',ellipsis='FALSE')
   font=S(circular,'Font',family='oswald',size=str(size),weight='BOLD',color=fg)
-  upper=S(font,'Upper');template=S(upper,'Template');template.text='%s'
-  S(template,'Parameter',expression=expression)
+  upper=S(font,'Upper');template=S(upper,'Template');template.text=fmt
+  for param in params: S(template,'Parameter',expression=param)
 
 def clock_images(parent,theme,scope,alpha='255'):
  # Select immutable artwork directly from live system time. This keeps word sprites
@@ -97,7 +98,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
   for theme,fg,g in themed(cg):
    scope=f'{label}_{ctype}_{theme}'
    if ctype=='EMPTY':
-    radial_text(g,label,fg,'"—"',scope)
+    radial_text(g,label,fg,'%s',('"—"',),scope)
    else:
     has_text='[COMPLICATION.TEXT] != null && textLength([COMPLICATION.TEXT]) > 0'
     has_title='[COMPLICATION.TITLE] != null && textLength([COMPLICATION.TITLE]) > 0'
@@ -109,8 +110,23 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
      temperature=f'{source} != null && {length} >= 2 && (subText({source}, {length}-1, {length}) == "°" || subText({source}, {length}-2, {length}) == "°C" || subText({source}, {length}-2, {length}) == "°F")'
      value=f'(({temperature}) ? {source} : {value})'
      title=f'(({temperature}) ? "ПОГОДА" : {title})'
-    line=f'({title} + " " + {value})'
-    radial_text(g,label,fg,line,scope)
+    # Resolve standard provider labels before fitting. Values remain independent
+    # template parameters: WFF v1 does not support '+' string concatenation.
+    metric=S(g,'Condition'); expressions=S(metric,'Expressions')
+    catalog=json.loads((ROOT/'design/metric-captions.json').read_text())
+    for index,item in enumerate(catalog):
+     e=S(expressions,'Expression',name=f'metric_{scope}_{index}')
+     e.text=' || '.join('[COMPLICATION.TITLE] == '+json.dumps(alias,ensure_ascii=False) for alias in item['aliases'])
+     if label=='weather' and item['title']=='ПОГОДА': e.text+=f' || ({temperature})'
+    for index,item in enumerate(catalog):
+     dest=S(metric,'Compare',expression=f'metric_{scope}_{index}')
+     if label=='weather' and item['title']=='ПОГОДА':
+      radial_text(dest,label,fg,'%s',(value,),scope+f'_metric_{index}')
+     else:
+      prefix=json.dumps(item['title'],ensure_ascii=False)
+      radial_text(dest,label,fg,'%s %s',(prefix,value),scope+f'_metric_{index}',f'{item["prefix_em"]} + textLength({value}) * 1.06')
+    dest=S(metric,'Default')
+    radial_text(dest,label,fg,'%s %s',(title,value),scope+'_unknown')
     if label=='weather':
      condition=S(g,'Condition');ex=S(condition,'Expressions')
      icon_expression=f'icon_{label}_{ctype}_{theme}'
