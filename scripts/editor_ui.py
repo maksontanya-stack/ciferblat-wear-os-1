@@ -8,6 +8,9 @@ def state(name):
  data=adb('shell','cat','/sdcard/window.xml');(p/f'{name}.xml').write_bytes(data)
  (p/f'{name}.png').write_bytes(adb('exec-out','screencap','-p'))
  return ET.fromstring(data)
+def command(action,text=''):
+ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command',action,'--es','text',text)
+ time.sleep(2)
 def click(tree,labels):
  for node in tree.iter('node'):
   val=(node.get('text','')+' '+node.get('content-desc','')).strip()
@@ -18,15 +21,15 @@ def click(tree,labels):
  return False
 # Editor is open on complication page after the shell harness taps Customize.
 tree=state('editor-initial')
-adb('shell','input','swipe','360','227','90','227','400');time.sleep(2)
+command('next')
 tree=state('editor-five-fields')
 if sum(n.get('clickable')=='true' for n in tree.iter('node'))<5:
  raise SystemExit('The native editor did not expose all five fields')
-adb('shell','input','swipe','90','227','360','227','400');time.sleep(2)
+command('previous')
 tree=state('editor-options')
-if not click(tree,['Тёмная','Тема','Dark','Theme']): raise SystemExit('Native theme control was not found')
+command('tap','Тёмная')
 tree=state('editor-theme-options')
-if not click(tree,['Светлая','Light']): raise SystemExit('Native light theme option was not found')
+command('tap','Светлая')
 state('editor-light-selected')
 for _ in range(3):adb('shell','input','keyevent','KEYCODE_BACK');time.sleep(1)
 adb('shell','input','keyevent','KEYCODE_HOME');time.sleep(2)
@@ -35,12 +38,21 @@ from PIL import Image
 img=Image.open(p/'active-light.png').convert('RGB')
 if min(img.getpixel((img.width//2,round(img.height*.72))))<120:
  raise SystemExit('Selecting Light in the editor did not change the actual watchface background')
+# Real complication update changes both its title and value in the same sector.
+adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','true');time.sleep(4)
+state('active-light-altitude')
+from PIL import ImageChops
+alt=Image.open(p/'active-light-altitude.png').convert('RGB')
+roi=(round(img.width*.34),round(img.height*.07),round(img.width*.63),round(img.height*.20))
+if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),alt.crop(roi)).getdata())<30:
+ raise SystemExit('Changing the source title did not update the sector caption')
+adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
 # Reopen native editor and capture real provider chooser (no simulated UI).
 adb('shell','input','swipe','227','227','227','227','1500');time.sleep(2)
 adb('shell','input','tap','227','380');time.sleep(2)
 tree=state('editor-reopened')
 if any('Swipe to edit Complications' in n.get('content-desc','') for n in tree.iter('node')):
- adb('shell','input','swipe','360','227','90','227','400');time.sleep(2)
+ command('next')
 state('editor-fields-light')
 adb('shell','input','tap','108','125');time.sleep(3)
 state('provider-chooser')

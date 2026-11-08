@@ -19,7 +19,8 @@ public abstract class FixtureService extends ComplicationDataSourceService {
         try { listener.onComplicationData(data()); } catch (RemoteException error) { throw new RuntimeException(error); }
     }
     @Override public ComplicationData getPreviewData(ComplicationType type) { return data(); }
-    public static class Heart extends FixtureService { protected String title(){return "ПУЛЬС";} protected String value(){return "72";} }
+    public static class Heart extends FixtureService { private boolean alternate(){return getSharedPreferences("fixture",0).getBoolean("alternate",false);}
+ protected String title(){return alternate()?"ВЫСОТА":"ПУЛЬС";} protected String value(){return alternate()?"182":"72";} }
     public static class Weather extends FixtureService { protected String title(){return "ПОГОДА";} protected String value(){return "+4°C";} }
     public static class Floors extends FixtureService { protected String title(){return "ЭТАЖИ";} protected String value(){return "9";} }
     public static class Battery extends FixtureService { protected String title(){return "ЗАРЯД";} protected String value(){return "82%";} }

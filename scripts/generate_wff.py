@@ -1,5 +1,6 @@
 """Generate WFF v1 markup in the unchanged 920-unit reference coordinate grid."""
 from pathlib import Path
+import json
 from xml.etree.ElementTree import Element, SubElement as S, ElementTree, indent
 ROOT=Path(__file__).resolve().parents[1]
 w=Element('WatchFace', width='920',height='920')
@@ -36,6 +37,26 @@ def text(el,x,y,width,height,size,fg,fmt,params=(),angle=0):
   for param in params:S(template,'Parameter',expression=param)
  else:f.text=fmt
  return p
+
+def replace_caption(parent,label,theme,fg,slot_x,slot_y,slot_w,slot_h,angle):
+ if label=='weather': return  # Weather is identified by the provider icon, not a baked caption.
+ original={'heart':'ПУЛЬС','floors':'ЭТАЖИ','battery':'ЗАРЯД','steps':'ШАГИ'}[label]
+ condition=S(parent,'Condition'); expressions=S(condition,'Expressions')
+ e=S(expressions,'Expression',name='changed_caption')
+ e.text=f'[COMPLICATION.TITLE] != null && [COMPLICATION.TITLE] != "{original}"'
+ compare=S(condition,'Compare',expression='changed_caption')
+ world=group(compare,'caption_'+label+'_'+theme,x=-slot_x,y=-slot_y,angle=str(-angle),pivotX=str((slot_x+slot_w/2)/920),pivotY=str((slot_y+slot_h/2)/920))
+ patch=json.loads((ROOT/'design/caption-layout.json').read_text())[label]
+ image=S(world,'PartImage',**{key:str(value) for key,value in patch.items()})
+ S(image,'Image',resource='caption_'+label+'_'+theme)
+ angles={'heart':(340,370,'CLOCKWISE',640),'floors':(258,226,'COUNTER_CLOCKWISE',730),'battery':(205,178,'COUNTER_CLOCKWISE',730),'steps':(145.5,125,'COUNTER_CLOCKWISE',730)}
+ start,end,direction,diameter=angles[label]
+ part=S(world,'PartText',x='0',y='0',width='920',height='920')
+ curved=S(part,'TextCircular',centerX='460',centerY='452',width=str(diameter),height=str(diameter),startAngle=str(start),endAngle=str(end),direction=direction,align='CENTER',ellipsis='TRUE')
+ font=S(curved,'Font',family='oswald',size='43',weight='BOLD',color=fg)
+ upper=S(font,'Upper'); template=S(upper,'Template');template.text='%s'
+ S(template,'Parameter',expression='[COMPLICATION.TITLE]')
+
 interactive=group(scene,'interactive')
 ambient(interactive)
 for theme,fg,g in themed(interactive):
@@ -62,6 +83,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
   # Group is permitted inside Complication; it lets both themes use the same slot ID.
   cg=group(comp,f'{label}_{ctype}',width=width,height=height)
   for theme,fg,g in themed(cg):
+   if ctype!='EMPTY': replace_caption(g,label,theme,fg,x,y,width,height,angle)
    if ctype=='EMPTY':
     text(g,20 if label=='weather' else 0,20 if label=='weather' else 0,140 if label=='weather' else width,65,43,fg,'—',angle=-45 if label=='weather' else 0)
    else:
