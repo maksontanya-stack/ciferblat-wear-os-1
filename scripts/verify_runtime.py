@@ -15,7 +15,7 @@ for theme in ('dark', 'light'):
     for kind, count in [('hour', 24), ('minute', 60)]:
         font = w.find(f"BitmapFonts/BitmapFont[@name='{kind}_{theme}']")
         if font is None: raise SystemExit('Missing bitmap family')
-        words = {x.attrib['name'] for x in font}
+        words = {x.attrib['name'] for x in font.findall('Word')}
         if words != {f'{n:02}' for n in range(count)}:
             raise SystemExit(f'{kind}_{theme}: incomplete time coverage')
         for word in font:

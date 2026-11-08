@@ -4,6 +4,16 @@
   <Metadata key="PREVIEW_TIME" value="10:10:00" />
   <BitmapFonts>
     <BitmapFont name="hour_dark">
+      <Character name="0" resource="fallback_hour_dark_0" width="155.0" height="260" />
+      <Character name="1" resource="fallback_hour_dark_1" width="155.0" height="260" />
+      <Character name="2" resource="fallback_hour_dark_2" width="155.0" height="260" />
+      <Character name="3" resource="fallback_hour_dark_3" width="155.0" height="260" />
+      <Character name="4" resource="fallback_hour_dark_4" width="155.0" height="260" />
+      <Character name="5" resource="fallback_hour_dark_5" width="155.0" height="260" />
+      <Character name="6" resource="fallback_hour_dark_6" width="155.0" height="260" />
+      <Character name="7" resource="fallback_hour_dark_7" width="155.0" height="260" />
+      <Character name="8" resource="fallback_hour_dark_8" width="155.0" height="260" />
+      <Character name="9" resource="fallback_hour_dark_9" width="155.0" height="260" />
       <Word name="00" resource="hour_dark_00" width="310" height="260" />
       <Word name="01" resource="hour_dark_01" width="310" height="260" />
       <Word name="02" resource="hour_dark_02" width="310" height="260" />
@@ -30,6 +40,16 @@
       <Word name="23" resource="hour_dark_23" width="310" height="260" />
     </BitmapFont>
     <BitmapFont name="minute_dark">
+      <Character name="0" resource="fallback_minute_dark_0" width="81.0" height="122" />
+      <Character name="1" resource="fallback_minute_dark_1" width="81.0" height="122" />
+      <Character name="2" resource="fallback_minute_dark_2" width="81.0" height="122" />
+      <Character name="3" resource="fallback_minute_dark_3" width="81.0" height="122" />
+      <Character name="4" resource="fallback_minute_dark_4" width="81.0" height="122" />
+      <Character name="5" resource="fallback_minute_dark_5" width="81.0" height="122" />
+      <Character name="6" resource="fallback_minute_dark_6" width="81.0" height="122" />
+      <Character name="7" resource="fallback_minute_dark_7" width="81.0" height="122" />
+      <Character name="8" resource="fallback_minute_dark_8" width="81.0" height="122" />
+      <Character name="9" resource="fallback_minute_dark_9" width="81.0" height="122" />
       <Word name="00" resource="minute_dark_00" width="162" height="122" />
       <Word name="01" resource="minute_dark_01" width="162" height="122" />
       <Word name="02" resource="minute_dark_02" width="162" height="122" />
@@ -92,6 +112,16 @@
       <Word name="59" resource="minute_dark_59" width="162" height="122" />
     </BitmapFont>
     <BitmapFont name="hour_light">
+      <Character name="0" resource="fallback_hour_light_0" width="155.0" height="260" />
+      <Character name="1" resource="fallback_hour_light_1" width="155.0" height="260" />
+      <Character name="2" resource="fallback_hour_light_2" width="155.0" height="260" />
+      <Character name="3" resource="fallback_hour_light_3" width="155.0" height="260" />
+      <Character name="4" resource="fallback_hour_light_4" width="155.0" height="260" />
+      <Character name="5" resource="fallback_hour_light_5" width="155.0" height="260" />
+      <Character name="6" resource="fallback_hour_light_6" width="155.0" height="260" />
+      <Character name="7" resource="fallback_hour_light_7" width="155.0" height="260" />
+      <Character name="8" resource="fallback_hour_light_8" width="155.0" height="260" />
+      <Character name="9" resource="fallback_hour_light_9" width="155.0" height="260" />
       <Word name="00" resource="hour_light_00" width="310" height="260" />
       <Word name="01" resource="hour_light_01" width="310" height="260" />
       <Word name="02" resource="hour_light_02" width="310" height="260" />
@@ -118,6 +148,16 @@
       <Word name="23" resource="hour_light_23" width="310" height="260" />
     </BitmapFont>
     <BitmapFont name="minute_light">
+      <Character name="0" resource="fallback_minute_light_0" width="81.0" height="122" />
+      <Character name="1" resource="fallback_minute_light_1" width="81.0" height="122" />
+      <Character name="2" resource="fallback_minute_light_2" width="81.0" height="122" />
+      <Character name="3" resource="fallback_minute_light_3" width="81.0" height="122" />
+      <Character name="4" resource="fallback_minute_light_4" width="81.0" height="122" />
+      <Character name="5" resource="fallback_minute_light_5" width="81.0" height="122" />
+      <Character name="6" resource="fallback_minute_light_6" width="81.0" height="122" />
+      <Character name="7" resource="fallback_minute_light_7" width="81.0" height="122" />
+      <Character name="8" resource="fallback_minute_light_8" width="81.0" height="122" />
+      <Character name="9" resource="fallback_minute_light_9" width="81.0" height="122" />
       <Word name="00" resource="minute_light_00" width="162" height="122" />
       <Word name="01" resource="minute_light_01" width="162" height="122" />
       <Word name="02" resource="minute_light_02" width="162" height="122" />

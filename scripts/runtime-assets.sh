@@ -52,3 +52,5 @@ cp design/dark-450.png "$r/preview.png"
 rm -f design/arc-white.png design/arc-overlay.png design/runtime-fill.png design/runtime-overlay.png design/stripe-pattern.png design/hour-working.png "$r"/digit_*.png "$r"/striped_*.png
 
 magick mogrify -strip "$r"/*.png
+
+python3 scripts/generate_clock_characters.py
