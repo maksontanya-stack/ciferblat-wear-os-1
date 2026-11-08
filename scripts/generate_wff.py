@@ -50,7 +50,7 @@ def replace_caption(parent,label,theme,fg,slot_x,slot_y,slot_w,slot_h,angle,kind
  patch=json.loads((ROOT/'design/caption-layout.json').read_text())[label]
  image=S(world,'PartImage',**{key:str(value) for key,value in patch.items()})
  S(image,'Image',resource='caption_'+label+'_'+theme)
- # Native straight text avoids circular-layout invalidation issues with initially empty titles.
+ # Replacement titles retain the fixed font size and tangent of each sector.
  positions={'heart':(345,90,170,60,-5),'floors':(95,585,180,65,50),'battery':(320,752,180,65,4),'steps':(600,625,180,65,-50)}
  tx,ty,tw,th,rotation=positions[label]
  part=S(world,'PartText',x=str(tx),y=str(ty),width=str(tw),height=str(th),angle=str(rotation))

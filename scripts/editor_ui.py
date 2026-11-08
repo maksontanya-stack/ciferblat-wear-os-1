@@ -23,18 +23,14 @@ def click(tree,labels):
  return False
 # Editor is open on complication page after the shell harness taps Customize.
 tree=state('editor-initial')
-command('next')
-tree=state('editor-five-fields')
-if sum(n.get('clickable')=='true' for n in tree.iter('node'))<5:
- raise SystemExit('The native editor did not expose all five fields')
-command('previous')
-tree=state('editor-options')
 command('tap','Тёмная')
 tree=state('editor-theme-options')
 command('tap','Светлая')
 state('editor-light-selected')
-for _ in range(3):adb('shell','input','keyevent','KEYCODE_BACK');time.sleep(1)
+# The native editor explicitly says to press the crown to confirm changes.
+adb('shell','input','keyevent','KEYCODE_STEM_PRIMARY');time.sleep(3)
 adb('shell','input','keyevent','KEYCODE_HOME');time.sleep(2)
+adb('shell','settings','put','secure','accessibility_enabled','0');time.sleep(2)
 state('active-light')
 from PIL import Image
 img=Image.open(p/'active-light.png').convert('RGB')
@@ -59,11 +55,14 @@ if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),alt.crop(roi)).get
  raise SystemExit('Changing the source title did not update the sector caption')
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
 # Reopen native editor and capture real provider chooser (no simulated UI).
+adb('shell','settings','put','secure','accessibility_enabled','1');time.sleep(2)
 adb('shell','input','swipe','227','227','227','227','1500');time.sleep(2)
 adb('shell','input','tap','227','380');time.sleep(2)
 tree=state('editor-reopened')
 if any('Swipe to edit Complications' in n.get('content-desc','') for n in tree.iter('node')):
  command('next')
-state('editor-fields-light')
+tree=state('editor-five-fields')
+if sum(n.get('clickable')=='true' for n in tree.iter('node'))<5:
+ raise SystemExit('The native editor did not expose all five fields')
 adb('shell','input','tap','108','125');time.sleep(3)
 state('provider-chooser')

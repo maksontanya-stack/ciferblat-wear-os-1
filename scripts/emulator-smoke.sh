@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 mkdir -p smoke-output
+trap 'adb logcat -d > smoke-output/logcat.txt' EXIT
 # A fresh Wear image resets its default face late in initial boot.
 # Wait for first-run initialization before selecting the package under test.
 sleep 60
