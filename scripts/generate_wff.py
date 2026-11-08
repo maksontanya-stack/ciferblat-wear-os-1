@@ -45,19 +45,19 @@ def radial_text(parent,label,fg,fmt,params,scope,width_em=None):
  # Choose the largest size whose conservative line width fits the available arc.
  capacity=math.radians(abs(end-start))*350
  if width_em is None: width_em=" + ".join(f"textLength({param}) * 1.06" for param in params)+" + 0.3"
- cond=S(parent,'Condition');exprs=S(cond,'Expressions')
- sizes=[43,34,26,18,12,8,4,1]
- for size in sizes[:-1]:
-  key=f'fit_{scope}_{size}'
-  e=S(exprs,'Expression',name=key);e.text=f'({width_em}) * {size} <= {capacity:.3f}'
-  if size!=sizes[0]: e.text+=f' && ({width_em}) * {sizes[sizes.index(size)-1]} > {capacity:.3f}'
- for size in sizes:
-  dest=S(cond,'Compare',expression=f'fit_{scope}_{size}') if size!=1 else S(cond,'Default')
-  part=S(dest,'PartText',x='0',y='0',width='920',height='920')
-  circular=S(part,'TextCircular',centerX='460',centerY='452',width='700',height='700',startAngle=str(start),endAngle=str(end),direction='CLOCKWISE' if clockwise else 'COUNTER_CLOCKWISE',align='CENTER',ellipsis='FALSE')
-  font=S(circular,'Font',family='oswald',size=str(size),weight='BOLD',color=fg)
-  upper=S(font,'Upper');template=S(upper,'Template');template.text=fmt
-  for param in params: S(template,'Parameter',expression=param)
+ # Scale the glyphs continuously, while inversely compensating the circle
+ # geometry. The visible radius and center therefore stay fixed at every size.
+ # Only one text node is needed per metric instead of a tree of font variants.
+ scale=f'clamp({capacity:.3f} / (clamp(({width_em}), 0.01, 1000000) * 43), 0.001, 1)'
+ part=S(parent,'PartText',x='0',y='0',width='920',height='920',pivotX='0',pivotY='0')
+ for key,val in [('scaleX',scale),('scaleY',scale),('width',f'920 / ({scale})'),('height',f'920 / ({scale})')]:
+  S(part,'Transform',target=key,value=val)
+ circular=S(part,'TextCircular',centerX='460',centerY='452',width='700',height='700',startAngle=str(start),endAngle=str(end),direction='CLOCKWISE' if clockwise else 'COUNTER_CLOCKWISE',align='CENTER')
+ for key,val in [('centerX',460),('centerY',452),('width',700),('height',700)]:
+  S(circular,'Transform',target=key,value=f'{val} / ({scale})')
+ font=S(circular,'Font',family='oswald',size='43',weight='BOLD',color=fg)
+ upper=S(font,'Upper');template=S(upper,'Template');template.text=fmt
+ for param in params: S(template,'Parameter',expression=param)
 
 def clock_images(parent,theme,scope,alpha='255'):
  # Select immutable artwork directly from live system time. This keeps word sprites
@@ -91,7 +91,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
  provider={'battery':'WATCH_BATTERY','steps':'STEP_COUNT'}.get(label,'EMPTY')
  S(slot,'DefaultProviderPolicy',defaultSystemProvider=provider,defaultSystemProviderType='SHORT_TEXT' if provider!='EMPTY' else 'EMPTY')
  start,end=SECTORS[label]
- S(slot,'BoundingArc',centerX='460',centerY='452',width='786',height='786',thickness='90',startAngle=str(start+4),endAngle=str(end-4),direction='CLOCKWISE',isRoundEdge='FALSE')
+ S(slot,'BoundingArc',centerX='460',centerY='452',width='786',height='786',thickness='90',startAngle=str(start+4),endAngle=str(end-4),direction='CLOCKWISE')
  for ctype in ['SHORT_TEXT','RANGED_VALUE','LONG_TEXT','EMPTY']:
   comp=S(slot,'Complication',type=ctype)
   cg=group(comp,f'{label}_{ctype}')
