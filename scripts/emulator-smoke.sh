@@ -9,6 +9,7 @@ adb shell input keyevent KEYCODE_HOME
 sleep 2
 adb install -r testprovider/build/outputs/apk/debug/testprovider-debug.apk
 adb install -r watchface/build/outputs/apk/debug/watchface-debug.apk
+adb shell dumpsys battery unplug
 adb shell settings put system screen_off_timeout 1800000
 adb shell settings put global stay_on_while_plugged_in 3
 adb shell input keyevent KEYCODE_WAKEUP

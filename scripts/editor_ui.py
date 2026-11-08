@@ -35,11 +35,8 @@ adb('shell','input','keyevent','KEYCODE_BACK');time.sleep(3)
 tree=state('after-editor-confirm')
 if any('Customize Watch Faces' in n.get('content-desc','') for n in tree.iter('node')):
  adb('shell','input','keyevent','KEYCODE_BACK');time.sleep(2)
-adb('shell','input','keyevent','KEYCODE_HOME');time.sleep(2)
-# Confirm the edited favorite in the native watchface picker.
-adb('shell','input','swipe','227','227','227','227','1500');time.sleep(2)
-adb('shell','input','tap','227','227');time.sleep(3)
-adb('shell','settings','put','secure','accessibility_enabled','0');time.sleep(2)
+# BACK already returns to the face. HOME is a launcher shortcut on Wear OS,
+# not an Android-phone-style return-to-face operation.
 from PIL import Image
 for attempt in range(8):
  state('active-light',ui=False)
