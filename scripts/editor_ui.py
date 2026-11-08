@@ -11,18 +11,20 @@ def state(name):
 def click(tree,labels):
  for node in tree.iter('node'):
   val=(node.get('text','')+' '+node.get('content-desc','')).strip()
-  if any(label.casefold() in val.casefold() for label in labels):
+  if any(node.get('text','').casefold()==label.casefold() or (node.get('clickable')=='true' and label.casefold() in node.get('content-desc','').casefold()) for label in labels):
    coords=list(map(int,re.findall(r'\d+',node.get('bounds',''))))
    if len(coords)==4:
     adb('shell','input','tap',str((coords[0]+coords[2])//2),str((coords[1]+coords[3])//2));time.sleep(2);return True
  return False
 # Editor is open on complication page after the shell harness taps Customize.
-tree=state('editor-five-fields')
-if sum(bool(n.get('clickable')=='true' and ('complication' in n.get('content-desc','').lower() or n.get('content-desc','').strip())) for n in tree.iter('node'))<5:
- print('Inspect editor XML for all five field outlines')
+tree=state('editor-initial')
 adb('shell','input','swipe','360','227','90','227','400');time.sleep(2)
+tree=state('editor-five-fields')
+if sum(n.get('clickable')=='true' for n in tree.iter('node'))<5:
+ raise SystemExit('The native editor did not expose all five fields')
+adb('shell','input','swipe','90','227','360','227','400');time.sleep(2)
 tree=state('editor-options')
-click(tree,['Тема','Theme'])
+if not click(tree,['Тёмная','Тема','Dark','Theme']): raise SystemExit('Native theme control was not found')
 tree=state('editor-theme-options')
 if not click(tree,['Светлая','Light']): raise SystemExit('Native light theme option was not found')
 state('editor-light-selected')
@@ -36,6 +38,9 @@ if min(img.getpixel((img.width//2,round(img.height*.72))))<120:
 # Reopen native editor and capture real provider chooser (no simulated UI).
 adb('shell','input','swipe','227','227','227','227','1500');time.sleep(2)
 adb('shell','input','tap','227','380');time.sleep(2)
-state('editor-reopened')
+tree=state('editor-reopened')
+if any('Swipe to edit Complications' in n.get('content-desc','') for n in tree.iter('node')):
+ adb('shell','input','swipe','360','227','90','227','400');time.sleep(2)
+state('editor-fields-light')
 adb('shell','input','tap','108','125');time.sleep(3)
 state('provider-chooser')
