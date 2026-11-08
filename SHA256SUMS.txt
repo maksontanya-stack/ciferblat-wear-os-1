@@ -1,0 +1,2 @@
+e7de910b996500f1e7f0dfa45a69ebaf4b04b974b00d419a03b603b5e1c2d659  wearos1.apk
+a1874fd3374bc8fad829a5f1aef2b218cb2e2c68fef55979f32e49fb59212e1a  wearos1-install.zip
