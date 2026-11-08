@@ -46,6 +46,11 @@ for attempt in range(8):
 else: raise SystemExit('Selecting Light in the editor did not persist on the actual watchface')
 # Samsung-style payload can put temperature in TITLE and location in TEXT.
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','true');time.sleep(3)
+for attempt in range(15):
+ if 'ТЕСТ ГОРОД' in adb('logcat','-d').decode(errors='replace'): break
+ time.sleep(2)
+else: raise SystemExit('Weather swapped payload was not delivered to the runtime')
+time.sleep(2)
 state('active-light-weather-swapped',ui=False)
 from PIL import ImageChops
 weather=Image.open(p/'active-light-weather-swapped.png').convert('RGB')
@@ -55,12 +60,13 @@ if sum(max(v)>30 for v in ImageChops.difference(img.crop(box),weather.crop(box))
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','false');time.sleep(3)
 # Real complication update changes both its title and value in the same sector.
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','true');time.sleep(4)
-state('active-light-altitude',ui=False)
-from PIL import ImageChops
-alt=Image.open(p/'active-light-altitude.png').convert('RGB')
 roi=(round(img.width*.37),round(img.height*.09),round(img.width*.54),round(img.height*.18))
-if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),alt.crop(roi)).getdata())<30:
- raise SystemExit('Changing the source title did not update the sector caption')
+for attempt in range(15):
+ state('active-light-altitude',ui=False)
+ alt=Image.open(p/'active-light-altitude.png').convert('RGB')
+ if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),alt.crop(roi)).getdata())>=30: break
+ time.sleep(2)
+else: raise SystemExit('Changing the source title did not update the sector caption within 30 seconds')
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
 # Reopen native editor and capture real provider chooser (no simulated UI).
 adb('shell','settings','put','secure','accessibility_enabled','1');time.sleep(2)
