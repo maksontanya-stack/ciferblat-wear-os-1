@@ -4,7 +4,7 @@
 - Gradle `assembleRelease` и `lintRelease`: успешно.
 - `apksigner verify`: успешно, подпись APK Signature Scheme v3, совместимая с minSdk 33.
 - Сертификат подписи SHA-256: `29caf7fbab6fe306746fcc30d94a9f42822312ada2a6ccdd43556eba7ba343f4`.
-- Официальный Memory Footprint Evaluator: PASS; max active 4 102 328 байт, max ambient 982 088 байт.
+- Официальный Memory Footprint Evaluator: PASS; max active 4 102 328 байт, max ambient 3 930 240 байт.
 - Проверка графики: тёмный мастер пиксельно равен исходному фрагменту; темы 450×450 RGBA.
 - Проверка runtime: полный набор 24 часов / 60 минут для двух тем, уникальные ID трёх полей данных, отображение отсутствующих данных, отдельный AOD.
 
