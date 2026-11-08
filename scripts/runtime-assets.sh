@@ -20,11 +20,15 @@ for theme in dark light; do
  magick design/arc-white.png -channel RGB -fill "$arc_ink" -colorize 100 +channel design/arc-overlay.png
  magick "$r/background_$theme.png" design/arc-overlay.png -compose Over -composite "$r/background_$theme.png"
  accent='#ff001b'; [ "$theme" = light ] && accent='#9d5e61'
- magick "$r/background_$theme.png" -stroke "$accent" -strokewidth 5 -draw 'line 602,298 765,298' "$r/background_$theme.png"
 done
 python3 scripts/correct_static_labels.py
 python3 scripts/clear_radial_labels.py
 python3 scripts/redraw_tick_rings.py
+# Draw after clearing the radial captions, which overlap the right end of this line.
+for theme in dark light; do
+ accent='#ff001b'; [ "$theme" = light ] && accent='#9d5e61'
+ magick "$r/background_$theme.png" -stroke "$accent" -strokewidth 5 -draw 'line 599,298 769,298' "$r/background_$theme.png"
+done
 # Exact original hour and minute 10; opaque backing intentionally matches its theme.
 for theme in dark light; do
  magick "design/$theme-master.png" -crop 310x260+267+337 +repage "$r/hour_${theme}_10.png"
