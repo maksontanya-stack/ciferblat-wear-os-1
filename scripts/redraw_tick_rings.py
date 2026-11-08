@@ -1,4 +1,4 @@
-"""Uniform circular tick rings; preserve existing labels except the corrected 20."""
+"""Uniform fine ticks; preserve the outer scale except the corrected 20 and its neighbors."""
 from pathlib import Path
 import math
 from PIL import Image, ImageDraw, ImageFont
@@ -12,7 +12,7 @@ for theme in ('dark','light'):
    r=math.hypot(x-cx,y-cy);angle=math.degrees(math.atan2(x-cx,cy-y))%360
    nearest=abs((angle+15)%30-15)
    twenty=abs((angle-120+180)%360-180)
-   if 376<=r<=406 or (410<=r<=454 and (nearest>5 or twenty<7.5)):
+   if 376<=r<=406 or (410<=r<=454 and twenty<7.5):
     im.putpixel((x,y),background)
  overlay=Image.new('RGBA',(920*ss,920*ss));draw=ImageDraw.Draw(overlay)
  fine='#c0c0be' if theme=='dark' else '#b8c0c6';ink='#ddddda' if theme=='dark' else '#b8bec0'
@@ -21,8 +21,7 @@ for theme in ('dark','light'):
  for angle in range(360):draw.line([pt(380,angle),pt(398,angle)],fill=fine,width=5)
  for radius in (378,400):
   draw.ellipse(((cx-radius)*ss,(cy-radius)*ss,(cx+radius)*ss,(cy+radius)*ss),outline='#707578' if theme=='dark' else '#75848e',width=3)
- for minute in range(60):
-  if minute%5:draw.line([pt(431,minute*6),pt(448,minute*6)],fill=ink,width=10)
+ for angle in (114,126):draw.line([pt(418,angle),pt(434,angle)],fill=ink,width=10)
  # Same radial distance as the original 40; leave a clear gap to 114/126° ticks.
  center=pt(432,120)
  tile=Image.new('RGBA',(180*ss,120*ss));td=ImageDraw.Draw(tile)
