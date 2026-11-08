@@ -20,9 +20,13 @@ for theme in ('dark', 'light'):
         if images != expected: raise SystemExit(f'{kind}_{theme}: incomplete time coverage')
         for resource in expected:
             if not (resources/(resource+'.png')).is_file(): raise SystemExit('Missing time image')
+            if kind=='hour':
+                dimensions=struct.unpack('>II',(resources/(resource+'.png')).read_bytes()[16:24])
+                if dimensions!=(155,150) or group.attrib['height']!='300': raise SystemExit('Hour sprite padding/scale mismatch')
 slots = list(w.iter('ComplicationSlot'))
 if len({s.attrib['slotId'] for s in slots}) != 5: raise SystemExit('Invalid data slot IDs')
 for slot in slots:
+    if slot.find('BoundingArc') is None or slot.find('BoundingBox') is not None: raise SystemExit('Data field must have radial interaction bounds')
     if slot.find("Complication[@type='EMPTY']") is None:
         raise SystemExit('Missing empty-data fallback')
 if w.find("Scene/Group[@name='ambient']") is None: raise SystemExit('Missing ambient mode')

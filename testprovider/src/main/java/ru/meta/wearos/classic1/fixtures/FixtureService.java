@@ -21,7 +21,7 @@ public abstract class FixtureService extends ComplicationDataSourceService {
     }
     @Override public ComplicationData getPreviewData(ComplicationType type) { return data(type); }
     public static class Heart extends FixtureService { private boolean alternate(){return getSharedPreferences("fixture",0).getBoolean("alternate",false);}
- protected String title(){return getSharedPreferences("fixture",0).getBoolean("long_title",false)?"МАКСИМАЛЬНАЯ ВЫСОТА НАД УРОВНЕМ МОРЯ":alternate()?"ВЫСОТА":"ПУЛЬС";} protected String value(){return alternate()?"182":"72";} }
+ protected String title(){return getSharedPreferences("fixture",0).getBoolean("unknown_long_title",false)?"ПРОИЗВОЛЬНЫЙ ПОКАЗАТЕЛЬ НОВОГО ПРИЛОЖЕНИЯ":getSharedPreferences("fixture",0).getBoolean("long_title",false)?"МАКСИМАЛЬНАЯ ВЫСОТА НАД УРОВНЕМ МОРЯ":alternate()?"ВЫСОТА":"ПУЛЬС";} protected String value(){return alternate()?"182":"72";} }
     public static class Weather extends FixtureService { private boolean swapped(){return getSharedPreferences("fixture",0).getBoolean("weather_swapped",false);}
  protected String title(){return swapped()?"+4°C":"ПОГОДА";} protected String value(){return swapped()?"ТЕСТ ГОРОД":"+4°C";} }
     public static class Floors extends FixtureService { protected String title(){return "ЭТАЖИ";} protected String value(){return "9";} }

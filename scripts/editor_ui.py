@@ -91,6 +91,26 @@ for py in range(img.height):
   if 305<radius<393 and (angle>334 or angle<26) and max(abs(a-b) for a,b in zip(alt.getpixel((px,py)),shortened.getpixel((px,py))))>30: changed+=1
 if changed>20: raise SystemExit('Verbose height title was not shortened to the same ВЫСОТА caption')
 
+# An unrecognized long label exercises actual automatic font fitting.
+adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','unknown_long_title','--ez','enabled','true')
+for attempt in range(15):
+ if 'ПРОИЗВОЛЬНЫЙ ПОКАЗАТЕЛЬ' in adb('logcat','-d').decode(errors='replace'): break
+ time.sleep(2)
+else: raise SystemExit('Unknown long-title fixture was not delivered')
+time.sleep(3)
+state('active-light-fitted-title',ui=False)
+fitted=Image.open(p/'active-light-fitted-title.png').convert('RGB')
+inside=outside=0
+for py in range(img.height):
+ for px in range(img.width):
+  dx=px*920/img.width-460;dy=py*920/img.height-452
+  radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
+  if 305<radius<393 and max(abs(a-b) for a,b in zip(shortened.getpixel((px,py)),fitted.getpixel((px,py))))>30:
+   if angle>334 or angle<26: inside+=1
+   else: outside+=1
+if inside<20: raise SystemExit('Long label did not render after automatic fitting')
+if outside>20: raise SystemExit('Fitted label changed pixels outside its radial sector')
+adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','unknown_long_title','--ez','enabled','false');time.sleep(3)
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','long_title','--ez','enabled','false');time.sleep(3)
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
 # Reopen native editor and capture real provider chooser (no simulated UI).
