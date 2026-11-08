@@ -38,7 +38,7 @@ jobs:
           sudo udevadm trigger --name-match=kvm
       - name: Install screenshot verifier
         run: python3 -m pip install Pillow==11.3.0
-      - name: Install and render on Wear OS 4
+      - name: Install and render on Wear OS
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ inputs.api_level }}

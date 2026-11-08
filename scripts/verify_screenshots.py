@@ -18,4 +18,4 @@ box=(.66,.34,.85,.48)
 diff=ImageChops.difference(crop(a,box),crop(b,box))
 if sum(max(pixel)>30 for pixel in diff.getdata())<10:
  raise SystemExit('Minute display did not advance on the emulator')
-print(f'PASS: installed and selected on Wear OS 4 ({w}x{h}); both time fields render; minutes advance')
+print(f'PASS: installed and selected on Wear OS emulator ({w}x{h}); both time fields render; minutes advance')
