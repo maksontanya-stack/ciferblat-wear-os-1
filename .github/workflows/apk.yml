@@ -31,6 +31,11 @@ jobs:
         run: python3 scripts/verify_runtime.py
       - name: Build resource-only watchface APK
         run: ./gradlew :watchface:assembleRelease :watchface:lintRelease --console=plain
+      - name: Verify resource-only APK and memory limits
+        run: |
+          python3 scripts/verify_apk.py watchface/build/outputs/apk/release/watchface-release-unsigned.apk
+          curl --fail --location --retry 3 https://github.com/google/watchface/releases/download/release/memory-footprint.jar --output "$RUNNER_TEMP/memory-footprint.jar"
+          java -jar "$RUNNER_TEMP/memory-footprint.jar" --watch-face watchface/build/outputs/apk/release/watchface-release-unsigned.apk --schema-version 1 --ambient-limit-mb 10 --active-limit-mb 100
       - name: Prepare APK
         run: |
           mkdir -p dist
