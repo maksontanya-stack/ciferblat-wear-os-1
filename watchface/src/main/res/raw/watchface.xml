@@ -220,14 +220,28 @@
                 </Font>
               </Text>
             </PartText>
-            <PartText x="690" y="539" width="171" height="62" angle="-62">
-              <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                  <Template>%d<Parameter expression="[STEP_COUNT]" />
-                  </Template>
-                </Font>
-              </Text>
-            </PartText>
+            <Condition>
+              <Expressions>
+                <Expression name="has_steps">[STEP_COUNT] != null &amp;&amp; [STEP_COUNT] &gt;= 0</Expression>
+              </Expressions>
+              <Compare expression="has_steps">
+                <PartText x="690" y="539" width="171" height="62" angle="-62">
+                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                    <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
+                      <Template>%d<Parameter expression="[STEP_COUNT]" />
+                      </Template>
+                    </Font>
+                  </Text>
+                </PartText>
+              </Compare>
+              <Default>
+                <PartText x="690" y="539" width="171" height="62" angle="-62">
+                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                    <Font family="oswald" size="43" weight="BOLD" color="#ddddda">—</Font>
+                  </Text>
+                </PartText>
+              </Default>
+            </Condition>
           </Group>
         </BooleanOption>
         <BooleanOption id="TRUE">
@@ -263,14 +277,28 @@
                 </Font>
               </Text>
             </PartText>
-            <PartText x="690" y="539" width="171" height="62" angle="-62">
-              <Text align="CENTER" ellipsis="TRUE" maxLines="1">
-                <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                  <Template>%d<Parameter expression="[STEP_COUNT]" />
-                  </Template>
-                </Font>
-              </Text>
-            </PartText>
+            <Condition>
+              <Expressions>
+                <Expression name="has_steps">[STEP_COUNT] != null &amp;&amp; [STEP_COUNT] &gt;= 0</Expression>
+              </Expressions>
+              <Compare expression="has_steps">
+                <PartText x="690" y="539" width="171" height="62" angle="-62">
+                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                    <Font family="oswald" size="43" weight="BOLD" color="#222a31">
+                      <Template>%d<Parameter expression="[STEP_COUNT]" />
+                      </Template>
+                    </Font>
+                  </Text>
+                </PartText>
+              </Compare>
+              <Default>
+                <PartText x="690" y="539" width="171" height="62" angle="-62">
+                  <Text align="CENTER" ellipsis="TRUE" maxLines="1">
+                    <Font family="oswald" size="43" weight="BOLD" color="#222a31">—</Font>
+                  </Text>
+                </PartText>
+              </Default>
+            </Condition>
           </Group>
         </BooleanOption>
       </BooleanConfiguration>

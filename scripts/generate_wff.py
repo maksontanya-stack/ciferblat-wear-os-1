@@ -49,7 +49,12 @@ for theme,fg,g in themed(interactive):
  up=S(f,'Upper'); template=S(up,'Template');template.text='%s %s.%s'
  for value in ['[DAY_OF_WEEK_S]','[DAY_Z]','[MONTH_Z]']:S(template,'Parameter',expression=value)
  text(g,470,747,133,62,47,fg,'%d%%',('[BATTERY_PERCENT]',),-6)
- text(g,690,539,171,62,43,fg,'%d',('[STEP_COUNT]',),-62)
+ condition=S(g,'Condition'); expressions=S(condition,'Expressions')
+ e=S(expressions,'Expression',name='has_steps');e.text='[STEP_COUNT] != null &amp;&amp; [STEP_COUNT] >= 0'.replace('&amp;','&')
+ compare=S(condition,'Compare',expression='has_steps')
+ text(compare,690,539,171,62,43,fg,'%d',('[STEP_COUNT]',),-62)
+ default=S(condition,'Default')
+ text(default,690,539,171,62,43,fg,'—',angle=-62)
 # Slots are deliberately outside the interactive Group: WFF owns the data-source editor.
 for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'weather',140,165,160,180,0),(3,'floors',200,660,86,70,47)]:
  slot=S(scene,'ComplicationSlot',slotId=str(slot_id),displayName=label,x=str(x),y=str(y),width=str(width),height=str(height),angle=str(angle),supportedTypes='SHORT_TEXT EMPTY',isCustomizable='TRUE')
