@@ -10,8 +10,12 @@ android {
         versionName = "1.0.0"
     }
     buildTypes {
+        debug {
+            isMinifyEnabled = true
+            isShrinkResources = false
+        }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             isShrinkResources = false
         }
     }
