@@ -105,6 +105,7 @@ for py in range(img.height):
  for px in range(img.width):
   dx=px*920/img.width-460;dy=py*920/img.height-452
   radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
+  if 599<=px*920/img.width<=772 and 237<=py*920/img.height<=431: continue # Advancing date/minute fields.
   if 305<radius<393 and max(abs(a-b) for a,b in zip(shortened.getpixel((px,py)),fitted.getpixel((px,py))))>30:
    if angle>334 or angle<26: inside+=1
    else: outside+=1
