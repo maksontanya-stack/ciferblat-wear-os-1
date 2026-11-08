@@ -10,7 +10,7 @@ for theme in ('dark','light'):
  for y in range(920):
   for x in range(920):
    r=math.hypot(x-460,y-452);a=math.degrees(math.atan2(x-460,452-y))%360
-   if 305<r<385 and min(abs((a-mark+180)%360-180) for mark in (30,90,150,210,270,330))>4:
+   if 305<r<376 and min(abs((a-mark+180)%360-180) for mark in (30,90,150,210,270,330))>4:
     v=round(max(5,23-.018*x-.010*y))
     im.putpixel((x,y),texture.getpixel((x,y)) if texture else (v,v,v,255))
  im.save(p)

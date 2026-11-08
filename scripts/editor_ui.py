@@ -114,7 +114,7 @@ for py in range(img.height):
  for px in range(img.width):
   dx=px*920/img.width-460;dy=py*920/img.height-452
   radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
-  if 310<radius<385 and (angle>334 or angle<26) and max(fitted.getpixel((px,py)))<140: ink+=1
+  if 310<radius<375 and (angle>334 or angle<26) and max(fitted.getpixel((px,py)))<140: ink+=1
 if ink<20: raise SystemExit(f'Fitted long title is absent ({ink} dark pixels)')
 if inside<20: raise SystemExit('Long label did not render after automatic fitting')
 if outside>20: raise SystemExit('Fitted label changed pixels outside its radial sector')

@@ -35,29 +35,27 @@ def text(el,x,y,width,height,size,fg,fmt,params=(),angle=0):
 # of each red marker; all geometry uses the same reference center and radii.
 SECTORS={'heart':(330,390),'weather':(270,330),'floors':(210,270),'battery':(150,210),'steps':(90,150)}
 
-def radial_text(parent,label,fg,fmt,params,scope,width_em=None):
+def radial_text(parent,label,fg,fmt,params,scope,width_em=None,known=False):
  import math
  start,end=SECTORS[label]; start+=4;end-=4
- if label=='weather': start+=16 # Leave room for the provider icon at the left end.
+ if label=='weather': start+=16
  clockwise=label in ('heart','weather')
  if not clockwise: start,end=end,start
- # Oswald's widest supported glyph at this weight is bounded by 1.06 em.
- # Choose the largest size whose conservative line width fits the available arc.
  capacity=math.radians(abs(end-start))*350
  if width_em is None: width_em=" + ".join(f"textLength({param}) * 1.06" for param in params)+" + 0.3"
- # Scale the glyphs continuously, while inversely compensating the circle
- # geometry. The visible radius and center therefore stay fixed at every size.
- # Only one text node is needed per metric instead of a tree of font variants.
- scale=f'clamp({capacity:.3f} / (clamp(({width_em}), 0.01, 1000000) * 43), 0.001, 1)'
- part=S(parent,'PartText',x='0',y='0',width='32768',height='32768',pivotX='0',pivotY='0')
- for key,val in [('scaleX',scale),('scaleY',scale)]:
-  S(part,'Transform',target=key,value=val)
- circular=S(part,'TextCircular',centerX='460',centerY='452',width='700',height='700',startAngle=str(start),endAngle=str(end),direction='CLOCKWISE' if clockwise else 'COUNTER_CLOCKWISE',align='CENTER')
- for key,val in [('centerX',460),('centerY',452),('width',700),('height',700)]:
-  S(circular,'Transform',target=key,value=f'{val} / ({scale})')
- font=S(circular,'Font',family='oswald',size='43',weight='BOLD',color=fg)
- upper=S(font,'Upper');template=S(upper,'Template');template.text=fmt
- for param in params: S(template,'Parameter',expression=param)
+ sizes=[43,34,24,12,4,0.25] if known else [43,34,26,18,12,8,6,3,1,0.25]
+ cond=S(parent,'Condition');exprs=S(cond,'Expressions')
+ for index,size in enumerate(sizes[:-1]):
+  e=S(exprs,'Expression',name=f'fit_{scope}_{index}');e.text=f'({width_em}) * {size} <= {capacity:.3f}'
+  if index: e.text+=f' && ({width_em}) * {sizes[index-1]} > {capacity:.3f}'
+ for index,size in enumerate(sizes):
+  dest=S(cond,'Compare',expression=f'fit_{scope}_{index}') if index<len(sizes)-1 else S(cond,'Default')
+  part=S(dest,'PartText',x='0',y='0',width='920',height='920')
+  circular=S(part,'TextCircular',centerX='460',centerY='452',width='700',height='700',startAngle=str(start),endAngle=str(end),direction='CLOCKWISE' if clockwise else 'COUNTER_CLOCKWISE',align='CENTER')
+  font=S(circular,'Font',family='oswald',size=str(size),weight='BOLD',color=fg)
+  upper=S(font,'Upper');template=S(upper,'Template');template.text=fmt
+  for param in params: S(template,'Parameter',expression=param)
+
 
 def clock_images(parent,theme,scope,alpha='255'):
  # Select immutable artwork directly from live system time. This keeps word sprites
@@ -93,7 +91,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
  provider={'battery':'WATCH_BATTERY','steps':'STEP_COUNT'}.get(label,'EMPTY')
  S(slot,'DefaultProviderPolicy',defaultSystemProvider=provider,defaultSystemProviderType='SHORT_TEXT' if provider!='EMPTY' else 'EMPTY')
  start,end=SECTORS[label]
- S(slot,'BoundingArc',centerX='460',centerY='452',width='786',height='786',thickness='90',startAngle=str(start+4),endAngle=str(end-4),direction='CLOCKWISE')
+ S(slot,'BoundingArc',centerX='460',centerY='452',width='752',height='752',thickness='73',startAngle=str(start+4),endAngle=str(end-4),direction='CLOCKWISE')
  for ctype in ['SHORT_TEXT','RANGED_VALUE','LONG_TEXT','EMPTY']:
   comp=S(slot,'Complication',type=ctype)
   cg=group(comp,f'{label}_{ctype}')
@@ -115,18 +113,25 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
     # Resolve standard provider labels before fitting. Values remain independent
     # template parameters: WFF v1 does not support '+' string concatenation.
     metric=S(g,'Condition'); expressions=S(metric,'Expressions')
-    catalog=json.loads((ROOT/'design/metric-captions.json').read_text())
-    for index,item in enumerate(catalog):
+    catalog={item['title']:item for item in json.loads((ROOT/'design/metric-captions.json').read_text())}
+    # Share the fitting logic between captions of similar widths. This avoids
+    # creating a full font-size tree for each alias on legacy WFF runtimes.
+    bands=[['СОН','УФ'],['ЗАКАТ','ТЕМП.','ШАГИ'],['ПУЛЬС','ЭТАЖИ','РАССТ.','ЗАРЯД'],['ВОСХОД','ВЫСОТА'],['КАЛОРИИ'],['ДАВЛЕНИЕ'],['КИСЛОРОД'],['БУДИЛЬНИК'],['ПОГОДА']]
+    def matches(item):
+     return ' || '.join('[COMPLICATION.TITLE] == '+json.dumps(alias,ensure_ascii=False) for alias in item['aliases'])
+    for index,names in enumerate(bands):
      e=S(expressions,'Expression',name=f'metric_{scope}_{index}')
-     e.text=' || '.join('[COMPLICATION.TITLE] == '+json.dumps(alias,ensure_ascii=False) for alias in item['aliases'])
-     if label=='weather' and item['title']=='ПОГОДА': e.text+=f' || ({temperature})'
-    for index,item in enumerate(catalog):
+     e.text=' || '.join(matches(catalog[name]) for name in names)
+     if label=='weather' and names==['ПОГОДА']: e.text+=f' || ({temperature})'
+    for index,names in enumerate(bands):
      dest=S(metric,'Compare',expression=f'metric_{scope}_{index}')
-     if label=='weather' and item['title']=='ПОГОДА':
-      radial_text(dest,label,fg,'%s',(value,),scope+f'_metric_{index}')
+     if label=='weather' and names==['ПОГОДА']:
+      radial_text(dest,label,fg,'%s',(value,),scope+f'_metric_{index}',known=True)
      else:
-      prefix=json.dumps(item['title'],ensure_ascii=False)
-      radial_text(dest,label,fg,'%s %s',(prefix,value),scope+f'_metric_{index}',f'{item["prefix_em"]} + textLength({value}) * 1.06')
+      caption=json.dumps(names[-1],ensure_ascii=False)
+      for name in reversed(names[:-1]): caption=f'(({matches(catalog[name])}) ? '+json.dumps(name,ensure_ascii=False)+f' : {caption})'
+      prefix=max(catalog[name]['prefix_em'] for name in names)
+      radial_text(dest,label,fg,'%s %s',(caption,value),scope+f'_metric_{index}',f'{prefix} + textLength({value}) * 1.06',known=True)
     dest=S(metric,'Default')
     radial_text(dest,label,fg,'%s %s',(title,value),scope+'_unknown')
     if label=='weather':
@@ -141,5 +146,4 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
 aod=group(scene,'ambient',alpha='0');ambient(aod,'255')
 clock_images(aod,'dark','ambient',alpha='100')
 text(aod,599,237,170,52,43,'#777777','%s.%s',('[DAY_Z]','[MONTH_Z]'))
-indent(w)
 ElementTree(w).write(ROOT/'watchface/src/main/res/raw/watchface.xml',encoding='utf-8',xml_declaration=True)

@@ -27,6 +27,6 @@ for label,(start,end) in sectors.items():
   for px in range(w):
    dx=px*920/w-460;dy=py*920/h-452
    radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
-   if 310<radius<385 and ((angle>=start or angle<=end-360) if end>360 else start<=angle<=end) and min(b.getpixel((px,py)))>140: ink+=1
+   if 310<radius<375 and ((angle>=start or angle<=end-360) if end>360 else start<=angle<=end) and min(b.getpixel((px,py)))>140: ink+=1
  if ink<20: raise SystemExit(f'Radial {label} text did not render ({ink} bright pixels)')
 print(f'PASS: installed and selected on Wear OS emulator ({w}x{h}); both time fields render; minutes advance')

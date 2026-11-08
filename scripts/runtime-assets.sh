@@ -24,6 +24,7 @@ for theme in dark light; do
 done
 python3 scripts/correct_static_labels.py
 python3 scripts/clear_radial_labels.py
+python3 scripts/redraw_tick_rings.py
 # Exact original hour and minute 10; opaque backing intentionally matches its theme.
 for theme in dark light; do
  magick "design/$theme-master.png" -crop 310x260+267+337 +repage "$r/hour_${theme}_10.png"
