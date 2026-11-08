@@ -29,6 +29,10 @@ state('editor-light-selected')
 for _ in range(3):adb('shell','input','keyevent','KEYCODE_BACK');time.sleep(1)
 adb('shell','input','keyevent','KEYCODE_HOME');time.sleep(2)
 state('active-light')
+from PIL import Image
+img=Image.open(p/'active-light.png').convert('RGB')
+if min(img.getpixel((img.width//2,round(img.height*.72))))<120:
+ raise SystemExit('Selecting Light in the editor did not change the actual watchface background')
 # Reopen native editor and capture real provider chooser (no simulated UI).
 adb('shell','input','swipe','227','227','227','227','1500');time.sleep(2)
 adb('shell','input','tap','227','380');time.sleep(2)
