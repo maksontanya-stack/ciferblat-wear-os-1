@@ -319,7 +319,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_heart_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_heart_SHORT_TEXT_dark">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
@@ -367,7 +367,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_heart_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_SHORT_TEXT_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_heart_SHORT_TEXT_light">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
@@ -421,7 +421,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_heart_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_heart_RANGED_VALUE_dark">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
@@ -437,7 +437,7 @@
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -472,7 +472,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_heart_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_RANGED_VALUE_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_heart_RANGED_VALUE_light">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
@@ -488,7 +488,7 @@
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -529,7 +529,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_heart_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_LONG_TEXT_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_heart_LONG_TEXT_dark">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
@@ -577,7 +577,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_heart_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_heart_LONG_TEXT_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_heart_LONG_TEXT_light">
                     <PartText x="498" y="91" width="92" height="65" angle="15">
@@ -638,7 +638,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="text_weather_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_SHORT_TEXT_dark">([COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0) || ([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == "°" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°C" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°F"))</Expression>
                   </Expressions>
                   <Compare expression="text_weather_SHORT_TEXT_dark">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
@@ -674,7 +674,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="text_weather_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_SHORT_TEXT_light">([COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0) || ([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == "°" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°C" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°F"))</Expression>
                   </Expressions>
                   <Compare expression="text_weather_SHORT_TEXT_light">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
@@ -716,7 +716,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="text_weather_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_RANGED_VALUE_dark">([COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0) || ([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == "°" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°C" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°F"))</Expression>
                   </Expressions>
                   <Compare expression="text_weather_RANGED_VALUE_dark">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
@@ -732,7 +732,7 @@
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -755,7 +755,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="text_weather_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_RANGED_VALUE_light">([COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0) || ([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == "°" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°C" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°F"))</Expression>
                   </Expressions>
                   <Compare expression="text_weather_RANGED_VALUE_light">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
@@ -771,7 +771,7 @@
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -800,7 +800,7 @@
               <Group name="dark" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="text_weather_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_LONG_TEXT_dark">([COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0) || ([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == "°" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°C" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°F"))</Expression>
                   </Expressions>
                   <Compare expression="text_weather_LONG_TEXT_dark">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
@@ -836,7 +836,7 @@
               <Group name="light" x="0" y="0" width="920" height="920">
                 <Condition>
                   <Expressions>
-                    <Expression name="text_weather_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_weather_LONG_TEXT_light">([COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0) || ([COMPLICATION.TITLE] != null &amp;&amp; textLength([COMPLICATION.TITLE]) &gt;= 2 &amp;&amp; (subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-1, textLength([COMPLICATION.TITLE])) == "°" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°C" || subText([COMPLICATION.TITLE], textLength([COMPLICATION.TITLE])-2, textLength([COMPLICATION.TITLE])) == "°F"))</Expression>
                   </Expressions>
                   <Compare expression="text_weather_LONG_TEXT_light">
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
@@ -929,7 +929,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_floors_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_floors_SHORT_TEXT_dark">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
@@ -977,7 +977,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_floors_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_SHORT_TEXT_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_floors_SHORT_TEXT_light">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
@@ -1031,7 +1031,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_floors_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_floors_RANGED_VALUE_dark">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
@@ -1047,7 +1047,7 @@
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -1082,7 +1082,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_floors_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_RANGED_VALUE_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_floors_RANGED_VALUE_light">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
@@ -1098,7 +1098,7 @@
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -1139,7 +1139,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_floors_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_LONG_TEXT_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_floors_LONG_TEXT_dark">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
@@ -1187,7 +1187,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_floors_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_floors_LONG_TEXT_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_floors_LONG_TEXT_light">
                     <PartText x="200" y="660" width="86" height="65" angle="47">
@@ -1270,7 +1270,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_battery_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_battery_SHORT_TEXT_dark">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
@@ -1318,7 +1318,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_battery_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_SHORT_TEXT_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_battery_SHORT_TEXT_light">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
@@ -1372,7 +1372,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_battery_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_battery_RANGED_VALUE_dark">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
@@ -1388,7 +1388,7 @@
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -1423,7 +1423,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_battery_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_RANGED_VALUE_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_battery_RANGED_VALUE_light">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
@@ -1439,7 +1439,7 @@
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -1480,7 +1480,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_battery_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_LONG_TEXT_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_battery_LONG_TEXT_dark">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
@@ -1528,7 +1528,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_battery_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_battery_LONG_TEXT_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_battery_LONG_TEXT_light">
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
@@ -1611,7 +1611,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_steps_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_SHORT_TEXT_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_steps_SHORT_TEXT_dark">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
@@ -1659,7 +1659,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_steps_SHORT_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_SHORT_TEXT_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_steps_SHORT_TEXT_light">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
@@ -1713,7 +1713,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_steps_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_RANGED_VALUE_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_steps_RANGED_VALUE_dark">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
@@ -1729,7 +1729,7 @@
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -1764,7 +1764,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_steps_RANGED_VALUE_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_RANGED_VALUE_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_steps_RANGED_VALUE_light">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
@@ -1780,7 +1780,7 @@
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
                           </Template>
                         </Font>
                       </Text>
@@ -1821,7 +1821,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_steps_LONG_TEXT_dark">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_LONG_TEXT_dark">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_steps_LONG_TEXT_dark">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
@@ -1869,7 +1869,7 @@
                 </Condition>
                 <Condition>
                   <Expressions>
-                    <Expression name="text_steps_LONG_TEXT_light">[COMPLICATION.TEXT] != null</Expression>
+                    <Expression name="text_steps_LONG_TEXT_light">[COMPLICATION.TEXT] != null &amp;&amp; textLength([COMPLICATION.TEXT]) &gt; 0</Expression>
                   </Expressions>
                   <Compare expression="text_steps_LONG_TEXT_light">
                     <PartText x="690" y="539" width="171" height="65" angle="-62">

@@ -102,16 +102,17 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
     replace_caption(g,label,theme,fg,x,y,width,height,angle,ctype)
     condition=S(g,'Condition'); expressions=S(condition,'Expressions')
     text_expression=f'text_{label}_{ctype}_{theme}'
-    e=S(expressions,'Expression',name=text_expression);e.text='[COMPLICATION.TEXT] != null'
+    e=S(expressions,'Expression',name=text_expression);e.text='[COMPLICATION.TEXT] != null && textLength([COMPLICATION.TEXT]) > 0'
     present=S(condition,'Compare',expression=text_expression)
     display_value='[COMPLICATION.TEXT]'
     if label=='weather':
      title='[COMPLICATION.TITLE]';length=f'textLength({title})'
      temperature=f'{title} != null && {length} >= 2 && (subText({title}, {length}-1, {length}) == "°" || subText({title}, {length}-2, {length}) == "°C" || subText({title}, {length}-2, {length}) == "°F")'
      display_value=f'({temperature}) ? {title} : [COMPLICATION.TEXT]'
+     e.text=f'([COMPLICATION.TEXT] != null && textLength([COMPLICATION.TEXT]) > 0) || ({temperature})'
     slot_text(present,'%s',(display_value,))
     fallback=S(condition,'Default')
-    if ctype=='RANGED_VALUE': slot_text(fallback,'%s',('numberFormat("0", [COMPLICATION.RANGED_VALUE_VALUE])',))
+    if ctype=='RANGED_VALUE': slot_text(fallback,'%s',('numberFormat("0.##", [COMPLICATION.RANGED_VALUE_VALUE])',))
     else: slot_text(fallback,'—')
     if label=='weather':
      condition=S(g,'Condition');ex=S(condition,'Expressions')
