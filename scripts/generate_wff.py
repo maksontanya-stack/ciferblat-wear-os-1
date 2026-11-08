@@ -108,7 +108,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
      source='[COMPLICATION.TITLE]';length=f'textLength({source})'
      temperature=f'{source} != null && {length} >= 2 && (subText({source}, {length}-1, {length}) == "°" || subText({source}, {length}-2, {length}) == "°C" || subText({source}, {length}-2, {length}) == "°F")'
      value=f'(({temperature}) ? {source} : {value})'
-     title=f'(({temperature}) ? "" : {title})'
+     title=f'(({temperature}) ? "ПОГОДА" : {title})'
     line=f'({title} + " " + {value})'
     radial_text(g,label,fg,line,scope)
     if label=='weather':

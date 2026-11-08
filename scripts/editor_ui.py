@@ -54,9 +54,15 @@ time.sleep(2)
 state('active-light-weather-swapped',ui=False)
 from PIL import ImageChops
 weather=Image.open(p/'active-light-weather-swapped.png').convert('RGB')
-box=(round(img.width*.18),round(img.height*.17),round(img.width*.30),round(img.height*.30))
-if sum(max(v)>30 for v in ImageChops.difference(img.crop(box),weather.crop(box)).getdata())>20:
- raise SystemExit('Weather swapped TITLE/TEXT payload changed temperature into the city name')
+import math
+changed=0
+for py in range(img.height):
+ for px in range(img.width):
+  dx=px*920/img.width-460;dy=py*920/img.height-452
+  radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
+  if 305<radius<393 and 274<angle<326 and max(abs(a-b) for a,b in zip(img.getpixel((px,py)),weather.getpixel((px,py))))>30: changed+=1
+if changed>20:
+ raise SystemExit('Weather swapped TITLE/TEXT payload changed the displayed weather sector')
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','false');time.sleep(3)
 # Real complication update changes both its title and value in the same sector.
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','true');time.sleep(4)
