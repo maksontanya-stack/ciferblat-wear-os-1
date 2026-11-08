@@ -42,3 +42,5 @@ for theme in dark light; do
 done
 cp design/dark-450.png "$r/preview.png"
 rm -f design/runtime-fill.png design/runtime-overlay.png design/stripe-pattern.png design/hour-working.png "$r"/digit_*.png "$r"/striped_*.png
+
+magick mogrify -strip "$r"/*.png
