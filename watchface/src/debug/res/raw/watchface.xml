@@ -17,7 +17,7 @@
             <PartImage x="0" y="0" width="920" height="920">
               <Image resource="background_dark" />
             </PartImage>
-            <Group name="active_dark_hour" x="267" y="337" width="310" height="260" alpha="255">
+            <Group name="active_dark_hour" x="267" y="337" width="310" height="300" alpha="255">
               <Condition>
                 <Expressions>
                   <Expression name="active_dark_hour_00">[HOUR_0_23] == 0</Expression>
@@ -46,122 +46,122 @@
                   <Expression name="active_dark_hour_23">[HOUR_0_23] == 23</Expression>
                 </Expressions>
                 <Compare expression="active_dark_hour_00">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_00" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_01">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_01" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_02">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_02" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_03">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_03" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_04">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_04" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_05">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_05" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_06">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_06" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_07">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_07" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_08">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_08" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_09">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_09" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_10">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_10" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_11">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_11" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_12">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_12" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_13">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_13" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_14">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_14" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_15">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_15" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_16">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_16" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_17">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_17" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_18">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_18" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_19">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_19" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_20">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_20" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_21">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_21" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_22">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_22" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_dark_hour_23">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_dark_23" />
                   </PartImage>
                 </Compare>
@@ -552,7 +552,7 @@
             <PartImage x="0" y="0" width="920" height="920">
               <Image resource="background_light" />
             </PartImage>
-            <Group name="active_light_hour" x="267" y="337" width="310" height="260" alpha="255">
+            <Group name="active_light_hour" x="267" y="337" width="310" height="300" alpha="255">
               <Condition>
                 <Expressions>
                   <Expression name="active_light_hour_00">[HOUR_0_23] == 0</Expression>
@@ -581,122 +581,122 @@
                   <Expression name="active_light_hour_23">[HOUR_0_23] == 23</Expression>
                 </Expressions>
                 <Compare expression="active_light_hour_00">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_00" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_01">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_01" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_02">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_02" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_03">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_03" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_04">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_04" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_05">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_05" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_06">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_06" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_07">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_07" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_08">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_08" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_09">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_09" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_10">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_10" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_11">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_11" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_12">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_12" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_13">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_13" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_14">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_14" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_15">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_15" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_16">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_16" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_17">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_17" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_18">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_18" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_19">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_19" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_20">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_20" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_21">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_21" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_22">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_22" />
                   </PartImage>
                 </Compare>
                 <Compare expression="active_light_hour_23">
-                  <PartImage x="0" y="0" width="310" height="260">
+                  <PartImage x="0" y="0" width="310" height="300">
                     <Image resource="hour_light_23" />
                   </PartImage>
                 </Compare>
@@ -62743,7 +62743,7 @@
     </ComplicationSlot>
     <Group name="ambient" x="0" y="0" width="920" height="920" alpha="0">
       <Variant mode="AMBIENT" target="alpha" value="255" />
-      <Group name="ambient_dark_hour" x="267" y="337" width="310" height="260" alpha="100">
+      <Group name="ambient_dark_hour" x="267" y="337" width="310" height="300" alpha="100">
         <Condition>
           <Expressions>
             <Expression name="ambient_dark_hour_00">[HOUR_0_23] == 0</Expression>
@@ -62772,122 +62772,122 @@
             <Expression name="ambient_dark_hour_23">[HOUR_0_23] == 23</Expression>
           </Expressions>
           <Compare expression="ambient_dark_hour_00">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_00" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_01">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_01" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_02">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_02" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_03">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_03" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_04">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_04" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_05">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_05" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_06">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_06" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_07">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_07" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_08">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_08" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_09">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_09" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_10">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_10" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_11">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_11" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_12">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_12" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_13">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_13" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_14">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_14" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_15">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_15" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_16">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_16" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_17">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_17" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_18">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_18" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_19">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_19" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_20">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_20" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_21">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_21" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_22">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_22" />
             </PartImage>
           </Compare>
           <Compare expression="ambient_dark_hour_23">
-            <PartImage x="0" y="0" width="310" height="260">
+            <PartImage x="0" y="0" width="310" height="300">
               <Image resource="hour_dark_23" />
             </PartImage>
           </Compare>

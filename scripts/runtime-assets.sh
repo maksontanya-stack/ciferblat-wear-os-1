@@ -33,14 +33,6 @@ done
 font=watchface/src/main/res/font/oswald.ttf
 for theme in dark light; do
  fg='#ddddda'; [ "$theme" = light ] && fg='#222a31'
- for number in {0..23}; do
-  printf -v word '%02d' "$number"
-  if [ "$word" != 10 ]; then
-   magick -size 310x260 xc:none -font "$font" -pointsize 310 -fill "$fg" -gravity center -annotate +0-5 "$word" design/hour-working.png
-   magick design/hour-working.png -alpha on -channel A -fx '(j>0.8*i-62 && mod(i-j+1008,14)<4) ? 0 : u.a' +channel "$r/hour_${theme}_$word.png"
-  fi
-  magick "$r/hour_${theme}_$word.png" -resize 155x130 "$r/hour_${theme}_$word.png"
- done
  for number in {0..59}; do
   printf -v word '%02d' "$number"
   if [ "$word" != 10 ]; then
@@ -55,4 +47,5 @@ rm -f design/arc-white.png design/arc-overlay.png design/runtime-fill.png design
 
 magick mogrify -strip "$r"/*.png
 
+python3 scripts/generate_hour_sprites.py
 python3 scripts/generate_clock_characters.py

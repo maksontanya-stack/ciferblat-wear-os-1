@@ -62,7 +62,7 @@ def radial_text(parent,label,fg,fmt,params,scope,width_em=None):
 def clock_images(parent,theme,scope,alpha='255'):
  # Select immutable artwork directly from live system time. This keeps word sprites
  # pixel-identical while avoiding bitmap-font word caching in older WFF runtimes.
- for kind,count,x,y,width,height,source in [('hour',24,267,337,310,260,'HOUR_0_23'),('minute',60,610,309,162,122,'MINUTE')]:
+ for kind,count,x,y,width,height,source in [('hour',24,267,337,310,300,'HOUR_0_23'),('minute',60,610,309,162,122,'MINUTE')]:
   clock=group(parent,f'{scope}_{theme}_{kind}',x=x,y=y,width=width,height=height,alpha=alpha)
   condition=S(clock,'Condition'); expressions=S(condition,'Expressions')
   for number in range(count):

@@ -81,6 +81,16 @@ for attempt in range(15):
 else: raise SystemExit('Long-title fixture was not delivered')
 time.sleep(3)
 state('active-light-long-title',ui=False)
+shortened=Image.open(p/'active-light-long-title.png').convert('RGB')
+# Both the ordinary and verbose height titles must resolve to the same caption.
+changed=0
+for py in range(img.height):
+ for px in range(img.width):
+  dx=px*920/img.width-460;dy=py*920/img.height-452
+  radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
+  if 305<radius<393 and (angle>334 or angle<26) and max(abs(a-b) for a,b in zip(alt.getpixel((px,py)),shortened.getpixel((px,py))))>30: changed+=1
+if changed>20: raise SystemExit('Verbose height title was not shortened to the same ВЫСОТА caption')
+
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','long_title','--ez','enabled','false');time.sleep(3)
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
 # Reopen native editor and capture real provider chooser (no simulated UI).
