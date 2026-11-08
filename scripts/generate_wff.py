@@ -49,8 +49,8 @@ def radial_text(parent,label,fg,fmt,params,scope,width_em=None):
  # geometry. The visible radius and center therefore stay fixed at every size.
  # Only one text node is needed per metric instead of a tree of font variants.
  scale=f'clamp({capacity:.3f} / (clamp(({width_em}), 0.01, 1000000) * 43), 0.001, 1)'
- part=S(parent,'PartText',x='0',y='0',width='920',height='920',pivotX='0',pivotY='0')
- for key,val in [('scaleX',scale),('scaleY',scale),('width',f'920 / ({scale})'),('height',f'920 / ({scale})')]:
+ part=S(parent,'PartText',x='0',y='0',width='32768',height='32768',pivotX='0',pivotY='0')
+ for key,val in [('scaleX',scale),('scaleY',scale)]:
   S(part,'Transform',target=key,value=val)
  circular=S(part,'TextCircular',centerX='460',centerY='452',width='700',height='700',startAngle=str(start),endAngle=str(end),direction='CLOCKWISE' if clockwise else 'COUNTER_CLOCKWISE',align='CENTER')
  for key,val in [('centerX',460),('centerY',452),('width',700),('height',700)]:
@@ -79,11 +79,13 @@ for theme,fg,g in themed(interactive):
  p=S(g,'PartImage',x='0',y='0',width='920',height='920')
  S(p,'Image',resource=f'background_{theme}')
  clock_images(g,theme,'active')
- # Device-localized weekday/date; no hard-coded calendar date.
+ # Russian weekday regardless of device locale; WFF numbers Sunday as one.
  p=S(g,'PartText',x='599',y='237',width='170',height='52')
  t=S(p,'Text',align='CENTER'); f=S(t,'Font',family='oswald',size='43',weight='BOLD',color=fg)
  up=S(f,'Upper'); template=S(up,'Template');template.text='%s %s.%s'
- for value in ['[DAY_OF_WEEK_S]','[DAY_Z]','[MONTH_Z]']:S(template,'Parameter',expression=value)
+ russian_weekday='"СБ"'
+ for day,name in reversed(list(enumerate(['ВС','ПН','ВТ','СР','ЧТ','ПТ'],1))): russian_weekday=f'([DAY_OF_WEEK] == {day} ? "{name}" : {russian_weekday})'
+ for value in [russian_weekday,'[DAY_Z]','[MONTH_Z]']:S(template,'Parameter',expression=value)
 # Each slot uses scene coordinates so captions and data have a shared, stable transform.
 for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'weather',140,165,160,180,0),(3,'floors',200,660,86,70,47),(4,'battery',470,747,133,62,-6),(5,'steps',690,539,171,62,-62)]:
  slot=S(scene,'ComplicationSlot',slotId=str(slot_id),displayName=label,x='0',y='0',width='920',height='920',supportedTypes='SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY',isCustomizable='TRUE')

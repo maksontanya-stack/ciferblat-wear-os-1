@@ -109,6 +109,13 @@ for py in range(img.height):
   if 305<radius<393 and max(abs(a-b) for a,b in zip(shortened.getpixel((px,py)),fitted.getpixel((px,py))))>30:
    if angle>334 or angle<26: inside+=1
    else: outside+=1
+ink=0
+for py in range(img.height):
+ for px in range(img.width):
+  dx=px*920/img.width-460;dy=py*920/img.height-452
+  radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
+  if 310<radius<385 and (angle>334 or angle<26) and max(fitted.getpixel((px,py)))<140: ink+=1
+if ink<20: raise SystemExit(f'Fitted long title is absent ({ink} dark pixels)')
 if inside<20: raise SystemExit('Long label did not render after automatic fitting')
 if outside>20: raise SystemExit('Fitted label changed pixels outside its radial sector')
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','unknown_long_title','--ez','enabled','false');time.sleep(3)
