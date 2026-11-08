@@ -261,7 +261,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_heart_dark" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
-                      <PartImage width="206" height="103" x="324" y="53">
+                      <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -309,7 +309,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_heart_light" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
-                      <PartImage width="206" height="103" x="324" y="53">
+                      <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -363,7 +363,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_heart_dark" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
-                      <PartImage width="206" height="103" x="324" y="53">
+                      <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -414,7 +414,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_heart_light" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
-                      <PartImage width="206" height="103" x="324" y="53">
+                      <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -471,7 +471,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_heart_dark" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
-                      <PartImage width="206" height="103" x="324" y="53">
+                      <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -519,7 +519,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_heart_light" x="-498" y="-91" width="920" height="920" angle="-15" pivotX="0.591304347826087" pivotY="0.1342391304347826">
-                      <PartImage width="206" height="103" x="324" y="53">
+                      <PartImage width="195" height="93" x="331" y="73">
                         <Image resource="caption_heart_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -871,7 +871,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_floors_dark" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
-                      <PartImage width="165" height="212" x="69" y="518">
+                      <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -919,7 +919,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_floors_light" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
-                      <PartImage width="165" height="212" x="69" y="518">
+                      <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -973,7 +973,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_floors_dark" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
-                      <PartImage width="165" height="212" x="69" y="518">
+                      <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1024,7 +1024,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_floors_light" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
-                      <PartImage width="165" height="212" x="69" y="518">
+                      <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1081,7 +1081,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_floors_dark" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
-                      <PartImage width="165" height="212" x="69" y="518">
+                      <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1129,7 +1129,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_floors_light" x="-200" y="-660" width="920" height="920" angle="-47" pivotX="0.26413043478260867" pivotY="0.7554347826086957">
-                      <PartImage width="165" height="212" x="69" y="518">
+                      <PartImage width="152" height="200" x="89" y="516">
                         <Image resource="caption_floors_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1212,7 +1212,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_battery_dark" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
-                      <PartImage width="193" height="115" x="288" y="737">
+                      <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1260,7 +1260,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_battery_light" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
-                      <PartImage width="193" height="115" x="288" y="737">
+                      <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1314,7 +1314,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_battery_dark" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
-                      <PartImage width="193" height="115" x="288" y="737">
+                      <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1365,7 +1365,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_battery_light" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
-                      <PartImage width="193" height="115" x="288" y="737">
+                      <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1422,7 +1422,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_battery_dark" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
-                      <PartImage width="193" height="115" x="288" y="737">
+                      <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1470,7 +1470,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_battery_light" x="-470" y="-747" width="920" height="920" angle="6" pivotX="0.5831521739130435" pivotY="0.8456521739130435">
-                      <PartImage width="193" height="115" x="288" y="737">
+                      <PartImage width="183" height="104" x="297" y="728">
                         <Image resource="caption_battery_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1553,7 +1553,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_steps_dark" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
-                      <PartImage width="153" height="153" x="639" y="629">
+                      <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1601,7 +1601,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_steps_light" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
-                      <PartImage width="153" height="153" x="639" y="629">
+                      <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1655,7 +1655,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_steps_dark" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
-                      <PartImage width="153" height="153" x="639" y="629">
+                      <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1706,7 +1706,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_steps_light" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
-                      <PartImage width="153" height="153" x="639" y="629">
+                      <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1763,7 +1763,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_steps_dark" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
-                      <PartImage width="153" height="153" x="639" y="629">
+                      <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_dark" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
@@ -1811,7 +1811,7 @@
                   </Expressions>
                   <Compare expression="changed_caption">
                     <Group name="caption_steps_light" x="-690" y="-539" width="920" height="920" angle="62" pivotX="0.8429347826086957" pivotY="0.6195652173913043">
-                      <PartImage width="153" height="153" x="639" y="629">
+                      <PartImage width="141" height="142" x="634" y="623">
                         <Image resource="caption_steps_light" />
                       </PartImage>
                       <PartText x="0" y="0" width="920" height="920">
