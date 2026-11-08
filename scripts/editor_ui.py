@@ -9,7 +9,9 @@ def state(name):
  (p/f'{name}.png').write_bytes(adb('exec-out','screencap','-p'))
  return ET.fromstring(data)
 def command(action,text=''):
- adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command',action,'--es','text',text)
+ args=['shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command',action]
+ if text: args+=['--es','text',text]
+ adb(*args)
  time.sleep(2)
 def click(tree,labels):
  for node in tree.iter('node'):
@@ -43,7 +45,7 @@ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorRecei
 state('active-light-altitude')
 from PIL import ImageChops
 alt=Image.open(p/'active-light-altitude.png').convert('RGB')
-roi=(round(img.width*.34),round(img.height*.07),round(img.width*.63),round(img.height*.20))
+roi=(round(img.width*.37),round(img.height*.09),round(img.width*.54),round(img.height*.18))
 if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),alt.crop(roi)).getdata())<30:
  raise SystemExit('Changing the source title did not update the sector caption')
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
