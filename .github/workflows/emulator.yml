@@ -37,8 +37,8 @@ jobs:
           profile: wearos_large_round
           ram-size: 2048M
           heap-size: 256M
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -feature -Vulkan -no-snapshot -noaudio -no-boot-anim
+          disable-animations: false
           script: bash scripts/emulator-smoke.sh
       - uses: actions/upload-artifact@v4
         if: always()
