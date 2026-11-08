@@ -14,9 +14,9 @@ for theme in ('dark','light'):
    text=f'{n:02}'
    S(f,'Word',name=text,resource=f'{kind}_{theme}_{text}',width=str(width),height=str(height))
 u=S(w,'UserConfigurations')
-theme_config=S(u,'ListConfiguration',id='theme',displayName='theme',defaultValue='dark')
-S(theme_config,'ListOption',id='dark',displayName='dark')
-S(theme_config,'ListOption',id='light',displayName='light')
+theme_config=S(u,'ListConfiguration',id='theme',displayName='theme',defaultValue='0')
+S(theme_config,'ListOption',id='0',displayName='dark')
+S(theme_config,'ListOption',id='1',displayName='light')
 scene=S(w,'Scene',backgroundColor='#000000')
 
 def ambient(el,value='0'):
@@ -25,7 +25,7 @@ def group(el,name,x=0,y=0,width=920,height=920,**kw):
  return S(el,'Group',name=name,x=str(x),y=str(y),width=str(width),height=str(height),**kw)
 def themed(parent):
  choice=S(parent,'ListConfiguration',id='theme')
- for theme,flag,fg in [('dark','dark','#ddddda'),('light','light','#222a31')]:
+ for theme,flag,fg in [('dark','0','#ddddda'),('light','1','#222a31')]:
   option=S(choice,'ListOption',id=flag)
   yield theme,fg,group(option,theme)
 def text(el,x,y,width,height,size,fg,fmt,params=(),angle=0):
