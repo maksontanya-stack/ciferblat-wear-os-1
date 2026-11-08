@@ -235,14 +235,522 @@
             <PartImage x="0" y="0" width="920" height="920">
               <Image resource="background_dark" />
             </PartImage>
-            <DigitalClock x="0" y="0" width="920" height="920">
-              <TimeText x="267" y="337" width="310" height="260" format="hh" hourFormat="24" align="CENTER">
-                <BitmapFont family="hour_dark" size="260" />
-              </TimeText>
-              <TimeText x="610" y="309" width="162" height="122" format="mm" hourFormat="24" align="CENTER">
-                <BitmapFont family="minute_dark" size="122" />
-              </TimeText>
-            </DigitalClock>
+            <Group name="active_dark_hour" x="267" y="337" width="310" height="260" alpha="255">
+              <Condition>
+                <Expressions>
+                  <Expression name="active_dark_hour_00">[HOUR_0_23] == 0</Expression>
+                  <Expression name="active_dark_hour_01">[HOUR_0_23] == 1</Expression>
+                  <Expression name="active_dark_hour_02">[HOUR_0_23] == 2</Expression>
+                  <Expression name="active_dark_hour_03">[HOUR_0_23] == 3</Expression>
+                  <Expression name="active_dark_hour_04">[HOUR_0_23] == 4</Expression>
+                  <Expression name="active_dark_hour_05">[HOUR_0_23] == 5</Expression>
+                  <Expression name="active_dark_hour_06">[HOUR_0_23] == 6</Expression>
+                  <Expression name="active_dark_hour_07">[HOUR_0_23] == 7</Expression>
+                  <Expression name="active_dark_hour_08">[HOUR_0_23] == 8</Expression>
+                  <Expression name="active_dark_hour_09">[HOUR_0_23] == 9</Expression>
+                  <Expression name="active_dark_hour_10">[HOUR_0_23] == 10</Expression>
+                  <Expression name="active_dark_hour_11">[HOUR_0_23] == 11</Expression>
+                  <Expression name="active_dark_hour_12">[HOUR_0_23] == 12</Expression>
+                  <Expression name="active_dark_hour_13">[HOUR_0_23] == 13</Expression>
+                  <Expression name="active_dark_hour_14">[HOUR_0_23] == 14</Expression>
+                  <Expression name="active_dark_hour_15">[HOUR_0_23] == 15</Expression>
+                  <Expression name="active_dark_hour_16">[HOUR_0_23] == 16</Expression>
+                  <Expression name="active_dark_hour_17">[HOUR_0_23] == 17</Expression>
+                  <Expression name="active_dark_hour_18">[HOUR_0_23] == 18</Expression>
+                  <Expression name="active_dark_hour_19">[HOUR_0_23] == 19</Expression>
+                  <Expression name="active_dark_hour_20">[HOUR_0_23] == 20</Expression>
+                  <Expression name="active_dark_hour_21">[HOUR_0_23] == 21</Expression>
+                  <Expression name="active_dark_hour_22">[HOUR_0_23] == 22</Expression>
+                  <Expression name="active_dark_hour_23">[HOUR_0_23] == 23</Expression>
+                </Expressions>
+                <Compare expression="active_dark_hour_00">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_00" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_01">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_01" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_02">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_02" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_03">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_03" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_04">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_04" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_05">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_05" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_06">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_06" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_07">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_07" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_08">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_08" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_09">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_09" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_10">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_10" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_11">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_11" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_12">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_12" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_13">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_13" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_14">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_14" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_15">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_15" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_16">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_16" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_17">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_17" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_18">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_18" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_19">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_19" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_20">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_20" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_21">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_21" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_22">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_22" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_hour_23">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_dark_23" />
+                  </PartImage>
+                </Compare>
+              </Condition>
+            </Group>
+            <Group name="active_dark_minute" x="610" y="309" width="162" height="122" alpha="255">
+              <Condition>
+                <Expressions>
+                  <Expression name="active_dark_minute_00">[MINUTE] == 0</Expression>
+                  <Expression name="active_dark_minute_01">[MINUTE] == 1</Expression>
+                  <Expression name="active_dark_minute_02">[MINUTE] == 2</Expression>
+                  <Expression name="active_dark_minute_03">[MINUTE] == 3</Expression>
+                  <Expression name="active_dark_minute_04">[MINUTE] == 4</Expression>
+                  <Expression name="active_dark_minute_05">[MINUTE] == 5</Expression>
+                  <Expression name="active_dark_minute_06">[MINUTE] == 6</Expression>
+                  <Expression name="active_dark_minute_07">[MINUTE] == 7</Expression>
+                  <Expression name="active_dark_minute_08">[MINUTE] == 8</Expression>
+                  <Expression name="active_dark_minute_09">[MINUTE] == 9</Expression>
+                  <Expression name="active_dark_minute_10">[MINUTE] == 10</Expression>
+                  <Expression name="active_dark_minute_11">[MINUTE] == 11</Expression>
+                  <Expression name="active_dark_minute_12">[MINUTE] == 12</Expression>
+                  <Expression name="active_dark_minute_13">[MINUTE] == 13</Expression>
+                  <Expression name="active_dark_minute_14">[MINUTE] == 14</Expression>
+                  <Expression name="active_dark_minute_15">[MINUTE] == 15</Expression>
+                  <Expression name="active_dark_minute_16">[MINUTE] == 16</Expression>
+                  <Expression name="active_dark_minute_17">[MINUTE] == 17</Expression>
+                  <Expression name="active_dark_minute_18">[MINUTE] == 18</Expression>
+                  <Expression name="active_dark_minute_19">[MINUTE] == 19</Expression>
+                  <Expression name="active_dark_minute_20">[MINUTE] == 20</Expression>
+                  <Expression name="active_dark_minute_21">[MINUTE] == 21</Expression>
+                  <Expression name="active_dark_minute_22">[MINUTE] == 22</Expression>
+                  <Expression name="active_dark_minute_23">[MINUTE] == 23</Expression>
+                  <Expression name="active_dark_minute_24">[MINUTE] == 24</Expression>
+                  <Expression name="active_dark_minute_25">[MINUTE] == 25</Expression>
+                  <Expression name="active_dark_minute_26">[MINUTE] == 26</Expression>
+                  <Expression name="active_dark_minute_27">[MINUTE] == 27</Expression>
+                  <Expression name="active_dark_minute_28">[MINUTE] == 28</Expression>
+                  <Expression name="active_dark_minute_29">[MINUTE] == 29</Expression>
+                  <Expression name="active_dark_minute_30">[MINUTE] == 30</Expression>
+                  <Expression name="active_dark_minute_31">[MINUTE] == 31</Expression>
+                  <Expression name="active_dark_minute_32">[MINUTE] == 32</Expression>
+                  <Expression name="active_dark_minute_33">[MINUTE] == 33</Expression>
+                  <Expression name="active_dark_minute_34">[MINUTE] == 34</Expression>
+                  <Expression name="active_dark_minute_35">[MINUTE] == 35</Expression>
+                  <Expression name="active_dark_minute_36">[MINUTE] == 36</Expression>
+                  <Expression name="active_dark_minute_37">[MINUTE] == 37</Expression>
+                  <Expression name="active_dark_minute_38">[MINUTE] == 38</Expression>
+                  <Expression name="active_dark_minute_39">[MINUTE] == 39</Expression>
+                  <Expression name="active_dark_minute_40">[MINUTE] == 40</Expression>
+                  <Expression name="active_dark_minute_41">[MINUTE] == 41</Expression>
+                  <Expression name="active_dark_minute_42">[MINUTE] == 42</Expression>
+                  <Expression name="active_dark_minute_43">[MINUTE] == 43</Expression>
+                  <Expression name="active_dark_minute_44">[MINUTE] == 44</Expression>
+                  <Expression name="active_dark_minute_45">[MINUTE] == 45</Expression>
+                  <Expression name="active_dark_minute_46">[MINUTE] == 46</Expression>
+                  <Expression name="active_dark_minute_47">[MINUTE] == 47</Expression>
+                  <Expression name="active_dark_minute_48">[MINUTE] == 48</Expression>
+                  <Expression name="active_dark_minute_49">[MINUTE] == 49</Expression>
+                  <Expression name="active_dark_minute_50">[MINUTE] == 50</Expression>
+                  <Expression name="active_dark_minute_51">[MINUTE] == 51</Expression>
+                  <Expression name="active_dark_minute_52">[MINUTE] == 52</Expression>
+                  <Expression name="active_dark_minute_53">[MINUTE] == 53</Expression>
+                  <Expression name="active_dark_minute_54">[MINUTE] == 54</Expression>
+                  <Expression name="active_dark_minute_55">[MINUTE] == 55</Expression>
+                  <Expression name="active_dark_minute_56">[MINUTE] == 56</Expression>
+                  <Expression name="active_dark_minute_57">[MINUTE] == 57</Expression>
+                  <Expression name="active_dark_minute_58">[MINUTE] == 58</Expression>
+                  <Expression name="active_dark_minute_59">[MINUTE] == 59</Expression>
+                </Expressions>
+                <Compare expression="active_dark_minute_00">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_00" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_01">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_01" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_02">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_02" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_03">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_03" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_04">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_04" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_05">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_05" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_06">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_06" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_07">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_07" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_08">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_08" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_09">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_09" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_10">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_10" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_11">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_11" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_12">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_12" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_13">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_13" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_14">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_14" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_15">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_15" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_16">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_16" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_17">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_17" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_18">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_18" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_19">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_19" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_20">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_20" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_21">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_21" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_22">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_22" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_23">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_23" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_24">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_24" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_25">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_25" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_26">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_26" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_27">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_27" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_28">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_28" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_29">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_29" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_30">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_30" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_31">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_31" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_32">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_32" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_33">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_33" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_34">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_34" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_35">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_35" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_36">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_36" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_37">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_37" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_38">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_38" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_39">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_39" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_40">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_40" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_41">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_41" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_42">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_42" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_43">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_43" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_44">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_44" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_45">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_45" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_46">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_46" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_47">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_47" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_48">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_48" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_49">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_49" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_50">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_50" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_51">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_51" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_52">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_52" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_53">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_53" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_54">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_54" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_55">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_55" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_56">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_56" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_57">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_57" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_58">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_58" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_dark_minute_59">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_dark_59" />
+                  </PartImage>
+                </Compare>
+              </Condition>
+            </Group>
             <PartText x="599" y="237" width="170" height="52">
               <Text align="CENTER">
                 <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
@@ -262,14 +770,522 @@
             <PartImage x="0" y="0" width="920" height="920">
               <Image resource="background_light" />
             </PartImage>
-            <DigitalClock x="0" y="0" width="920" height="920">
-              <TimeText x="267" y="337" width="310" height="260" format="hh" hourFormat="24" align="CENTER">
-                <BitmapFont family="hour_light" size="260" />
-              </TimeText>
-              <TimeText x="610" y="309" width="162" height="122" format="mm" hourFormat="24" align="CENTER">
-                <BitmapFont family="minute_light" size="122" />
-              </TimeText>
-            </DigitalClock>
+            <Group name="active_light_hour" x="267" y="337" width="310" height="260" alpha="255">
+              <Condition>
+                <Expressions>
+                  <Expression name="active_light_hour_00">[HOUR_0_23] == 0</Expression>
+                  <Expression name="active_light_hour_01">[HOUR_0_23] == 1</Expression>
+                  <Expression name="active_light_hour_02">[HOUR_0_23] == 2</Expression>
+                  <Expression name="active_light_hour_03">[HOUR_0_23] == 3</Expression>
+                  <Expression name="active_light_hour_04">[HOUR_0_23] == 4</Expression>
+                  <Expression name="active_light_hour_05">[HOUR_0_23] == 5</Expression>
+                  <Expression name="active_light_hour_06">[HOUR_0_23] == 6</Expression>
+                  <Expression name="active_light_hour_07">[HOUR_0_23] == 7</Expression>
+                  <Expression name="active_light_hour_08">[HOUR_0_23] == 8</Expression>
+                  <Expression name="active_light_hour_09">[HOUR_0_23] == 9</Expression>
+                  <Expression name="active_light_hour_10">[HOUR_0_23] == 10</Expression>
+                  <Expression name="active_light_hour_11">[HOUR_0_23] == 11</Expression>
+                  <Expression name="active_light_hour_12">[HOUR_0_23] == 12</Expression>
+                  <Expression name="active_light_hour_13">[HOUR_0_23] == 13</Expression>
+                  <Expression name="active_light_hour_14">[HOUR_0_23] == 14</Expression>
+                  <Expression name="active_light_hour_15">[HOUR_0_23] == 15</Expression>
+                  <Expression name="active_light_hour_16">[HOUR_0_23] == 16</Expression>
+                  <Expression name="active_light_hour_17">[HOUR_0_23] == 17</Expression>
+                  <Expression name="active_light_hour_18">[HOUR_0_23] == 18</Expression>
+                  <Expression name="active_light_hour_19">[HOUR_0_23] == 19</Expression>
+                  <Expression name="active_light_hour_20">[HOUR_0_23] == 20</Expression>
+                  <Expression name="active_light_hour_21">[HOUR_0_23] == 21</Expression>
+                  <Expression name="active_light_hour_22">[HOUR_0_23] == 22</Expression>
+                  <Expression name="active_light_hour_23">[HOUR_0_23] == 23</Expression>
+                </Expressions>
+                <Compare expression="active_light_hour_00">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_00" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_01">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_01" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_02">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_02" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_03">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_03" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_04">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_04" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_05">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_05" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_06">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_06" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_07">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_07" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_08">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_08" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_09">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_09" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_10">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_10" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_11">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_11" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_12">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_12" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_13">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_13" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_14">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_14" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_15">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_15" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_16">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_16" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_17">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_17" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_18">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_18" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_19">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_19" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_20">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_20" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_21">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_21" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_22">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_22" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_hour_23">
+                  <PartImage x="0" y="0" width="310" height="260">
+                    <Image resource="hour_light_23" />
+                  </PartImage>
+                </Compare>
+              </Condition>
+            </Group>
+            <Group name="active_light_minute" x="610" y="309" width="162" height="122" alpha="255">
+              <Condition>
+                <Expressions>
+                  <Expression name="active_light_minute_00">[MINUTE] == 0</Expression>
+                  <Expression name="active_light_minute_01">[MINUTE] == 1</Expression>
+                  <Expression name="active_light_minute_02">[MINUTE] == 2</Expression>
+                  <Expression name="active_light_minute_03">[MINUTE] == 3</Expression>
+                  <Expression name="active_light_minute_04">[MINUTE] == 4</Expression>
+                  <Expression name="active_light_minute_05">[MINUTE] == 5</Expression>
+                  <Expression name="active_light_minute_06">[MINUTE] == 6</Expression>
+                  <Expression name="active_light_minute_07">[MINUTE] == 7</Expression>
+                  <Expression name="active_light_minute_08">[MINUTE] == 8</Expression>
+                  <Expression name="active_light_minute_09">[MINUTE] == 9</Expression>
+                  <Expression name="active_light_minute_10">[MINUTE] == 10</Expression>
+                  <Expression name="active_light_minute_11">[MINUTE] == 11</Expression>
+                  <Expression name="active_light_minute_12">[MINUTE] == 12</Expression>
+                  <Expression name="active_light_minute_13">[MINUTE] == 13</Expression>
+                  <Expression name="active_light_minute_14">[MINUTE] == 14</Expression>
+                  <Expression name="active_light_minute_15">[MINUTE] == 15</Expression>
+                  <Expression name="active_light_minute_16">[MINUTE] == 16</Expression>
+                  <Expression name="active_light_minute_17">[MINUTE] == 17</Expression>
+                  <Expression name="active_light_minute_18">[MINUTE] == 18</Expression>
+                  <Expression name="active_light_minute_19">[MINUTE] == 19</Expression>
+                  <Expression name="active_light_minute_20">[MINUTE] == 20</Expression>
+                  <Expression name="active_light_minute_21">[MINUTE] == 21</Expression>
+                  <Expression name="active_light_minute_22">[MINUTE] == 22</Expression>
+                  <Expression name="active_light_minute_23">[MINUTE] == 23</Expression>
+                  <Expression name="active_light_minute_24">[MINUTE] == 24</Expression>
+                  <Expression name="active_light_minute_25">[MINUTE] == 25</Expression>
+                  <Expression name="active_light_minute_26">[MINUTE] == 26</Expression>
+                  <Expression name="active_light_minute_27">[MINUTE] == 27</Expression>
+                  <Expression name="active_light_minute_28">[MINUTE] == 28</Expression>
+                  <Expression name="active_light_minute_29">[MINUTE] == 29</Expression>
+                  <Expression name="active_light_minute_30">[MINUTE] == 30</Expression>
+                  <Expression name="active_light_minute_31">[MINUTE] == 31</Expression>
+                  <Expression name="active_light_minute_32">[MINUTE] == 32</Expression>
+                  <Expression name="active_light_minute_33">[MINUTE] == 33</Expression>
+                  <Expression name="active_light_minute_34">[MINUTE] == 34</Expression>
+                  <Expression name="active_light_minute_35">[MINUTE] == 35</Expression>
+                  <Expression name="active_light_minute_36">[MINUTE] == 36</Expression>
+                  <Expression name="active_light_minute_37">[MINUTE] == 37</Expression>
+                  <Expression name="active_light_minute_38">[MINUTE] == 38</Expression>
+                  <Expression name="active_light_minute_39">[MINUTE] == 39</Expression>
+                  <Expression name="active_light_minute_40">[MINUTE] == 40</Expression>
+                  <Expression name="active_light_minute_41">[MINUTE] == 41</Expression>
+                  <Expression name="active_light_minute_42">[MINUTE] == 42</Expression>
+                  <Expression name="active_light_minute_43">[MINUTE] == 43</Expression>
+                  <Expression name="active_light_minute_44">[MINUTE] == 44</Expression>
+                  <Expression name="active_light_minute_45">[MINUTE] == 45</Expression>
+                  <Expression name="active_light_minute_46">[MINUTE] == 46</Expression>
+                  <Expression name="active_light_minute_47">[MINUTE] == 47</Expression>
+                  <Expression name="active_light_minute_48">[MINUTE] == 48</Expression>
+                  <Expression name="active_light_minute_49">[MINUTE] == 49</Expression>
+                  <Expression name="active_light_minute_50">[MINUTE] == 50</Expression>
+                  <Expression name="active_light_minute_51">[MINUTE] == 51</Expression>
+                  <Expression name="active_light_minute_52">[MINUTE] == 52</Expression>
+                  <Expression name="active_light_minute_53">[MINUTE] == 53</Expression>
+                  <Expression name="active_light_minute_54">[MINUTE] == 54</Expression>
+                  <Expression name="active_light_minute_55">[MINUTE] == 55</Expression>
+                  <Expression name="active_light_minute_56">[MINUTE] == 56</Expression>
+                  <Expression name="active_light_minute_57">[MINUTE] == 57</Expression>
+                  <Expression name="active_light_minute_58">[MINUTE] == 58</Expression>
+                  <Expression name="active_light_minute_59">[MINUTE] == 59</Expression>
+                </Expressions>
+                <Compare expression="active_light_minute_00">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_00" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_01">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_01" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_02">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_02" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_03">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_03" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_04">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_04" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_05">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_05" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_06">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_06" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_07">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_07" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_08">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_08" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_09">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_09" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_10">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_10" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_11">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_11" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_12">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_12" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_13">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_13" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_14">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_14" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_15">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_15" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_16">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_16" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_17">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_17" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_18">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_18" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_19">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_19" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_20">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_20" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_21">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_21" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_22">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_22" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_23">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_23" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_24">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_24" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_25">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_25" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_26">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_26" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_27">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_27" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_28">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_28" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_29">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_29" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_30">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_30" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_31">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_31" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_32">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_32" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_33">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_33" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_34">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_34" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_35">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_35" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_36">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_36" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_37">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_37" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_38">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_38" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_39">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_39" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_40">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_40" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_41">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_41" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_42">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_42" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_43">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_43" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_44">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_44" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_45">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_45" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_46">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_46" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_47">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_47" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_48">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_48" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_49">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_49" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_50">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_50" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_51">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_51" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_52">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_52" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_53">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_53" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_54">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_54" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_55">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_55" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_56">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_56" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_57">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_57" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_58">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_58" />
+                  </PartImage>
+                </Compare>
+                <Compare expression="active_light_minute_59">
+                  <PartImage x="0" y="0" width="162" height="122">
+                    <Image resource="minute_light_59" />
+                  </PartImage>
+                </Compare>
+              </Condition>
+            </Group>
             <PartText x="599" y="237" width="170" height="52">
               <Text align="CENTER">
                 <Font family="oswald" size="43" weight="BOLD" color="#222a31">
@@ -1921,14 +2937,522 @@
     </ComplicationSlot>
     <Group name="ambient" x="0" y="0" width="920" height="920" alpha="0">
       <Variant mode="AMBIENT" target="alpha" value="255" />
-      <DigitalClock x="0" y="0" width="920" height="920">
-        <TimeText x="267" y="337" width="310" height="260" format="hh" hourFormat="24" align="CENTER" alpha="100">
-          <BitmapFont family="hour_dark" size="260" />
-        </TimeText>
-        <TimeText x="610" y="309" width="162" height="122" format="mm" hourFormat="24" align="CENTER" alpha="100">
-          <BitmapFont family="minute_dark" size="122" />
-        </TimeText>
-      </DigitalClock>
+      <Group name="ambient_dark_hour" x="267" y="337" width="310" height="260" alpha="100">
+        <Condition>
+          <Expressions>
+            <Expression name="ambient_dark_hour_00">[HOUR_0_23] == 0</Expression>
+            <Expression name="ambient_dark_hour_01">[HOUR_0_23] == 1</Expression>
+            <Expression name="ambient_dark_hour_02">[HOUR_0_23] == 2</Expression>
+            <Expression name="ambient_dark_hour_03">[HOUR_0_23] == 3</Expression>
+            <Expression name="ambient_dark_hour_04">[HOUR_0_23] == 4</Expression>
+            <Expression name="ambient_dark_hour_05">[HOUR_0_23] == 5</Expression>
+            <Expression name="ambient_dark_hour_06">[HOUR_0_23] == 6</Expression>
+            <Expression name="ambient_dark_hour_07">[HOUR_0_23] == 7</Expression>
+            <Expression name="ambient_dark_hour_08">[HOUR_0_23] == 8</Expression>
+            <Expression name="ambient_dark_hour_09">[HOUR_0_23] == 9</Expression>
+            <Expression name="ambient_dark_hour_10">[HOUR_0_23] == 10</Expression>
+            <Expression name="ambient_dark_hour_11">[HOUR_0_23] == 11</Expression>
+            <Expression name="ambient_dark_hour_12">[HOUR_0_23] == 12</Expression>
+            <Expression name="ambient_dark_hour_13">[HOUR_0_23] == 13</Expression>
+            <Expression name="ambient_dark_hour_14">[HOUR_0_23] == 14</Expression>
+            <Expression name="ambient_dark_hour_15">[HOUR_0_23] == 15</Expression>
+            <Expression name="ambient_dark_hour_16">[HOUR_0_23] == 16</Expression>
+            <Expression name="ambient_dark_hour_17">[HOUR_0_23] == 17</Expression>
+            <Expression name="ambient_dark_hour_18">[HOUR_0_23] == 18</Expression>
+            <Expression name="ambient_dark_hour_19">[HOUR_0_23] == 19</Expression>
+            <Expression name="ambient_dark_hour_20">[HOUR_0_23] == 20</Expression>
+            <Expression name="ambient_dark_hour_21">[HOUR_0_23] == 21</Expression>
+            <Expression name="ambient_dark_hour_22">[HOUR_0_23] == 22</Expression>
+            <Expression name="ambient_dark_hour_23">[HOUR_0_23] == 23</Expression>
+          </Expressions>
+          <Compare expression="ambient_dark_hour_00">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_00" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_01">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_01" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_02">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_02" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_03">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_03" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_04">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_04" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_05">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_05" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_06">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_06" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_07">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_07" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_08">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_08" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_09">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_09" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_10">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_10" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_11">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_11" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_12">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_12" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_13">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_13" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_14">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_14" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_15">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_15" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_16">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_16" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_17">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_17" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_18">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_18" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_19">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_19" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_20">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_20" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_21">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_21" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_22">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_22" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_hour_23">
+            <PartImage x="0" y="0" width="310" height="260">
+              <Image resource="hour_dark_23" />
+            </PartImage>
+          </Compare>
+        </Condition>
+      </Group>
+      <Group name="ambient_dark_minute" x="610" y="309" width="162" height="122" alpha="100">
+        <Condition>
+          <Expressions>
+            <Expression name="ambient_dark_minute_00">[MINUTE] == 0</Expression>
+            <Expression name="ambient_dark_minute_01">[MINUTE] == 1</Expression>
+            <Expression name="ambient_dark_minute_02">[MINUTE] == 2</Expression>
+            <Expression name="ambient_dark_minute_03">[MINUTE] == 3</Expression>
+            <Expression name="ambient_dark_minute_04">[MINUTE] == 4</Expression>
+            <Expression name="ambient_dark_minute_05">[MINUTE] == 5</Expression>
+            <Expression name="ambient_dark_minute_06">[MINUTE] == 6</Expression>
+            <Expression name="ambient_dark_minute_07">[MINUTE] == 7</Expression>
+            <Expression name="ambient_dark_minute_08">[MINUTE] == 8</Expression>
+            <Expression name="ambient_dark_minute_09">[MINUTE] == 9</Expression>
+            <Expression name="ambient_dark_minute_10">[MINUTE] == 10</Expression>
+            <Expression name="ambient_dark_minute_11">[MINUTE] == 11</Expression>
+            <Expression name="ambient_dark_minute_12">[MINUTE] == 12</Expression>
+            <Expression name="ambient_dark_minute_13">[MINUTE] == 13</Expression>
+            <Expression name="ambient_dark_minute_14">[MINUTE] == 14</Expression>
+            <Expression name="ambient_dark_minute_15">[MINUTE] == 15</Expression>
+            <Expression name="ambient_dark_minute_16">[MINUTE] == 16</Expression>
+            <Expression name="ambient_dark_minute_17">[MINUTE] == 17</Expression>
+            <Expression name="ambient_dark_minute_18">[MINUTE] == 18</Expression>
+            <Expression name="ambient_dark_minute_19">[MINUTE] == 19</Expression>
+            <Expression name="ambient_dark_minute_20">[MINUTE] == 20</Expression>
+            <Expression name="ambient_dark_minute_21">[MINUTE] == 21</Expression>
+            <Expression name="ambient_dark_minute_22">[MINUTE] == 22</Expression>
+            <Expression name="ambient_dark_minute_23">[MINUTE] == 23</Expression>
+            <Expression name="ambient_dark_minute_24">[MINUTE] == 24</Expression>
+            <Expression name="ambient_dark_minute_25">[MINUTE] == 25</Expression>
+            <Expression name="ambient_dark_minute_26">[MINUTE] == 26</Expression>
+            <Expression name="ambient_dark_minute_27">[MINUTE] == 27</Expression>
+            <Expression name="ambient_dark_minute_28">[MINUTE] == 28</Expression>
+            <Expression name="ambient_dark_minute_29">[MINUTE] == 29</Expression>
+            <Expression name="ambient_dark_minute_30">[MINUTE] == 30</Expression>
+            <Expression name="ambient_dark_minute_31">[MINUTE] == 31</Expression>
+            <Expression name="ambient_dark_minute_32">[MINUTE] == 32</Expression>
+            <Expression name="ambient_dark_minute_33">[MINUTE] == 33</Expression>
+            <Expression name="ambient_dark_minute_34">[MINUTE] == 34</Expression>
+            <Expression name="ambient_dark_minute_35">[MINUTE] == 35</Expression>
+            <Expression name="ambient_dark_minute_36">[MINUTE] == 36</Expression>
+            <Expression name="ambient_dark_minute_37">[MINUTE] == 37</Expression>
+            <Expression name="ambient_dark_minute_38">[MINUTE] == 38</Expression>
+            <Expression name="ambient_dark_minute_39">[MINUTE] == 39</Expression>
+            <Expression name="ambient_dark_minute_40">[MINUTE] == 40</Expression>
+            <Expression name="ambient_dark_minute_41">[MINUTE] == 41</Expression>
+            <Expression name="ambient_dark_minute_42">[MINUTE] == 42</Expression>
+            <Expression name="ambient_dark_minute_43">[MINUTE] == 43</Expression>
+            <Expression name="ambient_dark_minute_44">[MINUTE] == 44</Expression>
+            <Expression name="ambient_dark_minute_45">[MINUTE] == 45</Expression>
+            <Expression name="ambient_dark_minute_46">[MINUTE] == 46</Expression>
+            <Expression name="ambient_dark_minute_47">[MINUTE] == 47</Expression>
+            <Expression name="ambient_dark_minute_48">[MINUTE] == 48</Expression>
+            <Expression name="ambient_dark_minute_49">[MINUTE] == 49</Expression>
+            <Expression name="ambient_dark_minute_50">[MINUTE] == 50</Expression>
+            <Expression name="ambient_dark_minute_51">[MINUTE] == 51</Expression>
+            <Expression name="ambient_dark_minute_52">[MINUTE] == 52</Expression>
+            <Expression name="ambient_dark_minute_53">[MINUTE] == 53</Expression>
+            <Expression name="ambient_dark_minute_54">[MINUTE] == 54</Expression>
+            <Expression name="ambient_dark_minute_55">[MINUTE] == 55</Expression>
+            <Expression name="ambient_dark_minute_56">[MINUTE] == 56</Expression>
+            <Expression name="ambient_dark_minute_57">[MINUTE] == 57</Expression>
+            <Expression name="ambient_dark_minute_58">[MINUTE] == 58</Expression>
+            <Expression name="ambient_dark_minute_59">[MINUTE] == 59</Expression>
+          </Expressions>
+          <Compare expression="ambient_dark_minute_00">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_00" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_01">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_01" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_02">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_02" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_03">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_03" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_04">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_04" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_05">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_05" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_06">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_06" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_07">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_07" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_08">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_08" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_09">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_09" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_10">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_10" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_11">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_11" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_12">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_12" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_13">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_13" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_14">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_14" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_15">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_15" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_16">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_16" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_17">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_17" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_18">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_18" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_19">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_19" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_20">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_20" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_21">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_21" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_22">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_22" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_23">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_23" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_24">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_24" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_25">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_25" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_26">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_26" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_27">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_27" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_28">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_28" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_29">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_29" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_30">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_30" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_31">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_31" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_32">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_32" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_33">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_33" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_34">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_34" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_35">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_35" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_36">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_36" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_37">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_37" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_38">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_38" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_39">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_39" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_40">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_40" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_41">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_41" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_42">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_42" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_43">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_43" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_44">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_44" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_45">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_45" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_46">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_46" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_47">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_47" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_48">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_48" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_49">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_49" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_50">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_50" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_51">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_51" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_52">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_52" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_53">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_53" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_54">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_54" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_55">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_55" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_56">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_56" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_57">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_57" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_58">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_58" />
+            </PartImage>
+          </Compare>
+          <Compare expression="ambient_dark_minute_59">
+            <PartImage x="0" y="0" width="162" height="122">
+              <Image resource="minute_dark_59" />
+            </PartImage>
+          </Compare>
+        </Condition>
+      </Group>
       <PartText x="599" y="237" width="170" height="52" angle="0">
         <Text align="CENTER" ellipsis="TRUE" maxLines="1">
           <Font family="oswald" size="43" weight="BOLD" color="#777777">

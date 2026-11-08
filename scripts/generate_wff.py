@@ -67,15 +67,26 @@ def replace_caption(parent,label,theme,fg,slot_x,slot_y,slot_w,slot_h,angle,kind
  upper=S(font,'Upper'); template=S(upper,'Template');template.text='%s'
  S(template,'Parameter',expression='[COMPLICATION.TITLE]')
 
+def clock_images(parent,theme,scope,alpha='255'):
+ # Select immutable artwork directly from live system time. This keeps word sprites
+ # pixel-identical while avoiding bitmap-font word caching in older WFF runtimes.
+ for kind,count,x,y,width,height,source in [('hour',24,267,337,310,260,'HOUR_0_23'),('minute',60,610,309,162,122,'MINUTE')]:
+  clock=group(parent,f'{scope}_{theme}_{kind}',x=x,y=y,width=width,height=height,alpha=alpha)
+  condition=S(clock,'Condition'); expressions=S(condition,'Expressions')
+  for number in range(count):
+   key=f'{scope}_{theme}_{kind}_{number:02}'
+   expression=S(expressions,'Expression',name=key);expression.text=f'[{source}] == {number}'
+  for number in range(count):
+   compare=S(condition,'Compare',expression=f'{scope}_{theme}_{kind}_{number:02}')
+   image=S(compare,'PartImage',x='0',y='0',width=str(width),height=str(height))
+   S(image,'Image',resource=f'{kind}_{theme}_{number:02}')
+
 interactive=group(scene,'interactive')
 ambient(interactive)
 for theme,fg,g in themed(interactive):
  p=S(g,'PartImage',x='0',y='0',width='920',height='920')
  S(p,'Image',resource=f'background_{theme}')
- clock=S(g,'DigitalClock',x='0',y='0',width='920',height='920')
- for kind,x,y,width,height,size,fmt in [('hour',267,337,310,260,260,'hh'),('minute',610,309,162,122,122,'mm')]:
-  tt=S(clock,'TimeText',x=str(x),y=str(y),width=str(width),height=str(height),format=fmt,hourFormat='24',align='CENTER')
-  S(tt,'BitmapFont',family=f'{kind}_{theme}',size=str(size))
+ clock_images(g,theme,'active')
  # Device-localized weekday/date; no hard-coded calendar date.
  p=S(g,'PartText',x='599',y='237',width='170',height='52')
  t=S(p,'Text',align='CENTER'); f=S(t,'Font',family='oswald',size='43',weight='BOLD',color=fg)
@@ -124,11 +135,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
 
 # AMOLED ambient: no light background and no active complication rendering.
 aod=group(scene,'ambient',alpha='0');ambient(aod,'255')
-clock=S(aod,'DigitalClock',x='0',y='0',width='920',height='920')
-# Ambient keeps the same measured positions and sizes; only brightness and background change.
-for kind,x,y,width,height,size,fmt in [('hour',267,337,310,260,260,'hh'),('minute',610,309,162,122,122,'mm')]:
- t=S(clock,'TimeText',x=str(x),y=str(y),width=str(width),height=str(height),format=fmt,hourFormat='24',align='CENTER',alpha='100')
- S(t,'BitmapFont',family=f'{kind}_dark',size=str(size))
+clock_images(aod,'dark','ambient',alpha='100')
 text(aod,599,237,170,52,43,'#777777','%s.%s',('[DAY_Z]','[MONTH_Z]'))
 indent(w)
 ElementTree(w).write(ROOT/'watchface/src/main/res/raw/watchface.xml',encoding='utf-8',xml_declaration=True)
