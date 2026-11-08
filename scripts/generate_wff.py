@@ -6,15 +6,6 @@ ROOT=Path(__file__).resolve().parents[1]
 w=Element('WatchFace', width='920',height='920')
 S(w,'Metadata',key='CLOCK_TYPE',value='DIGITAL')
 S(w,'Metadata',key='PREVIEW_TIME',value='10:10:00')
-bf=S(w,'BitmapFonts')
-for theme in ('dark','light'):
- for kind,count,width,height in [('hour',24,310,260),('minute',60,162,122)]:
-  f=S(bf,'BitmapFont',name=f'{kind}_{theme}')
-  for digit in range(10):
-   S(f,'Character',name=str(digit),resource=f'fallback_{kind}_{theme}_{digit}',width=str(width/2),height=str(height))
-  for n in range(count):
-   text=f'{n:02}'
-   S(f,'Word',name=text,resource=f'{kind}_{theme}_{text}',width=str(width),height=str(height))
 u=S(w,'UserConfigurations')
 theme_config=S(u,'ListConfiguration',id='theme',displayName='theme',defaultValue='0')
 S(theme_config,'ListOption',id='0',displayName='dark')
