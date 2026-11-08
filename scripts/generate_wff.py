@@ -109,7 +109,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
      display_value=f'({temperature}) ? {title} : [COMPLICATION.TEXT]'
     slot_text(present,'%s',(display_value,))
     fallback=S(condition,'Default')
-    if ctype=='RANGED_VALUE': slot_text(fallback,'%.0f',('[COMPLICATION.RANGED_VALUE_VALUE]',))
+    if ctype=='RANGED_VALUE': slot_text(fallback,'%s',('numberFormat("0", [COMPLICATION.RANGED_VALUE_VALUE])',))
     else: slot_text(fallback,'—')
     if label=='weather':
      condition=S(g,'Condition');ex=S(condition,'Expressions')
