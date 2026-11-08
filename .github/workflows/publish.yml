@@ -1,0 +1,18 @@
+name: Publish signed release assets
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release-artifacts
+      - name: Check artifact hashes
+        run: sha256sum --check SHA256SUMS.txt
+      - name: Upload previously signed artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload v1.0.0 wearos1.apk wearos1-install.zip SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --clobber
