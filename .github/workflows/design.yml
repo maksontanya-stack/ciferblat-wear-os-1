@@ -1,0 +1,29 @@
+name: Verify and package watchface artwork
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  artwork:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image verification dependency
+        run: python -m pip install Pillow==11.3.0
+      - name: Verify reference fidelity and device resolution
+        run: python scripts/verify_assets.py
+      - name: Upload artwork (not an installable APK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: watchface-artwork-450
+          path: |
+            design/
+            docs/
+            README.md
+          if-no-files-found: error
