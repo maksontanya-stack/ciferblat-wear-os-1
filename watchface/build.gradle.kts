@@ -7,7 +7,7 @@ android {
         minSdk = 33
         targetSdk = 33
         versionCode = 2
-        versionName = "1.1.0-preview"
+        versionName = "1.1.0"
     }
     buildTypes {
         debug {
