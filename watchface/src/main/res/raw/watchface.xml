@@ -437,7 +437,7 @@
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
@@ -488,7 +488,7 @@
                     <PartText x="498" y="91" width="92" height="65" angle="15">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
@@ -732,7 +732,7 @@
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
@@ -771,7 +771,7 @@
                     <PartText x="160" y="185" width="140" height="65" angle="-45">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
@@ -1047,7 +1047,7 @@
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
@@ -1098,7 +1098,7 @@
                     <PartText x="200" y="660" width="86" height="65" angle="47">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
@@ -1388,7 +1388,7 @@
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
@@ -1439,7 +1439,7 @@
                     <PartText x="470" y="747" width="133" height="65" angle="-6">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
@@ -1729,7 +1729,7 @@
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#ddddda">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
@@ -1780,7 +1780,7 @@
                     <PartText x="690" y="539" width="171" height="65" angle="-62">
                       <Text align="CENTER" ellipsis="TRUE" maxLines="1">
                         <Font family="oswald" size="43" weight="BOLD" color="#222a31">
-                          <Template>%s<Parameter expression="numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE])" />
+                          <Template>%s<Parameter expression="[COMPLICATION.RANGED_VALUE_VALUE] != null ? numberFormat(&quot;0.##&quot;, [COMPLICATION.RANGED_VALUE_VALUE]) : &quot;—&quot;" />
                           </Template>
                         </Font>
                       </Text>
