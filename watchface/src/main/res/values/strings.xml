@@ -1,0 +1,9 @@
+<resources>
+    <string name="watch_face_name">Циферблат Wear OS 1</string>
+    <string name="theme">Тема</string>
+    <string name="dark">Тёмная</string>
+    <string name="light">Светлая</string>
+    <string name="heart">Пульс</string>
+    <string name="weather">Погода</string>
+    <string name="floors">Этажи</string>
+</resources>
