@@ -4,3 +4,9 @@
 local.properties
 .gradle/
 build/
+
+dist/
+smoke-output/
+install/platform-tools/
+*.p12
+*.jks
