@@ -11,8 +11,14 @@ public abstract class FixtureService extends ComplicationDataSourceService {
     protected abstract String value();
     private PlainComplicationText plain(String value) { return new PlainComplicationText.Builder(value).build(); }
     private ComplicationData data(ComplicationType type) {
-        if(type==ComplicationType.RANGED_VALUE) return new RangedValueComplicationData.Builder(Float.parseFloat(value()),0f,250f,plain("TEST RANGE "+title())).setTitle(plain(title())).build();
-        ShortTextComplicationData.Builder builder = new ShortTextComplicationData.Builder(plain(value()), plain("TEST DATA: " + title() + " " + value())).setTitle(plain(title()));
+        boolean titleless = getSharedPreferences("fixture",0).getBoolean("titleless",false);
+        if(type==ComplicationType.RANGED_VALUE) {
+            RangedValueComplicationData.Builder ranged = new RangedValueComplicationData.Builder(Float.parseFloat(value()),0f,250f,plain("TEST RANGE "+title()));
+            if (!titleless) ranged.setTitle(plain(title()));
+            return ranged.build();
+        }
+        ShortTextComplicationData.Builder builder = new ShortTextComplicationData.Builder(plain(value()), plain("TEST DATA: " + title() + " " + value()));
+        if (!titleless) builder.setTitle(plain(title()));
         if (this instanceof Weather) builder.setMonochromaticImage(new MonochromaticImage.Builder(Icon.createWithResource(this, R.drawable.rain)).build());
         return builder.build();
     }

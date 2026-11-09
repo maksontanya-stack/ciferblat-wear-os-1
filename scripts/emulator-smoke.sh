@@ -30,6 +30,7 @@ adb exec-out screencap -p > smoke-output/active-next-minute.png
 adb shell date > smoke-output/time-second.txt
 adb logcat -d > smoke-output/logcat.txt
 python3 scripts/verify_screenshots.py
+python3 scripts/verify_titleless.py
 adb shell settings put secure enabled_accessibility_services ru.meta.wearos.classic1.fixtures/.EditorAccessibilityService
 adb shell settings put secure accessibility_enabled 1
 sleep 2
