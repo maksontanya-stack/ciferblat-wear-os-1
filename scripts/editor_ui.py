@@ -126,10 +126,14 @@ adb('shell','settings','put','secure','accessibility_enabled','1');time.sleep(2)
 adb('shell','input','swipe','227','227','227','227','1500');time.sleep(2)
 adb('shell','input','tap','227','380');time.sleep(2)
 tree=state('editor-reopened')
-if any('Swipe to edit Complications' in n.get('content-desc','') for n in tree.iter('node')):
+# Five caption settings precede the complications page. Navigate the actual
+# pager until all five source controls are visible, rather than assuming two pages.
+for page in range(9):
+ tree=state('editor-page-'+str(page))
+ sources=[n for n in tree.iter('node') if n.get('clickable')=='true' and n.get('content-desc','').startswith('TEST ')]
+ if len(sources)>=5:break
  command('next')
-tree=state('editor-five-fields')
-if sum(n.get('clickable')=='true' for n in tree.iter('node'))<5:
- raise SystemExit('The native editor did not expose all five fields')
+else:raise SystemExit('Native editor did not expose five complication fields')
+state('editor-five-fields')
 adb('shell','input','tap','108','125');time.sleep(3)
 state('provider-chooser')
