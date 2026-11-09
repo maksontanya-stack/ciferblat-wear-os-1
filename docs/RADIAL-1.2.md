@@ -15,7 +15,7 @@
 
 ## Реальные снимки и проверки
 
-Текущая сборка предназначена для Wear OS 6 / API 36. Первые проверки WFF 4: [открытие редактора, сохранение светлой темы, динамические и длинные подписи](https://github.com/maksontanya-stack/ciferblat-wear-os-1/actions/runs/42541155999) и [подписи при отсутствующем TITLE](https://github.com/maksontanya-stack/ciferblat-wear-os-1/actions/runs/42541320883) прошли. Значения на снимках получены от отдельных тестовых Android ComplicationDataSourceService, а не от физических датчиков Samsung. Galaxy Wearable на прошивке Samsung требует проверки на реальных часах.
+Текущая сборка предназначена для Wear OS 6 / API 36. [Финальная проверка обновления поверх WFF 1 и реального редактора — PASS](https://github.com/maksontanya-stack/ciferblat-wear-os-1/actions/runs/42543920464): все пять радиальных областей доступны, открывается штатный список источников, светлая тема сохраняется, ручная подпись меняется на «ВЫСОТА», режим «Авто» возвращается. Проверены принятые Android данные SHORT_TEXT и RANGED_VALUE без TITLE: подписи сохраняются. [Полная проверка времени, длинных и динамических названий](https://github.com/maksontanya-stack/ciferblat-wear-os-1/actions/runs/42541155999) тоже прошла. Значения на снимках получены от отдельных тестовых ComplicationDataSourceService, а не от физических датчиков Samsung. Работа Galaxy Wearable на прошивке Samsung требует проверки на реальных часах.
 
 | Тёмная | Светлая |
 |---|---|
@@ -38,3 +38,5 @@
 Целевые часы подтвердили Android API 36 (Wear OS 6). Сборка переведена на WFF 4, minSdk/targetSdk 36. Число текстовых блоков уменьшено с 2023 до 403: вместо отдельных деревьев для каждого показателя код названия вычисляется через числовой Reference один раз на тип данных и тему. Геометрия, шрифт, текстуры, штриховка и изображения часов сохранены.
 
 Добавлены реальные тестовые провайдеры без TITLE для SHORT_TEXT и RANGED_VALUE. Тест сравнивает все пять радиальных подписей с вариантом, где TITLE передан. Эмулятор дополнительно устанавливает прежнюю разметку WFF 1 и обновляет её поверх без удаления приложения. Это проверяет миграцию на Wear OS 6; Galaxy Wearable и прошивка Samsung требуют проверки на физических часах.
+
+Отсутствующий TITLE: [снимок](screenshots/radial-1.2/active-dark-titleless.png). Ручная подпись: [ВЫСОТА](screenshots/radial-1.2/active-light-forced-caption.png), [возврат в Авто](screenshots/radial-1.2/active-light-auto-caption.png). [Штатный список источников](screenshots/radial-1.2/provider-chooser.png).
