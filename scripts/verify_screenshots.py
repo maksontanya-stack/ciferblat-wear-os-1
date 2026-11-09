@@ -30,4 +30,5 @@ for label,(start,end) in sectors.items():
    radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
    if 310<radius<375 and ((angle>=start or angle<=end-360) if end>360 else start<=angle<=end) and min(b.getpixel((px,py)))>140: ink+=1
  if ink<20: raise SystemExit(f'Radial {label} text did not render ({ink} bright pixels)')
-print(f'PASS: installed and selected on Wear OS emulator ({w}x{h}); both time fields render; minutes advance')
+mode='focused editor run' if os.environ.get('EDITOR_ONLY') == 'true' else 'minutes advance'
+print(f'PASS: installed and selected on Wear OS emulator ({w}x{h}); both time fields render; {mode}')

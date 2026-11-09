@@ -37,7 +37,7 @@ if any('Customize Watch Faces' in n.get('content-desc','') for n in tree.iter('n
  adb('shell','input','keyevent','KEYCODE_BACK');time.sleep(2)
 # BACK already returns to the face. HOME is a launcher shortcut on Wear OS,
 # not an Android-phone-style return-to-face operation.
-from PIL import Image
+from PIL import Image, ImageChops
 for attempt in range(8):
  state('active-light',ui=False)
  img=Image.open(p/'active-light.png').convert('RGB')
@@ -54,7 +54,6 @@ if os.environ.get('EDITOR_ONLY') != 'true':
  else: raise SystemExit('Weather swapped payload was not delivered to the runtime')
  time.sleep(2)
  state('active-light-weather-swapped',ui=False)
- from PIL import ImageChops
  weather=Image.open(p/'active-light-weather-swapped.png').convert('RGB')
  import math
  changed=0
