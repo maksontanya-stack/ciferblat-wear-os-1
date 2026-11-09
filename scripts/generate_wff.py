@@ -1,4 +1,4 @@
-"""Generate WFF v1 markup in the unchanged 920-unit reference coordinate grid."""
+"""Generate WFF v4 markup in the unchanged 920-unit reference coordinate grid."""
 from pathlib import Path
 import json
 from xml.etree.ElementTree import Element, SubElement as S, ElementTree, indent
@@ -10,6 +10,18 @@ u=S(w,'UserConfigurations')
 theme_config=S(u,'ListConfiguration',id='theme',displayName='theme',defaultValue='0')
 S(theme_config,'ListOption',id='0',displayName='dark')
 S(theme_config,'ListOption',id='1',displayName='light')
+CATALOG=json.loads((ROOT/'design/metric-captions.json').read_text())
+METRICS={item['title']:index for index,item in enumerate(CATALOG,1)}
+DEFAULT_CAPTIONS={'heart':'ПУЛЬС','weather':'ПОГОДА','floors':'ЭТАЖИ','battery':'ЗАРЯД','steps':'ШАГИ'}
+# Preserve existing theme/slot identifiers, adding an explicit escape hatch for
+# providers that omit TITLE. No static text is painted into the artwork.
+for label in DEFAULT_CAPTIONS:
+ config=S(u,'ListConfiguration',id='caption_'+label,displayName='caption_'+label,defaultValue='0')
+ S(config,'ListOption',id='0',displayName='caption_auto_'+label)
+ for item in CATALOG:
+  index=METRICS[item['title']]
+  S(config,'ListOption',id=str(index),displayName='metric_'+str(index))
+ S(config,'ListOption',id='99',displayName='caption_none')
 scene=S(w,'Scene',backgroundColor='#000000')
 
 def ambient(el,value='0'):
@@ -110,30 +122,39 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
      temperature=f'{source} != null && {length} >= 2 && (subText({source}, {length}-1, {length}) == "°" || subText({source}, {length}-2, {length}) == "°C" || subText({source}, {length}-2, {length}) == "°F")'
      value=f'(({temperature}) ? {source} : {value})'
      title=f'(({temperature}) ? "ПОГОДА" : {title})'
-    # Resolve standard provider labels before fitting. Values remain independent
-    # template parameters: WFF v1 does not support '+' string concatenation.
-    metric=S(g,'Condition'); expressions=S(metric,'Expressions')
-    catalog={item['title']:item for item in json.loads((ROOT/'design/metric-captions.json').read_text())}
-    # Share the fitting logic between captions of similar widths. This avoids
-    # creating a full font-size tree for each alias on legacy WFF runtimes.
-    bands=[['СОН','УФ'],['ЗАКАТ','ТЕМП.','ШАГИ'],['ПУЛЬС','ЭТАЖИ','РАССТ.','ЗАРЯД'],['ВОСХОД','ВЫСОТА'],['КАЛОРИИ'],['ДАВЛЕНИЕ'],['КИСЛОРОД'],['БУДИЛЬНИК'],['ПОГОДА']]
-    def matches(item):
-     return ' || '.join('[COMPLICATION.TITLE] == '+json.dumps(alias,ensure_ascii=False) for alias in item['aliases'])
-    for index,names in enumerate(bands):
-     e=S(expressions,'Expression',name=f'metric_{scope}_{index}')
-     e.text=' || '.join(matches(catalog[name]) for name in names)
-     if label=='weather' and names==['ПОГОДА']: e.text+=f' || ({temperature})'
-    for index,names in enumerate(bands):
-     dest=S(metric,'Compare',expression=f'metric_{scope}_{index}')
-     if label=='weather' and names==['ПОГОДА']:
-      radial_text(dest,label,fg,'%s',(value,),scope+f'_metric_{index}',known=True)
-     else:
-      caption=json.dumps(names[-1],ensure_ascii=False)
-      for name in reversed(names[:-1]): caption=f'(({matches(catalog[name])}) ? '+json.dumps(name,ensure_ascii=False)+f' : {caption})'
-      prefix=max(catalog[name]['prefix_em'] for name in names)
-      radial_text(dest,label,fg,'%s %s',(caption,value),scope+f'_metric_{index}',f'{prefix} + textLength({value}) * 1.06',known=True)
-    dest=S(metric,'Default')
-    radial_text(dest,label,fg,'%s %s',(title,value),scope+'_unknown')
+    # WFF 4 numeric references resolve aliases once, rather than expanding a
+    # full fitting subtree for each metric. This is deliberately an empty group:
+    # its alpha carries a numeric code and cannot alter any visible content.
+    metric_expr='0'
+    for item in reversed(CATALOG):
+     matches=' || '.join('[COMPLICATION.TITLE] == '+json.dumps(alias,ensure_ascii=False) for alias in item['aliases'])
+     metric_expr=f'(({matches}) ? {METRICS[item["title"]]} : {metric_expr})'
+    default_id=METRICS[DEFAULT_CAPTIONS[label]]
+    metric_expr=f'(({has_title}) ? {metric_expr} : {default_id})'
+    if label=='weather': metric_expr=f'(({temperature}) ? {METRICS["ПОГОДА"]} : {metric_expr})'
+    # List selections are string-valued sources. A forced caption is useful for
+    # e.g. altitude from a provider that sends "182" and no title.
+    override=f'[CONFIGURATION.caption_{label}]'
+    for index in [*METRICS.values(),99]:
+     metric_expr=f'({override} == "{index}" ? {index} : {metric_expr})'
+    cache=group(g,'metric_cache_'+scope,width=1,height=1)
+    S(cache,'Transform',target='alpha',value=metric_expr)
+    refname='metric_'+scope
+    S(cache,'Reference',name=refname,source='alpha',defaultValue=str(default_id))
+    ref=f'[REFERENCE.{refname}]'
+    caption=title
+    prefix=f'textLength({title}) * 1.06 + 0.3'
+    for item in reversed(CATALOG):
+     index=METRICS[item['title']]
+     caption=f'({ref} == {index} ? '+json.dumps(item['title'],ensure_ascii=False)+f' : {caption})'
+     prefix=f'({ref} == {index} ? {item["prefix_em"]} : {prefix})'
+    caption=f'({ref} == 99 ? "" : {caption})'
+    prefix=f'({ref} == 99 ? 0 : {prefix})'
+    # The weather sector retains the reference icon+temperature composition.
+    if label=='weather':
+     caption=f'({ref} == {METRICS["ПОГОДА"]} ? "" : {caption})'
+     prefix=f'({ref} == {METRICS["ПОГОДА"]} ? 0 : {prefix})'
+    radial_text(g,label,fg,'%s %s',(caption,value),scope,f'{prefix} + textLength({value}) * 1.06')
     if label=='weather':
      condition=S(g,'Condition');ex=S(condition,'Expressions')
      icon_expression=f'icon_{label}_{ctype}_{theme}'
