@@ -34,6 +34,7 @@ jobs:
           java -jar "$RUNNER_TEMP/wff-validator.jar" 4 --stop-on-fail watchface/src/main/res/raw/watchface.xml
       - run: |
           python3 scripts/generate_test_overlay.py
+          bash scripts/build_upgrade_fixture.sh
           ./gradlew :watchface:assembleDebug :testprovider:assembleDebug --console=plain
       - name: Enable KVM for the emulator
         run: |

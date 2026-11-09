@@ -8,6 +8,11 @@ sleep 60
 adb shell input keyevent KEYCODE_HOME
 sleep 2
 adb install -r testprovider/build/outputs/apk/debug/testprovider-debug.apk
+# Exercise the actual in-place WFF 1 -> WFF 4 migration, preserving slot IDs.
+adb install -r upgrade-fixture/legacy-debug.apk
+adb shell am broadcast -a com.google.android.wearable.app.DEBUG_SURFACE --es operation set-watchface --es watchFaceId ru.meta.wearos.classic1
+sleep 10
+adb exec-out screencap -p > smoke-output/before-upgrade.png
 adb install -r watchface/build/outputs/apk/debug/watchface-debug.apk
 adb shell dumpsys battery unplug
 adb shell settings put system screen_off_timeout 1800000
