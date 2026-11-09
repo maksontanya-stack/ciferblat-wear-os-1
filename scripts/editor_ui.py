@@ -121,6 +121,42 @@ if outside>20: raise SystemExit('Fitted label changed pixels outside its radial 
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','unknown_long_title','--ez','enabled','false');time.sleep(3)
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','long_title','--ez','enabled','false');time.sleep(3)
 adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
+# A titleless source can be relabelled through a real native setting.
+# Verify the CONFIGURATION source changes rendered text, not just editor labels.
+def open_editor():
+ adb('shell','input','swipe','227','227','227','227','1500');time.sleep(2)
+ adb('shell','input','tap','227','380');time.sleep(2)
+def choose_top_caption(current,selected,tag):
+ open_editor()
+ for page in range(8):
+  tree=state(tag+'-page-'+str(page))
+  visible=[]
+  for n in tree.iter('node'):
+   coords=list(map(int,re.findall(r'-?\d+',n.get('bounds',''))))
+   if n.get('text')==current and len(coords)==4 and 0<coords[2]<=454 and coords[0]>=0:visible.append(n)
+  if visible:break
+  command('next')
+ else:raise SystemExit('Native caption setting missing: '+current)
+ command('tap',current)
+ tree=state(tag+'-options')
+ command('tap',selected)
+ state(tag+'-selected')
+ adb('shell','input','keyevent','KEYCODE_BACK');time.sleep(4)
+# The fixture has its ordinary title here; an explicit label must take precedence.
+choose_top_caption('Авто (без названия: Пульс)','ВЫСОТА','caption-height')
+for attempt in range(10):
+ state('active-light-forced-caption',ui=False)
+ forced=Image.open(p/'active-light-forced-caption.png').convert('RGB')
+ if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),forced.crop(roi)).getdata())>=30:break
+ time.sleep(2)
+else:raise SystemExit('Changing the caption setting did not change the actual radial text')
+choose_top_caption('ВЫСОТА','Авто (без названия: Пульс)','caption-auto')
+for attempt in range(10):
+ state('active-light-auto-caption',ui=False)
+ restored=Image.open(p/'active-light-auto-caption.png').convert('RGB')
+ if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),restored.crop(roi)).getdata())<20:break
+ time.sleep(2)
+else:raise SystemExit('Restoring Auto did not restore the provider caption')
 # Reopen native editor and capture real provider chooser (no simulated UI).
 adb('shell','settings','put','secure','accessibility_enabled','1');time.sleep(2)
 adb('shell','input','swipe','227','227','227','227','1500');time.sleep(2)
