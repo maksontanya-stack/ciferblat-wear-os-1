@@ -9,6 +9,12 @@ def set_titleless(enabled):
  time.sleep(8)
 before=Image.open(p/'active-next-minute.png').convert('RGB')
 set_titleless(True)
+for attempt in range(10):
+ log=adb('logcat','-d','-s','FIXTURE_PAYLOAD:I','AndroidRuntime:E','*:S').decode(errors='replace')
+ if all('TITLELESS_DELIVERED '+name in log for name in ['Heart','Weather','Floors','Battery','Steps']):break
+ time.sleep(1)
+else:raise SystemExit('All five valid titleless payloads were not accepted by Android')
+if 'At least one of monochromaticImage' in log:raise SystemExit('Titleless fixture was rejected by Android')
 (p/'active-dark-titleless.png').write_bytes(adb('exec-out','screencap','-p'))
 after=Image.open(p/'active-dark-titleless.png').convert('RGB')
 # Ignore the independently advancing minute/date. Only compare the actual five

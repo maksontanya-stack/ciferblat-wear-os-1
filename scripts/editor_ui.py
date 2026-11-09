@@ -12,6 +12,13 @@ def state(name,ui=True):
  (p/f'{name}.png').write_bytes(adb('exec-out','screencap','-p'))
  return ET.fromstring(data)
 def command(action,text=''):
+ # Real input also resets Wear's 15-second editor inactivity timer.
+ # Accessibility ACTION_SCROLL_FORWARD alone does not count as user activity.
+ if action in ('next','previous'):
+  x1,x2=(350,100) if action=='next' else (100,350)
+  adb('shell','input','swipe',str(x1),'227',str(x2),'227','250')
+  time.sleep(2)
+  return
  args=['shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command',action]
  if text: args+=['--es','text',shlex.quote(text)]
  adb(*args)

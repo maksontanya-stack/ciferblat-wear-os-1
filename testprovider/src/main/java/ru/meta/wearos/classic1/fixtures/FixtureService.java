@@ -15,6 +15,7 @@ public abstract class FixtureService extends ComplicationDataSourceService {
         if(type==ComplicationType.RANGED_VALUE) {
             RangedValueComplicationData.Builder ranged = new RangedValueComplicationData.Builder(Float.parseFloat(value()),0f,250f,plain("TEST RANGE "+title()));
             if (!titleless) ranged.setTitle(plain(title()));
+            else ranged.setText(plain(value()));
             return ranged.build();
         }
         ShortTextComplicationData.Builder builder = new ShortTextComplicationData.Builder(plain(value()), plain("TEST DATA: " + title() + " " + value()));
@@ -23,7 +24,10 @@ public abstract class FixtureService extends ComplicationDataSourceService {
         return builder.build();
     }
     @Override public void onComplicationRequest(ComplicationRequest request, ComplicationRequestListener listener) {
-        try { listener.onComplicationData(data(request.getComplicationType())); } catch (RemoteException error) { throw new RuntimeException(error); }
+        try {
+            listener.onComplicationData(data(request.getComplicationType()));
+            if (getSharedPreferences("fixture",0).getBoolean("titleless",false)) android.util.Log.i("FIXTURE_PAYLOAD", "TITLELESS_DELIVERED "+getClass().getSimpleName());
+        } catch (RemoteException error) { throw new RuntimeException(error); }
     }
     @Override public ComplicationData getPreviewData(ComplicationType type) { return data(type); }
     public static class Heart extends FixtureService { private boolean alternate(){return getSharedPreferences("fixture",0).getBoolean("alternate",false);}
