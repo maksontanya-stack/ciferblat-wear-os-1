@@ -45,6 +45,8 @@ def text(el,x,y,width,height,size,fg,fmt,params=(),angle=0):
 
 # Clockwise angles are measured from twelve o'clock. Keep four degrees clear
 # of each red marker; all geometry uses the same reference center and radii.
+FIELD_COLOR='([CONFIGURATION.theme] == "1" ? #222a31 : #ddddda)'
+
 SECTORS={'heart':(330,390),'weather':(270,330),'floors':(210,270),'battery':(150,210),'steps':(90,150)}
 
 def radial_text(parent,label,fg,fmt,params,scope,width_em=None,known=False):
@@ -56,6 +58,12 @@ def radial_text(parent,label,fg,fmt,params,scope,width_em=None,known=False):
  capacity=math.radians(abs(end-start))*350
  if width_em is None: width_em=" + ".join(f"textLength({param}) * 1.06" for param in params)+" + 0.3"
  sizes=[43,34,24,12,4,0.25] if known else [43,34,26,18,12,8,6,3,1,0.25]
+ # Fit width is evaluated once per update, rather than being copied into
+ # eighteen threshold expressions. This empty group has no drawing children.
+ cache=group(parent,'fit_cache_'+scope,width=1,height=1)
+ S(cache,'Transform',target='width',value=f'({width_em}) + 0.00001')
+ S(cache,'Reference',name='fit_width_'+scope,source='width',defaultValue='4')
+ width_em=f'[REFERENCE.fit_width_{scope}]'
  cond=S(parent,'Condition');exprs=S(cond,'Expressions')
  for index,size in enumerate(sizes[:-1]):
   e=S(exprs,'Expression',name=f'fit_{scope}_{index}');e.text=f'({width_em}) * {size} <= {capacity:.3f}'
@@ -65,6 +73,7 @@ def radial_text(parent,label,fg,fmt,params,scope,width_em=None,known=False):
   part=S(dest,'PartText',x='0',y='0',width='920',height='920')
   circular=S(part,'TextCircular',centerX='460',centerY='452',width='700',height='700',startAngle=str(start),endAngle=str(end),direction='CLOCKWISE' if clockwise else 'COUNTER_CLOCKWISE',align='CENTER')
   font=S(circular,'Font',family='oswald',size=str(size),weight='BOLD',color=fg)
+  S(font,'Transform',target='color',value=FIELD_COLOR)
   upper=S(font,'Upper');template=S(upper,'Template');template.text=fmt
   for param in params: S(template,'Parameter',expression=param)
 
@@ -107,7 +116,8 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
  for ctype in ['SHORT_TEXT','RANGED_VALUE','LONG_TEXT','EMPTY']:
   comp=S(slot,'Complication',type=ctype)
   cg=group(comp,f'{label}_{ctype}')
-  for theme,fg,g in themed(cg):
+  # One scene graph serves both themes; WFF 4 changes the font colour directly.
+  for theme,fg,g in [('shared','#ddddda',cg)]:
    scope=f'{label}_{ctype}_{theme}'
    if ctype=='EMPTY':
     caption=json.dumps(DEFAULT_CAPTIONS[label],ensure_ascii=False)
@@ -166,6 +176,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
      compare=S(condition,'Compare',expression=icon_expression)
      icon_group=group(compare,'weather_icon_'+scope,x=97,y=269,width=100,height=100,angle='-67')
      pi=S(icon_group,'PartImage',x='14',y='14',width='72',height='72',tintColor=fg)
+     S(pi,'Transform',target='tintColor',value=FIELD_COLOR)
      S(pi,'Image',resource='[COMPLICATION.MONOCHROMATIC_IMAGE]')
 
 # AMOLED ambient: no light background and no active complication rendering.
