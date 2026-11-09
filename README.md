@@ -6,6 +6,24 @@
 
 Стабильная версия 1.1.0 доступна отдельно в [релизах](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/tag/v1.1.0). Превью 1.2-preview.4 требует Wear OS 6; его установщик проверяет Android API до установки.
 
+## Установка с телефона Samsung
+
+Для GeminiMan WearOS Manager подготовлен отдельный комплект:
+
+- [Подписанный APK 1.2.0-preview.4](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.4/wearos1-1.2.0-preview.4.apk)
+- [Русская инструкция PDF](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.4/INSTALL-GEMINIMAN-RU.pdf)
+- [Комплект APK + инструкция](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.4/wearos1-geminiman-1.2.0-preview.4.zip)
+
+В GeminiMan выбирается установка обычного APK на подключённые часы. Это тот же подписанный файл, что в компьютерном комплекте; код и версия циферблата не менялись. Подробности подключения — [инструкция в репозитории](docs/INSTALL-GEMINIMAN-RU.md). Совместимость формата подтверждена [документацией разработчика GeminiMan](https://github.com/ITDev93/Geminiman-WearOS-Manager); установка на конкретном телефоне ещё требует проверки пользователем.
+
+Воспроизвести комплект из уже подписанного APK:
+
+```sh
+python3 scripts/package_phone.py --apk dist/release-1.2-preview.4/wearos1.apk --version 1.2.0-preview.4 --output dist/phone-1.2.0-preview.4
+```
+
+Скрипт использует ReportLab и DejaVu Sans для PDF; он не собирает и не переподписывает APK.
+
 ## Возможности
 
 - Настоящее текущее время в формате 24 часа, крупные часы и отдельные минуты справа.
