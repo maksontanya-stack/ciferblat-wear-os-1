@@ -1,10 +1,10 @@
 # Циферблат Wear OS 1
 
-Устанавливаемый циферблат для Samsung Galaxy Watch4 Classic 46 мм. Предпросмотр 1.2.0-preview.3: Watch Face Format v4, Wear OS 6+ / Android API 36+. Физический экран 450×450; исходная композиция хранится в единой сетке 920×920 и масштабируется целиком.
+Устанавливаемый циферблат для Samsung Galaxy Watch4 Classic 46 мм. Предпросмотр 1.2.0-preview.4: Watch Face Format v4, Wear OS 6+ / Android API 36+. Физический экран 450×450; исходная композиция хранится в единой сетке 920×920 и масштабируется целиком.
 
-**[Скачать установщик](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.3/wearos1-install.zip)** · **[Инструкция](docs/INSTALL-RU.md)** · **[Релизы](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases)**
+**[Скачать установщик](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.4/wearos1-install.zip)** · **[Инструкция](docs/INSTALL-RU.md)** · **[Релизы](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases)**
 
-Стабильная версия 1.1.0 доступна отдельно в [релизах](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/tag/v1.1.0). Превью 1.2-preview.3 требует Wear OS 6; его установщик проверяет Android API до установки.
+Стабильная версия 1.1.0 доступна отдельно в [релизах](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/tag/v1.1.0). Превью 1.2-preview.4 требует Wear OS 6; его установщик проверяет Android API до установки.
 
 ## Возможности
 
@@ -52,3 +52,5 @@ GitHub Actions:
 `watchface/` — Android-пакет WFF; `references/` — неизменённые фотографии пользователя; `design/` — мастер-графика; `scripts/runtime-assets.sh` — подготовка графики через ImageMagick; `scripts/generate_wff.py` — генератор XML; `install/` — установщики без APK; `third-party/` — лицензии.
 
 Документация формата: [Android Watch Face Format](https://developer.android.com/training/wearables/wff/).
+
+[Оптимизация разметки, замеры и их ограничения](docs/PERFORMANCE.md).
