@@ -10,6 +10,12 @@ exec(compile((root/'scripts/generate_wff.py').read_text(), 'generate_wff.py', 'e
 if xml.read_bytes() != before:
     raise SystemExit('Generated WFF XML was stale; regenerate and commit it')
 w = ET.parse(xml).getroot()
+# Prevent a repeat of the large per-theme/per-metric scene expansion. This is a
+# complexity budget, not a claim about FPS or execution time on physical watches.
+text_nodes=len(list(w.iter('PartText')))
+if len(before)>1_100_000 or text_nodes>250:
+    raise SystemExit(f'Runtime complexity budget exceeded: {len(before)} bytes, {text_nodes} text nodes')
+print(f'PASS: runtime complexity budget ({len(before)} bytes, {text_nodes} text nodes)')
 resources = root / 'watchface/src/main/res/drawable-nodpi'
 for theme in ('dark', 'light'):
     for kind, count in [('hour', 24), ('minute', 60)]:
