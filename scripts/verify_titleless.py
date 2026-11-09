@@ -18,6 +18,7 @@ for py in range(before.height):
  for px in range(before.width):
   dx=px*920/before.width-460;dy=py*920/before.height-452
   r=math.hypot(dx,dy)
+  if 599<=px*920/before.width<=772 and 237<=py*920/before.height<=431:continue # Live minute/date, not a radial field.
   if 310<r<375 and max(abs(a-b) for a,b in zip(before.getpixel((px,py)),after.getpixel((px,py))))>30:
    changed+=1
 if changed>20:raise SystemExit(f'Omitting TITLE removed or changed default sector captions ({changed} pixels)')
