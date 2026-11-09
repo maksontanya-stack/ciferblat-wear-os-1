@@ -12,6 +12,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cd release-assets
-          sha256sum --check SHA256SUMS.txt
-          gh release upload v1.1.0 wearos1.apk wearos1-install.zip SHA256SUMS.txt --clobber --repo "$GITHUB_REPOSITORY"
+          cd release-assets/v1.2.0-preview.4-phone
+          sha256sum --check SHA256SUMS-phone.txt
+          gh release upload v1.2.0-preview.4 wearos1-1.2.0-preview.4.apk wearos1-geminiman-1.2.0-preview.4.zip INSTALL-GEMINIMAN-RU.pdf INSTALL-GEMINIMAN-RU.txt SHA256SUMS-phone.txt --clobber --repo "$GITHUB_REPOSITORY"
