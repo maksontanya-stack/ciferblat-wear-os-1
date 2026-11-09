@@ -135,7 +135,7 @@ def choose_top_caption(current,selected,tag):
   visible=[]
   for n in tree.iter('node'):
    coords=list(map(int,re.findall(r'-?\d+',n.get('bounds',''))))
-   if n.get('text')==current and len(coords)==4 and 0<coords[2]<=454 and coords[0]>=0:visible.append(n)
+   if n.get('text')==current and len(coords)==4 and 0<=coords[0]<coords[2]<=454 and 0<=coords[1]<coords[3]<=454:visible.append(n)
   if visible:break
   command('next')
  else:raise SystemExit('Native caption setting missing: '+current)
@@ -168,7 +168,10 @@ tree=state('editor-reopened')
 # pager until all five source controls are visible, rather than assuming two pages.
 for page in range(9):
  tree=state('editor-page-'+str(page))
- sources=[n for n in tree.iter('node') if n.get('clickable')=='true' and n.get('content-desc','').startswith('TEST ')]
+ sources=[]
+ for n in tree.iter('node'):
+  coords=list(map(int,re.findall(r'-?\d+',n.get('bounds',''))))
+  if n.get('clickable')=='true' and n.get('content-desc','').startswith('TEST ') and len(coords)==4 and 0<=coords[0]<coords[2]<=454 and 0<=coords[1]<coords[3]<=454:sources.append(n)
  if len(sources)>=5:break
  command('next')
 else:raise SystemExit('Native editor did not expose five complication fields')
