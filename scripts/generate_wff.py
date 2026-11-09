@@ -110,7 +110,11 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
   for theme,fg,g in themed(cg):
    scope=f'{label}_{ctype}_{theme}'
    if ctype=='EMPTY':
-    radial_text(g,label,fg,'%s',('"—"',),scope)
+    caption=json.dumps(DEFAULT_CAPTIONS[label],ensure_ascii=False)
+    for item in CATALOG:
+     caption=f'([CONFIGURATION.caption_{label}] == "{METRICS[item["title"]]}" ? '+json.dumps(item['title'],ensure_ascii=False)+f' : {caption})'
+    caption=f'([CONFIGURATION.caption_{label}] == "99" ? "" : {caption})'
+    radial_text(g,label,fg,'%s %s',(caption,'"—"'),scope)
    else:
     has_text='[COMPLICATION.TEXT] != null && textLength([COMPLICATION.TEXT]) > 0'
     has_title='[COMPLICATION.TITLE] != null && textLength([COMPLICATION.TITLE]) > 0'
