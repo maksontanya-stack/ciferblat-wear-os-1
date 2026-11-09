@@ -1,8 +1,15 @@
 $ErrorActionPreference = 'Stop'
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Set-Location $PSScriptRoot
 try {
     $adb = Join-Path $PSScriptRoot 'platform-tools\adb.exe'
-    if (-not (Test-Path $adb)) { throw 'Run update.cmd first to download Android Platform Tools.' }
+    if (-not (Test-Path $adb)) {
+        Write-Host 'Downloading official Android Platform Tools from Google...'
+        $download = Join-Path $PSScriptRoot 'platform-tools.zip'
+        Invoke-WebRequest 'https://dl.google.com/android/repository/platform-tools-latest-windows.zip' -OutFile $download -UseBasicParsing
+        Expand-Archive $download -DestinationPath $PSScriptRoot -Force
+        Remove-Item $download
+    }
     $target = (Read-Host 'Watch IP:port from the main Wireless debugging screen').Trim()
     if ($target -notmatch '^\d{1,3}(\.\d{1,3}){3}:\d{1,5}$') { throw 'Enter IP:port.' }
     & $adb connect $target
