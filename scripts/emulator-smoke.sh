@@ -28,7 +28,7 @@ adb shell input tap 227 227
 sleep 3
 adb exec-out screencap -p > smoke-output/active-first.png
 adb shell date > smoke-output/time-first.txt
-sleep 65
+if [[ "${EDITOR_ONLY:-false}" == "true" ]]; then sleep 3; else sleep 65; fi
 adb shell input keyevent KEYCODE_WAKEUP
 sleep 2
 adb exec-out screencap -p > smoke-output/active-next-minute.png

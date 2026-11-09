@@ -1,5 +1,5 @@
 """Navigate actual native editor via accessibility text; save evidence of each step."""
-import re,subprocess,time,xml.etree.ElementTree as ET
+import re,subprocess,time,shlex,os,xml.etree.ElementTree as ET
 from pathlib import Path
 p=Path('smoke-output')
 def adb(*args):return subprocess.check_output(['adb',*args])
@@ -13,7 +13,7 @@ def state(name,ui=True):
  return ET.fromstring(data)
 def command(action,text=''):
  args=['shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command',action]
- if text: args+=['--es','text',text]
+ if text: args+=['--es','text',shlex.quote(text)]
  adb(*args)
  time.sleep(2)
 def click(tree,labels):
@@ -44,83 +44,85 @@ for attempt in range(8):
  if min(img.getpixel((img.width//2,round(img.height*.72))))>=120: break
  time.sleep(2)
 else: raise SystemExit('Selecting Light in the editor did not persist on the actual watchface')
-# Samsung-style payload can put temperature in TITLE and location in TEXT.
-adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','true');time.sleep(3)
-for attempt in range(15):
- if 'ТЕСТ ГОРОД' in adb('logcat','-d').decode(errors='replace'): break
- time.sleep(2)
-else: raise SystemExit('Weather swapped payload was not delivered to the runtime')
-time.sleep(2)
-state('active-light-weather-swapped',ui=False)
-from PIL import ImageChops
-weather=Image.open(p/'active-light-weather-swapped.png').convert('RGB')
-import math
-changed=0
-for py in range(img.height):
- for px in range(img.width):
-  dx=px*920/img.width-460;dy=py*920/img.height-452
-  radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
-  if 305<radius<393 and 274<angle<326 and max(abs(a-b) for a,b in zip(img.getpixel((px,py)),weather.getpixel((px,py))))>30: changed+=1
-if changed>20:
- raise SystemExit('Weather swapped TITLE/TEXT payload changed the displayed weather sector')
-adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','false');time.sleep(3)
-# Real complication update changes both its title and value in the same sector.
-adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','true');time.sleep(4)
 roi=(round(img.width*.37),round(img.height*.09),round(img.width*.54),round(img.height*.18))
-for attempt in range(15):
- state('active-light-altitude',ui=False)
- alt=Image.open(p/'active-light-altitude.png').convert('RGB')
- if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),alt.crop(roi)).getdata())>=30: break
+if os.environ.get('EDITOR_ONLY') != 'true':
+ # Samsung-style payload can put temperature in TITLE and location in TEXT.
+ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','true');time.sleep(3)
+ for attempt in range(15):
+  if 'ТЕСТ ГОРОД' in adb('logcat','-d').decode(errors='replace'): break
+  time.sleep(2)
+ else: raise SystemExit('Weather swapped payload was not delivered to the runtime')
  time.sleep(2)
-else: raise SystemExit('Changing the source title did not update the sector caption within 30 seconds')
-# A long provider title must remain inside its radial sector.
-adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','long_title','--ez','enabled','true')
-for attempt in range(15):
- if 'МАКСИМАЛЬНАЯ ВЫСОТА' in adb('logcat','-d').decode(errors='replace'): break
- time.sleep(2)
-else: raise SystemExit('Long-title fixture was not delivered')
-time.sleep(3)
-state('active-light-long-title',ui=False)
-shortened=Image.open(p/'active-light-long-title.png').convert('RGB')
-# Both the ordinary and verbose height titles must resolve to the same caption.
-changed=0
-for py in range(img.height):
- for px in range(img.width):
-  dx=px*920/img.width-460;dy=py*920/img.height-452
-  radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
-  if 305<radius<393 and (angle>334 or angle<26) and max(abs(a-b) for a,b in zip(alt.getpixel((px,py)),shortened.getpixel((px,py))))>30: changed+=1
-if changed>20: raise SystemExit('Verbose height title was not shortened to the same ВЫСОТА caption')
+ state('active-light-weather-swapped',ui=False)
+ from PIL import ImageChops
+ weather=Image.open(p/'active-light-weather-swapped.png').convert('RGB')
+ import math
+ changed=0
+ for py in range(img.height):
+  for px in range(img.width):
+   dx=px*920/img.width-460;dy=py*920/img.height-452
+   radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
+   if 305<radius<393 and 274<angle<326 and max(abs(a-b) for a,b in zip(img.getpixel((px,py)),weather.getpixel((px,py))))>30: changed+=1
+ if changed>20:
+  raise SystemExit('Weather swapped TITLE/TEXT payload changed the displayed weather sector')
+ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','weather_swapped','--ez','enabled','false');time.sleep(3)
+ # Real complication update changes both its title and value in the same sector.
+ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','true');time.sleep(4)
+ roi=(round(img.width*.37),round(img.height*.09),round(img.width*.54),round(img.height*.18))
+ for attempt in range(15):
+  state('active-light-altitude',ui=False)
+  alt=Image.open(p/'active-light-altitude.png').convert('RGB')
+  if sum(max(v)>25 for v in ImageChops.difference(img.crop(roi),alt.crop(roi)).getdata())>=30: break
+  time.sleep(2)
+ else: raise SystemExit('Changing the source title did not update the sector caption within 30 seconds')
+ # A long provider title must remain inside its radial sector.
+ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','long_title','--ez','enabled','true')
+ for attempt in range(15):
+  if 'МАКСИМАЛЬНАЯ ВЫСОТА' in adb('logcat','-d').decode(errors='replace'): break
+  time.sleep(2)
+ else: raise SystemExit('Long-title fixture was not delivered')
+ time.sleep(3)
+ state('active-light-long-title',ui=False)
+ shortened=Image.open(p/'active-light-long-title.png').convert('RGB')
+ # Both the ordinary and verbose height titles must resolve to the same caption.
+ changed=0
+ for py in range(img.height):
+  for px in range(img.width):
+   dx=px*920/img.width-460;dy=py*920/img.height-452
+   radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
+   if 305<radius<393 and (angle>334 or angle<26) and max(abs(a-b) for a,b in zip(alt.getpixel((px,py)),shortened.getpixel((px,py))))>30: changed+=1
+ if changed>20: raise SystemExit('Verbose height title was not shortened to the same ВЫСОТА caption')
 
-# An unrecognized long label exercises actual automatic font fitting.
-adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','unknown_long_title','--ez','enabled','true')
-for attempt in range(15):
- if 'ПРОИЗВОЛЬНЫЙ ПОКАЗАТЕЛЬ' in adb('logcat','-d').decode(errors='replace'): break
- time.sleep(2)
-else: raise SystemExit('Unknown long-title fixture was not delivered')
-time.sleep(3)
-state('active-light-fitted-title',ui=False)
-fitted=Image.open(p/'active-light-fitted-title.png').convert('RGB')
-inside=outside=0
-for py in range(img.height):
- for px in range(img.width):
-  dx=px*920/img.width-460;dy=py*920/img.height-452
-  radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
-  if 599<=px*920/img.width<=772 and 237<=py*920/img.height<=431: continue # Advancing date/minute fields.
-  if 305<radius<393 and max(abs(a-b) for a,b in zip(shortened.getpixel((px,py)),fitted.getpixel((px,py))))>30:
-   if angle>334 or angle<26: inside+=1
-   else: outside+=1
-ink=0
-for py in range(img.height):
- for px in range(img.width):
-  dx=px*920/img.width-460;dy=py*920/img.height-452
-  radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
-  if 310<radius<375 and (angle>334 or angle<26) and max(fitted.getpixel((px,py)))<140: ink+=1
-if ink<20: raise SystemExit(f'Fitted long title is absent ({ink} dark pixels)')
-if inside<20: raise SystemExit('Long label did not render after automatic fitting')
-if outside>20: raise SystemExit('Fitted label changed pixels outside its radial sector')
-adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','unknown_long_title','--ez','enabled','false');time.sleep(3)
-adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','long_title','--ez','enabled','false');time.sleep(3)
-adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
+ # An unrecognized long label exercises actual automatic font fitting.
+ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','unknown_long_title','--ez','enabled','true')
+ for attempt in range(15):
+  if 'ПРОИЗВОЛЬНЫЙ ПОКАЗАТЕЛЬ' in adb('logcat','-d').decode(errors='replace'): break
+  time.sleep(2)
+ else: raise SystemExit('Unknown long-title fixture was not delivered')
+ time.sleep(3)
+ state('active-light-fitted-title',ui=False)
+ fitted=Image.open(p/'active-light-fitted-title.png').convert('RGB')
+ inside=outside=0
+ for py in range(img.height):
+  for px in range(img.width):
+   dx=px*920/img.width-460;dy=py*920/img.height-452
+   radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
+   if 599<=px*920/img.width<=772 and 237<=py*920/img.height<=431: continue # Advancing date/minute fields.
+   if 305<radius<393 and max(abs(a-b) for a,b in zip(shortened.getpixel((px,py)),fitted.getpixel((px,py))))>30:
+    if angle>334 or angle<26: inside+=1
+    else: outside+=1
+ ink=0
+ for py in range(img.height):
+  for px in range(img.width):
+   dx=px*920/img.width-460;dy=py*920/img.height-452
+   radius=math.hypot(dx,dy);angle=math.degrees(math.atan2(dx,-dy))%360
+   if 310<radius<375 and (angle>334 or angle<26) and max(fitted.getpixel((px,py)))<140: ink+=1
+ if ink<20: raise SystemExit(f'Fitted long title is absent ({ink} dark pixels)')
+ if inside<20: raise SystemExit('Long label did not render after automatic fitting')
+ if outside>20: raise SystemExit('Fitted label changed pixels outside its radial sector')
+ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','unknown_long_title','--ez','enabled','false');time.sleep(3)
+ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','long_title','--ez','enabled','false');time.sleep(3)
+ adb('shell','am','broadcast','-n','ru.meta.wearos.classic1.fixtures/.EditorReceiver','--es','command','alternate','--ez','enabled','false');time.sleep(3)
 # A titleless source can be relabelled through a real native setting.
 # Verify the CONFIGURATION source changes rendered text, not just editor labels.
 def open_editor():

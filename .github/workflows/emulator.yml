@@ -6,6 +6,11 @@ on:
         description: Android API level (36 Wear OS 6)
         required: true
         default: "36"
+      editor_only:
+        description: Focus on editor and caption controls (full rendering suite already passed)
+        type: boolean
+        required: false
+        default: false
       gpu_mode:
         description: Emulator graphics backend
         required: false
@@ -54,7 +59,7 @@ jobs:
           heap-size: 256M
           emulator-options: -no-window -gpu ${{ inputs.gpu_mode || 'swiftshader_indirect' }} -feature -Vulkan -no-snapshot -noaudio -no-boot-anim
           disable-animations: false
-          script: bash scripts/emulator-smoke.sh
+          script: EDITOR_ONLY=${{ inputs.editor_only }} bash scripts/emulator-smoke.sh
       - uses: actions/upload-artifact@v4
         if: always()
         with:
