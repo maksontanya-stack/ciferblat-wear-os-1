@@ -139,7 +139,8 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
      icon_expression=f'icon_{label}_{ctype}_{theme}'
      e=S(ex,'Expression',name=icon_expression);e.text='[COMPLICATION.MONOCHROMATIC_IMAGE] != null'
      compare=S(condition,'Compare',expression=icon_expression)
-     pi=S(compare,'PartImage',x='90',y='357',width='60',height='60',angle='-80',tintColor=fg)
+     icon_group=group(compare,'weather_icon_'+scope,x=97,y=269,width=100,height=100,angle='-67')
+     pi=S(icon_group,'PartImage',x='14',y='14',width='72',height='72',tintColor=fg)
      S(pi,'Image',resource='[COMPLICATION.MONOCHROMATIC_IMAGE]')
 
 # AMOLED ambient: no light background and no active complication rendering.
