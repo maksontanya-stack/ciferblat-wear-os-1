@@ -20,13 +20,13 @@ jobs:
           java-version: '17'
       - uses: android-actions/setup-android@v3
         with:
-          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
+          packages: 'platform-tools platforms;android-36 build-tools;35.0.0'
           log-accepted-android-sdk-licenses: false
       - uses: gradle/actions/setup-gradle@v4
-      - name: Validate WFF v1 with official validator
+      - name: Validate WFF v4 with official validator
         run: |
           curl --fail --location --retry 3 https://github.com/google/watchface/releases/download/release/wff-validator.jar --output "$RUNNER_TEMP/wff-validator.jar"
-          java -jar "$RUNNER_TEMP/wff-validator.jar" 1 --stop-on-fail watchface/src/main/res/raw/watchface.xml
+          java -jar "$RUNNER_TEMP/wff-validator.jar" 4 --stop-on-fail watchface/src/main/res/raw/watchface.xml
       - name: Check generated WFF and all bitmap words
         run: python3 scripts/verify_runtime.py
       - name: Build resource-only watchface APK
@@ -35,7 +35,7 @@ jobs:
         run: |
           python3 scripts/verify_apk.py watchface/build/outputs/apk/release/watchface-release-unsigned.apk
           curl --fail --location --retry 3 https://github.com/google/watchface/releases/download/release/memory-footprint.jar --output "$RUNNER_TEMP/memory-footprint.jar"
-          java -jar "$RUNNER_TEMP/memory-footprint.jar" --watch-face watchface/build/outputs/apk/release/watchface-release-unsigned.apk --schema-version 1 --ambient-limit-mb 10 --active-limit-mb 100
+          java -jar "$RUNNER_TEMP/memory-footprint.jar" --watch-face watchface/build/outputs/apk/release/watchface-release-unsigned.apk --schema-version 4 --ambient-limit-mb 10 --active-limit-mb 100
       - name: Prepare APK
         run: |
           mkdir -p dist

@@ -1,15 +1,40 @@
 # Циферблат Wear OS 1
 
-Устанавливаемый циферблат для Samsung Galaxy Watch4 Classic 46 мм. Watch Face Format v1, Wear OS 4+ / Android API 33+. Физический экран 450×450; исходная композиция хранится в единой сетке 920×920 и масштабируется целиком.
+Устанавливаемый циферблат для Samsung Galaxy Watch4 Classic 46 мм. Предпросмотр 1.2.0-preview.4: Watch Face Format v4, Wear OS 6+ / Android API 36+. Физический экран 450×450; исходная композиция хранится в единой сетке 920×920 и масштабируется целиком.
 
-**[Скачать установщик](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.0.0/wearos1-install.zip)** · **[Инструкция](docs/INSTALL.md)** · **[Релизы](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases)**
+**[Скачать установщик](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.4/wearos1-install.zip)** · **[Инструкция](docs/INSTALL-RU.md)** · **[Релизы](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases)**
+
+## Лаборатория моделей Samsung
+
+[Galaxy Watch Lab](docs/WATCH-LAB-RU.md) создаёт визуальные проверки для 22 профилей Galaxy Watch на Wear OS: от Watch4 до Watch9 и Ultra2. Он проверяет круглую границу дисплея, масштаб и формирует отчёт до установки циферблата.
+
+Стабильная версия 1.1.0 доступна отдельно в [релизах](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/tag/v1.1.0). Превью 1.2-preview.4 требует Wear OS 6; его установщик проверяет Android API до установки.
+
+## Установка с телефона Samsung
+
+Для GeminiMan WearOS Manager подготовлен отдельный комплект:
+
+- [Подписанный APK 1.2.0-preview.4](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.4/wearos1-1.2.0-preview.4.apk)
+- [Русская инструкция PDF](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.4/INSTALL-GEMINIMAN-RU.pdf)
+- [Комплект APK + инструкция](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.4/wearos1-geminiman-1.2.0-preview.4.zip)
+
+В GeminiMan выбирается установка обычного APK на подключённые часы. Это тот же подписанный файл, что в компьютерном комплекте; код и версия циферблата не менялись. Подробности подключения — [инструкция в репозитории](docs/INSTALL-GEMINIMAN-RU.md). Совместимость формата подтверждена [документацией разработчика GeminiMan](https://github.com/ITDev93/Geminiman-WearOS-Manager); установка на конкретном телефоне ещё требует проверки пользователем.
+
+Воспроизвести комплект из уже подписанного APK:
+
+```sh
+python3 scripts/package_phone.py --apk dist/release-1.2-preview.4/wearos1.apk --version 1.2.0-preview.4 --output dist/phone-1.2.0-preview.4
+```
+
+Скрипт использует ReportLab и DejaVu Sans для PDF; он не собирает и не переподписывает APK.
 
 ## Возможности
 
 - Настоящее текущее время в формате 24 часа, крупные часы и отдельные минуты справа.
-- Текущая дата и день недели на языке часов.
+- Текущая дата и день недели на русском.
 - Заряд батареи и шаги из системных источников.
 - Настраиваемые поля пульса, погоды и этажей через провайдеры complications. Пока источник не выбран или недоступен — прочерк.
+- Радиальные подписи из данных источника, смысловые сокращения и автоматическое уменьшение длинного текста. Если источник не передаёт название, используется запасная подпись сектора; её можно выбрать отдельно.
 - Переключатель «Светлая» в настройках; обе темы используют одни координаты.
 - Отдельный AOD: чёрный фон, приглушённые время и дата; без светлой подложки и активных полей данных.
 - APK не содержит исполняемого кода, сервисов сбора данных или сетевого клиента. Погодные и медицинские данные предоставляет выбранное приложение на часах.
@@ -37,8 +62,8 @@ python3 scripts/verify_runtime.py
 GitHub Actions:
 
 - `design.yml` — проверка оригинальной графики и архив ресурсов;
-- `apk.yml` — официальный XML-валидатор WFF v1, проверка всех значений времени, сборка APK и Android Lint. При наличии secrets `WEAROS_SIGNING_KEY` (base64 PKCS12, alias `wearos1`) и `WEAROS_SIGNING_PASSWORD` добавляется подписанный APK. Без них файл называется `wearos1-unsigned.apk` и напрямую не устанавливается;
-- `emulator.yml` — ручной smoke test установки и реального рендеринга на Wear OS 4, проверка перехода минут и сохранение снимков экрана.
+- `apk.yml` — официальный XML-валидатор WFF v4, проверка всех значений времени, сборка APK и Android Lint. При наличии secrets `WEAROS_SIGNING_KEY` (base64 PKCS12, alias `wearos1`) и `WEAROS_SIGNING_PASSWORD` добавляется подписанный APK. Без них файл называется `wearos1-unsigned.apk` и напрямую не устанавливается;
+- `emulator.yml` — проверка обновления WFF 1 → WFF 4 без удаления приложения на Wear OS 6, реальный рендеринг, переход минут, подписи без TITLE, штатный редактор и выбор источников данных.
 
 У текущего подключения нет права на создание Actions secrets. Версия 1.0.0 подписывается локально, тем же сохранённым ключом можно подписывать обновления.
 
@@ -49,3 +74,5 @@ GitHub Actions:
 `watchface/` — Android-пакет WFF; `references/` — неизменённые фотографии пользователя; `design/` — мастер-графика; `scripts/runtime-assets.sh` — подготовка графики через ImageMagick; `scripts/generate_wff.py` — генератор XML; `install/` — установщики без APK; `third-party/` — лицензии.
 
 Документация формата: [Android Watch Face Format](https://developer.android.com/training/wearables/wff/).
+
+[Оптимизация разметки, замеры и их ограничения](docs/PERFORMANCE.md).

@@ -1,0 +1,29 @@
+{
+  "run_id": 42545718913,
+  "device": "Wear OS 6 x86_64 emulator, 454x454, 2048 MiB RAM, swiftshader_indirect",
+  "update": "preview.3 -> preview.4, existing runtime process",
+  "xml_bytes": {
+    "before": 2584643,
+    "after": 919003
+  },
+  "text_nodes": {
+    "before": 403,
+    "after": 203
+  },
+  "runtime_pss_kb": {
+    "before_update": 47594,
+    "after_update": 55312,
+    "after_editor": 61923
+  },
+  "native_editor": {
+    "frames": 1300,
+    "janky_frames": 13,
+    "janky_percent": 1.0,
+    "p90_frame_ms": 16
+  },
+  "limitations": [
+    "Single emulator run; not a Samsung hardware measurement",
+    "Different warm-up/cache states; memory snapshots do not prove lower RAM use",
+    "No matched previous-version frame benchmark; no FPS improvement claimed"
+  ]
+}

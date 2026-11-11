@@ -10,6 +10,12 @@ exec(compile((root/'scripts/generate_wff.py').read_text(), 'generate_wff.py', 'e
 if xml.read_bytes() != before:
     raise SystemExit('Generated WFF XML was stale; regenerate and commit it')
 w = ET.parse(xml).getroot()
+# Prevent a repeat of the large per-theme/per-metric scene expansion. This is a
+# complexity budget, not a claim about FPS or execution time on physical watches.
+text_nodes=len(list(w.iter('PartText')))
+if len(before)>1_100_000 or text_nodes>250:
+    raise SystemExit(f'Runtime complexity budget exceeded: {len(before)} bytes, {text_nodes} text nodes')
+print(f'PASS: runtime complexity budget ({len(before)} bytes, {text_nodes} text nodes)')
 resources = root / 'watchface/src/main/res/drawable-nodpi'
 for theme in ('dark', 'light'):
     for kind, count in [('hour', 24), ('minute', 60)]:
@@ -20,9 +26,13 @@ for theme in ('dark', 'light'):
         if images != expected: raise SystemExit(f'{kind}_{theme}: incomplete time coverage')
         for resource in expected:
             if not (resources/(resource+'.png')).is_file(): raise SystemExit('Missing time image')
+            if kind=='hour':
+                dimensions=struct.unpack('>II',(resources/(resource+'.png')).read_bytes()[16:24])
+                if dimensions!=(155,150) or group.attrib['height']!='300': raise SystemExit('Hour sprite padding/scale mismatch')
 slots = list(w.iter('ComplicationSlot'))
 if len({s.attrib['slotId'] for s in slots}) != 5: raise SystemExit('Invalid data slot IDs')
 for slot in slots:
+    if slot.find('BoundingArc') is None or slot.find('BoundingBox') is not None: raise SystemExit('Data field must have radial interaction bounds')
     if slot.find("Complication[@type='EMPTY']") is None:
         raise SystemExit('Missing empty-data fallback')
 if w.find("Scene/Group[@name='ambient']") is None: raise SystemExit('Missing ambient mode')

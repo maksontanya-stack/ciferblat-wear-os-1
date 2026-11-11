@@ -3,9 +3,18 @@ on:
   workflow_dispatch:
     inputs:
       api_level:
-        description: Android API level (33 Wear OS 4, 34 Wear OS 5)
+        description: Android API level (36 Wear OS 6)
         required: true
-        default: "33"
+        default: "36"
+      editor_only:
+        description: Focus on editor and caption controls (full rendering suite already passed)
+        type: boolean
+        required: false
+        default: false
+      gpu_mode:
+        description: Emulator graphics backend
+        required: false
+        default: swiftshader_indirect
 permissions:
   contents: read
 jobs:
@@ -20,16 +29,17 @@ jobs:
           java-version: '17'
       - uses: android-actions/setup-android@v3
         with:
-          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
+          packages: 'platform-tools platforms;android-36 build-tools;35.0.0'
           log-accepted-android-sdk-licenses: false
       - uses: gradle/actions/setup-gradle@v4
       - name: Validate WFF before emulator startup
         run: |
           python3 scripts/verify_runtime.py
           curl --fail --location --retry 3 https://github.com/google/watchface/releases/download/release/wff-validator.jar --output "$RUNNER_TEMP/wff-validator.jar"
-          java -jar "$RUNNER_TEMP/wff-validator.jar" 1 --stop-on-fail watchface/src/main/res/raw/watchface.xml
+          java -jar "$RUNNER_TEMP/wff-validator.jar" 4 --stop-on-fail watchface/src/main/res/raw/watchface.xml
       - run: |
           python3 scripts/generate_test_overlay.py
+          bash scripts/build_upgrade_fixture.sh
           ./gradlew :watchface:assembleDebug :testprovider:assembleDebug --console=plain
       - name: Enable KVM for the emulator
         run: |
@@ -42,14 +52,14 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ inputs.api_level }}
-          target: android-wear
+          target: android-wear-signed
           arch: x86_64
           profile: wearos_large_round
           ram-size: 2048M
           heap-size: 256M
-          emulator-options: -no-window -gpu swiftshader_indirect -feature -Vulkan -no-snapshot -noaudio -no-boot-anim
+          emulator-options: -no-window -gpu ${{ inputs.gpu_mode || 'swiftshader_indirect' }} -feature -Vulkan -no-snapshot -noaudio -no-boot-anim
           disable-animations: false
-          script: bash scripts/emulator-smoke.sh
+          script: EDITOR_ONLY=${{ inputs.editor_only }} bash scripts/emulator-smoke.sh
       - uses: actions/upload-artifact@v4
         if: always()
         with:

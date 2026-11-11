@@ -10,3 +10,6 @@ smoke-output/
 install/platform-tools/
 *.p12
 *.jks
+
+__pycache__/
+upgrade-fixture/
