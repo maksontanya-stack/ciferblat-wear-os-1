@@ -1,0 +1,25 @@
+/* Generated companion for file:// and Chrome-extension launch modes. */
+window.WATCH_LAB_PROFILES = [
+  {id:'watch4-40',model:'Galaxy Watch4',case:'40 mm',resolution:396,api:'Wear OS; verify installed version'},
+  {id:'watch4-44',model:'Galaxy Watch4',case:'44 mm',resolution:450,api:'Wear OS; verify installed version'},
+  {id:'watch4c-42',model:'Galaxy Watch4 Classic',case:'42 mm',resolution:396,api:'Wear OS; verify installed version'},
+  {id:'watch4c-46',model:'Galaxy Watch4 Classic',case:'46 mm',resolution:450,api:'Wear OS; verify installed version'},
+  {id:'watch5-40',model:'Galaxy Watch5',case:'40 mm',resolution:396,api:'Wear OS; verify installed version'},
+  {id:'watch5-44',model:'Galaxy Watch5',case:'44 mm',resolution:450,api:'Wear OS; verify installed version'},
+  {id:'watch5pro-45',model:'Galaxy Watch5 Pro',case:'45 mm',resolution:450,api:'Wear OS; verify installed version'},
+  {id:'watch6-40',model:'Galaxy Watch6',case:'40 mm',resolution:432,api:'Wear OS; verify installed version'},
+  {id:'watch6-44',model:'Galaxy Watch6',case:'44 mm',resolution:480,api:'Wear OS; verify installed version'},
+  {id:'watch6c-43',model:'Galaxy Watch6 Classic',case:'43 mm',resolution:432,api:'Wear OS; verify installed version'},
+  {id:'watch6c-47',model:'Galaxy Watch6 Classic',case:'47 mm',resolution:480,api:'Wear OS; verify installed version'},
+  {id:'watchfe-40',model:'Galaxy Watch FE',case:'40 mm',resolution:396,api:'Wear OS; verify installed version'},
+  {id:'watch7-40',model:'Galaxy Watch7',case:'40 mm',resolution:432,api:'Wear OS; verify installed version'},
+  {id:'watch7-44',model:'Galaxy Watch7',case:'44 mm',resolution:480,api:'Wear OS; verify installed version'},
+  {id:'ultra-2024',model:'Galaxy Watch Ultra',case:'47 mm',resolution:480,api:'Wear OS; verify installed version'},
+  {id:'ultra-2025',model:'Galaxy Watch Ultra (2025)',case:'47 mm',resolution:480,api:'Wear OS 6'},
+  {id:'watch8-40',model:'Galaxy Watch8',case:'40 mm',resolution:438,api:'Wear OS 6'},
+  {id:'watch8-44',model:'Galaxy Watch8',case:'44 mm',resolution:480,api:'Wear OS 6'},
+  {id:'watch8c-46',model:'Galaxy Watch8 Classic',case:'46 mm',resolution:438,api:'Wear OS 6'},
+  {id:'watch9-40',model:'Galaxy Watch9',case:'40 mm',resolution:438,api:'Wear OS 7'},
+  {id:'watch9-44',model:'Galaxy Watch9',case:'44 mm',resolution:480,api:'Wear OS 7'},
+  {id:'ultra2-47',model:'Galaxy Watch Ultra2',case:'47 mm',resolution:498,api:'Wear OS 7'}
+];
