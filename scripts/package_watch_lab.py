@@ -17,14 +17,19 @@ def main():
     # A local HTML file can load sibling JavaScript and images without a server.
     for name in ('index.html', 'profiles.js', 'profiles.json'):
         copy(ROOT/'lab'/name, OUT/'lab'/name)
-    copy(ROOT/'design'/'dark-450.png', OUT/'design'/'dark-450.png')
+    for theme in ('dark', 'light'):
+        copy(ROOT/'design'/f'{theme}-450.png', OUT/'design'/f'{theme}-450.png')
     copy(ROOT/'install'/'OPEN-GALAXY-WATCH-LAB.cmd', OUT/'OPEN-GALAXY-WATCH-LAB.cmd')
     copy(ROOT/'docs'/'WATCH-LAB-RU.md', OUT/'ИНСТРУКЦИЯ-RU.md')
 
     # Chrome extensions are self-contained. The default picture is deliberately
     # omitted: users select the image they want to test.
-    for name in ('index.html', 'profiles.js', 'profiles.json'):
+    for name in ('profiles.js', 'profiles.json'):
         copy(ROOT/'lab'/name, EXTENSION/name)
+    extension_html = (ROOT/'lab'/'index.html').read_text(encoding='utf-8').replace('../design/', 'assets/')
+    (EXTENSION/'index.html').write_text(extension_html, encoding='utf-8')
+    for theme in ('dark', 'light'):
+        copy(ROOT/'design'/f'{theme}-450.png', EXTENSION/'assets'/f'{theme}-450.png')
     manifest = {
         'manifest_version': 3, 'name': 'Galaxy Watch Lab', 'version': '1.0.0',
         'description': 'Local visual test bench for Samsung Galaxy Watch faces.',
