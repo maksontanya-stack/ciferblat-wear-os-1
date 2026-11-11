@@ -4,6 +4,10 @@
 
 **[Скачать установщик](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/download/v1.2.0-preview.4/wearos1-install.zip)** · **[Инструкция](docs/INSTALL-RU.md)** · **[Релизы](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases)**
 
+## Лаборатория моделей Samsung
+
+[Galaxy Watch Lab](docs/WATCH-LAB-RU.md) создаёт визуальные проверки для 22 профилей Galaxy Watch на Wear OS: от Watch4 до Watch9 и Ultra2. Он проверяет круглую границу дисплея, масштаб и формирует отчёт до установки циферблата.
+
 Стабильная версия 1.1.0 доступна отдельно в [релизах](https://github.com/maksontanya-stack/ciferblat-wear-os-1/releases/tag/v1.1.0). Превью 1.2-preview.4 требует Wear OS 6; его установщик проверяет Android API до установки.
 
 ## Установка с телефона Samsung
