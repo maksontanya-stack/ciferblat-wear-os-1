@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 root=Path(__file__).resolve().parents[1];ss=4;cx,cy=460,452
 for theme in ('dark','light'):
  path=root/f'watchface/src/main/res/drawable-nodpi/background_{theme}.png'
- im=Image.open(path).convert('RGBA');assert im.size==(920,920)
+ im=Image.open(path).convert('RGBA');assert im.size==(920,920);original=im.copy()
  background=(7,7,7,255) if theme=='dark' else (50,63,73,255)
  for y in range(920):
   for x in range(920):
@@ -21,9 +21,19 @@ for theme in ('dark','light'):
  for angle in range(360):draw.line([pt(380,angle),pt(398,angle)],fill=fine,width=5)
  for radius in (378,400):
   draw.ellipse(((cx-radius)*ss,(cy-radius)*ss,(cx+radius)*ss,(cy+radius)*ss),outline='#707578' if theme=='dark' else '#75848e',width=3)
- # Four evenly-spaced outer ticks around the 20 label: two before and two
- # after it. The previous two-tick repair left a visible break in this sector.
- for angle in (111,114,126,129):draw.line([pt(418,angle),pt(434,angle)],fill=ink,width=10)
+ # Copy the actual tick pixels from the correct lower-left 35–40 sectors to
+ # their lower-right mirror positions. This preserves the photographed
+ # cadence, length, width and antialiasing instead of estimating angles.
+ # The target centers are the mirrors of the eight source ticks around 35/40.
+ mirrored_tick_angles=(97.5,102.5,108,113,127.5,132.5,137.5,142.5)
+ for y in range(920):
+  for x in range(920):
+   r=math.hypot(x-cx,y-cy)
+   if not 410<=r<=442:continue
+   angle=math.degrees(math.atan2(x-cx,cy-y))%360
+   if min(abs((angle-mark+180)%360-180) for mark in mirrored_tick_angles)<2.2:
+    source_x=round(2*cx-x)
+    if 0<=source_x<920:im.putpixel((x,y),original.getpixel((source_x,y)))
  # Same radial distance as the original 40; leave a clear gap around the label.
  center=pt(432,120)
  tile=Image.new('RGBA',(180*ss,120*ss));td=ImageDraw.Draw(tile)
