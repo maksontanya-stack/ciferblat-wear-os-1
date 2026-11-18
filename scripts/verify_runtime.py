@@ -14,7 +14,7 @@ w = ET.parse(xml).getroot()
 # Removed caption choices keep their old numeric IDs reserved so an update
 # cannot reinterpret a previously saved setting as another metric.
 catalog = json.loads((root/'design/metric-captions.json').read_text())
-expected_captions = {2:'ПУЛЬС',3:'ШАГИ',5:'ЗАРЯД',6:'КРОВ. ДАВЛ.',8:'КАЛОРИИ',9:'КИСЛОРОД',10:'СОН',11:'ВОСХОД',12:'ЗАКАТ',13:'БУДИЛЬНИК',14:'ПОГОДА',15:'ТЕМП.',16:'УФ'}
+expected_captions = {2:'ПУЛЬС',3:'ШАГИ',5:'ЗАРЯД',6:'КРОВ. ДАВЛ.',8:'КАЛОРИИ',9:'КИСЛОРОД',10:'СОН',11:'ВОСХОД',12:'ЗАКАТ',13:'БУДИЛЬНИК',14:'ПОГОДА',15:'ТЕМП.',16:'УФ',17:'ТАЙМЕР'}
 if {item['id']:item['title'] for item in catalog} != expected_captions:
     raise SystemExit('Unexpected manual caption catalog or unstable IDs')
 for config in w.find('UserConfigurations').findall('ListConfiguration'):
@@ -67,7 +67,7 @@ for slot in data_slots:
     if slot.find("Complication[@type='EMPTY']") is None:
         raise SystemExit('Missing empty-data fallback')
 actions = {s.attrib['displayName']:s for s in slots if s.attrib['slotId'] in {'6','7'}}
-for label, dimensions in {'date_action':('599','237','170','62'), 'minute_action':('610','309','162','122')}.items():
+for label, dimensions in {'date_action':('650','140','176','164'), 'minute_action':('650','308','186','188')}.items():
     slot = actions.get(label)
     if slot is None or tuple(slot.attrib[key] for key in ('x','y','width','height')) != dimensions:
         raise SystemExit(f'Missing or incorrectly sized {label} tap zone')
