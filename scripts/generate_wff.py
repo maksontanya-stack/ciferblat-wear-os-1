@@ -56,13 +56,13 @@ FIELD_COLOR=FOREGROUND_COLOR
 
 SECTORS={'heart':(330,390),'weather':(270,330),'floors':(210,270),'battery':(150,210),'steps':(90,150)}
 
-def radial_text(parent,label,fg,fmt,params,scope,width_em=None,known=False):
+def radial_text(parent,label,fg,fmt,params,scope,width_em=None,known=False,fit_capacity=1.0):
  import math
  start,end=SECTORS[label]; start+=4;end-=4
  if label=='weather': start+=16
  clockwise=label in ('heart','weather')
  if not clockwise: start,end=end,start
- capacity=math.radians(abs(end-start))*350
+ capacity=math.radians(abs(end-start))*350*fit_capacity
  if width_em is None: width_em=" + ".join(f"textLength({param}) * 1.06" for param in params)+" + 0.3"
  sizes=[43,34,24,12,4,0.25] if known else [43,34,26,18,12,8,6,3,1,0.25]
  # Fit width is evaluated once per update, rather than being copied into
@@ -127,8 +127,11 @@ for theme,fg,g in themed(interactive):
 # calendar, timer, or any compatible app without painting provider data over
 # the fixed date and minute artwork.
 for slot_id, label, x, y, width, height, provider in [
- ('6', 'date_action', 650, 140, 176, 164, 'NEXT_EVENT'),
- ('7', 'minute_action', 650, 308, 186, 188, 'EMPTY'),
+ # Both rectangles now include every pixel of their date/minute text. Their
+ # right edge and the four-unit gap between them stay fixed, so no other
+ # complication sector can be reached through these action zones.
+ ('6', 'date_action', 590, 140, 236, 164, 'NEXT_EVENT'),
+ ('7', 'minute_action', 590, 308, 246, 188, 'EMPTY'),
 ]:
  slot=S(scene,'ComplicationSlot',slotId=slot_id,displayName=label,x=str(x),y=str(y),width=str(width),height=str(height),supportedTypes='SHORT_TEXT LONG_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY',isCustomizable='TRUE')
  S(slot,'DefaultProviderPolicy',defaultSystemProvider=provider,defaultSystemProviderType='SHORT_TEXT' if provider != 'EMPTY' else 'EMPTY')
@@ -208,7 +211,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
     # the pulse field. Their narrower real font metrics do not need the extra
     # 6% safety allowance used for variable third-party labels.
     width_estimate = f'{prefix} + textLength({value})' if label in ('battery','steps') else f'{prefix} + textLength({value}) * 1.06'
-    radial_text(g,label,fg,'%s %s',(caption,value),scope,width_estimate,known=label in ('battery','steps'))
+    radial_text(g,label,fg,'%s %s',(caption,value),scope,width_estimate,known=label in ('battery','steps'),fit_capacity=1.35 if label in ('battery','steps') else 1.0)
     if label=='weather':
      condition=S(g,'Condition');ex=S(condition,'Expressions')
      icon_expression=f'icon_{label}_{ctype}_{theme}'

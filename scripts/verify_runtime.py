@@ -67,7 +67,7 @@ for slot in data_slots:
     if slot.find("Complication[@type='EMPTY']") is None:
         raise SystemExit('Missing empty-data fallback')
 actions = {s.attrib['displayName']:s for s in slots if s.attrib['slotId'] in {'6','7'}}
-for label, dimensions in {'date_action':('650','140','176','164'), 'minute_action':('650','308','186','188')}.items():
+for label, dimensions in {'date_action':('590','140','236','164'), 'minute_action':('590','308','246','188')}.items():
     slot = actions.get(label)
     if slot is None or tuple(slot.attrib[key] for key in ('x','y','width','height')) != dimensions:
         raise SystemExit(f'Missing or incorrectly sized {label} tap zone')
