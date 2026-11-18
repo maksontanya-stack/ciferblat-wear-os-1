@@ -121,6 +121,23 @@ for theme,fg,g in themed(interactive):
  russian_weekday='"СБ"'
  for day,name in reversed(list(enumerate(['ВС','ПН','ВТ','СР','ЧТ','ПТ'],1))): russian_weekday=f'([DAY_OF_WEEK] == {day} ? "{name}" : {russian_weekday})'
  for value in [russian_weekday,'[DAY_Z]','[MONTH_Z]']:S(template,'Parameter',expression=value)
+
+# These two invisible complications are intentionally interaction-only. Their
+# provider tap actions are supplied by Wear OS, letting the owner assign the
+# calendar, timer, or any compatible app without painting provider data over
+# the fixed date and minute artwork.
+for slot_id, label, x, y, width, height, provider in [
+ ('6', 'date_action', 599, 237, 170, 62, 'NEXT_EVENT'),
+ ('7', 'minute_action', 610, 309, 162, 122, 'EMPTY'),
+]:
+ slot=S(scene,'ComplicationSlot',slotId=slot_id,displayName=label,x=str(x),y=str(y),width=str(width),height=str(height),supportedTypes='SHORT_TEXT LONG_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY',isCustomizable='TRUE')
+ S(slot,'DefaultProviderPolicy',defaultSystemProvider=provider,defaultSystemProviderType='SHORT_TEXT' if provider != 'EMPTY' else 'EMPTY')
+ S(slot,'BoundingBox',x='0',y='0',width=str(width),height=str(height),outlinePadding='0')
+ for ctype in ['SHORT_TEXT','LONG_TEXT','SMALL_IMAGE','MONOCHROMATIC_IMAGE','EMPTY']:
+  comp=S(slot,'Complication',type=ctype)
+  # A group with zero alpha preserves the provider's tap target but shows no
+  # provider text/icon; date and minute stay visually identical to the sketch.
+  group(comp,f'{label}_{ctype}_hidden',x=0,y=0,width=width,height=height,alpha='0')
 # Each slot uses scene coordinates so captions and data have a shared, stable transform.
 for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'weather',140,165,160,180,0),(3,'floors',200,660,86,70,47),(4,'battery',470,747,133,62,-6),(5,'steps',690,539,171,62,-62)]:
  slot=S(scene,'ComplicationSlot',slotId=str(slot_id),displayName=label,x='0',y='0',width='920',height='920',supportedTypes='SHORT_TEXT RANGED_VALUE LONG_TEXT EMPTY',isCustomizable='TRUE')

@@ -60,11 +60,21 @@ for theme in ('dark', 'light'):
                 dimensions=struct.unpack('>II',(resources/(resource+'.png')).read_bytes()[16:24])
                 if dimensions!=(155,150) or group.attrib['height']!='300': raise SystemExit('Hour sprite padding/scale mismatch')
 slots = list(w.iter('ComplicationSlot'))
-if len({s.attrib['slotId'] for s in slots}) != 5: raise SystemExit('Invalid data slot IDs')
-for slot in slots:
+if {s.attrib['slotId'] for s in slots} != {'1','2','3','4','5','6','7'}: raise SystemExit('Invalid slot IDs')
+data_slots = [s for s in slots if s.attrib['slotId'] in {'1','2','3','4','5'}]
+for slot in data_slots:
     if slot.find('BoundingArc') is None or slot.find('BoundingBox') is not None: raise SystemExit('Data field must have radial interaction bounds')
     if slot.find("Complication[@type='EMPTY']") is None:
         raise SystemExit('Missing empty-data fallback')
+actions = {s.attrib['displayName']:s for s in slots if s.attrib['slotId'] in {'6','7'}}
+for label, dimensions in {'date_action':('599','237','170','62'), 'minute_action':('610','309','162','122')}.items():
+    slot = actions.get(label)
+    if slot is None or tuple(slot.attrib[key] for key in ('x','y','width','height')) != dimensions:
+        raise SystemExit(f'Missing or incorrectly sized {label} tap zone')
+    if slot.attrib.get('isCustomizable') != 'TRUE' or slot.find('BoundingBox') is None:
+        raise SystemExit(f'{label} must remain a customizable rectangular action slot')
+    if not all(group.attrib.get('alpha') == '0' for group in slot.iter('Group')):
+        raise SystemExit(f'{label} must not paint over the static face')
 if w.find("Scene/Group[@name='ambient']") is None: raise SystemExit('Missing ambient mode')
 # A conservative sum of *all* decoded images, including unused theme and preview.
 # Real runtime loads fewer images; this bounds bitmap storage, not total WFF engine memory.
@@ -74,4 +84,4 @@ for file in resources.glob('*.png'):
     if data[:8] != b'\x89PNG\r\n\x1a\n': raise SystemExit('Invalid PNG')
     width,height = struct.unpack('>II', data[16:24])
     byte_count += width*height*4
-print(f'PASS: complete 24h/60min bitmap coverage, five unique slots, empty fallbacks, AOD; all decoded bitmaps total {byte_count/1024/1024:.2f} MiB')
+print(f'PASS: complete 24h/60min bitmap coverage, five radial fields, two customizable action zones, AOD; all decoded bitmaps total {byte_count/1024/1024:.2f} MiB')

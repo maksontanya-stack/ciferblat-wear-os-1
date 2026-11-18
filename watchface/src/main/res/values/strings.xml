@@ -27,6 +27,8 @@
   <string name="floors">Левый нижний сектор</string>
   <string name="battery">Нижний сектор</string>
   <string name="steps">Правый нижний сектор</string>
+  <string name="date_action">Нажатие: дата</string>
+  <string name="minute_action">Нажатие: минуты</string>
   <string name="caption_heart">Подпись: верх</string>
   <string name="caption_auto_heart">Авто (без названия: Пульс)</string>
   <string name="caption_weather">Подпись: слева сверху</string>

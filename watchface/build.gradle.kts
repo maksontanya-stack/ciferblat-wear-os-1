@@ -6,8 +6,8 @@ android {
         applicationId = "ru.meta.wearos.classic11"
         minSdk = 36
         targetSdk = 36
-        versionCode = 5
-        versionName = "1.1.4"
+        versionCode = 6
+        versionName = "1.1.5"
     }
     buildTypes {
         debug {
