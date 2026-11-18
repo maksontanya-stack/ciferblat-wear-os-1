@@ -8,8 +8,8 @@ S(w,'Metadata',key='CLOCK_TYPE',value='DIGITAL')
 S(w,'Metadata',key='PREVIEW_TIME',value='10:10:00')
 u=S(w,'UserConfigurations')
 theme_config=S(u,'ListConfiguration',id='theme',displayName='theme',defaultValue='0')
-S(theme_config,'ListOption',id='0',displayName='dark')
-S(theme_config,'ListOption',id='1',displayName='light')
+S(theme_config,'ListOption',id='0',displayName='dark',icon='editor_theme_dark')
+S(theme_config,'ListOption',id='1',displayName='light',icon='editor_theme_light')
 ACCENT_OPTIONS=[('0','accent_original','#ff001b #9d5e61'),('1','accent_amber','#ff9f0a #b97509'),('2','accent_orange','#ff5a36 #b94731'),('3','accent_lime','#b9e44c #6f9227'),('4','accent_turquoise','#28d7c5 #197c73'),('5','accent_blue','#3d8cff #2866ac'),('6','accent_violet','#a675ff #7450b8'),('7','accent_pink','#ff4f92 #ba3c70')]
 FOREGROUND_OPTIONS=[('0','foreground_original','#ddddda #222a31'),('1','foreground_white','#ffffff #ffffff'),('2','foreground_ice','#a8dcff #a8dcff'),('3','foreground_mint','#a7f3d0 #a7f3d0'),('4','foreground_amber','#ffd38a #ffd38a'),('5','foreground_lavender','#d8c0ff #d8c0ff'),('6','foreground_salmon','#ffb6ad #ffb6ad'),('7','foreground_gray','#b6bec9 #b6bec9')]
 for config_id, title, options in [('accent_color','accent_color',ACCENT_OPTIONS),('foreground_color','foreground_color',FOREGROUND_OPTIONS)]:
@@ -22,11 +22,11 @@ DEFAULT_CAPTIONS={'heart':'ПУЛЬС','weather':'ПОГОДА','battery':'ЗА�
 # providers that omit TITLE. No static text is painted into the artwork.
 for label in ('heart','weather','floors','battery','steps'):
  config=S(u,'ListConfiguration',id='caption_'+label,displayName='caption_'+label,defaultValue='0')
- S(config,'ListOption',id='0',displayName='caption_auto_'+label)
+ S(config,'ListOption',id='0',displayName='caption_auto_'+label,icon='editor_caption_auto')
  for item in CATALOG:
   index=METRICS[item['title']]
-  S(config,'ListOption',id=str(index),displayName='metric_'+str(index))
- S(config,'ListOption',id='99',displayName='caption_none')
+  S(config,'ListOption',id=str(index),displayName='metric_'+str(index),icon='editor_metric_'+str(index))
+ S(config,'ListOption',id='99',displayName='caption_none',icon='editor_caption_none')
 scene=S(w,'Scene',backgroundColor='#000000')
 
 def ambient(el,value='0'):

@@ -23,6 +23,23 @@ for config in w.find('UserConfigurations').findall('ListConfiguration'):
     if ids != [0,*expected_captions,99]:
         raise SystemExit(f'Unexpected caption options: {config.attrib["id"]} {ids}')
 print('PASS: approved caption catalog with stable update IDs')
+# Samsung's phone editor shows icon-only round tiles for ListOptions. Missing
+# icons render as the blank circles reported on the physical Galaxy device.
+drawable_dir = root / 'watchface/src/main/res/drawable-nodpi'
+for option in w.find('UserConfigurations').iter('ListOption'):
+    icon = option.attrib.get('icon')
+    if not icon:
+        raise SystemExit(f'Missing editor icon for ListOption {option.attrib["id"]}')
+    icon_file = drawable_dir / f'{icon}.png'
+    if not icon_file.is_file():
+        raise SystemExit(f'Missing editor drawable: {icon_file.name}')
+    width,height = struct.unpack('>II',icon_file.read_bytes()[16:24])
+    if width > 400 or height > 400:
+        raise SystemExit(f'Editor icon exceeds WFF 400px limit: {icon_file.name}')
+preview = drawable_dir / 'preview.png'
+if preview.read_bytes() != (root/'design/dark-450.png').read_bytes():
+    raise SystemExit('Packaged phone preview is stale')
+print('PASS: every list option has a phone-editor icon and current preview')
 # Prevent a repeat of the large per-theme/per-metric scene expansion. This is a
 # complexity budget, not a claim about FPS or execution time on physical watches.
 text_nodes=len(list(w.iter('PartText')))
