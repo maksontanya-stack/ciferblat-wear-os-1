@@ -2,9 +2,27 @@ package ru.meta.wearos.classic1.fixtures;
 import android.content.*;
 public class EditorReceiver extends BroadcastReceiver {
  @Override public void onReceive(Context context,Intent intent){
+  if("titleless".equals(intent.getStringExtra("command"))){
+   context.getSharedPreferences("fixture",0).edit().putBoolean("titleless",intent.getBooleanExtra("enabled",false)).commit();
+   for(Class<?> provider:new Class<?>[]{FixtureService.Heart.class,FixtureService.Weather.class,FixtureService.Floors.class,FixtureService.Battery.class,FixtureService.Steps.class}){
+    androidx.wear.watchface.complications.datasource.ComplicationDataSourceUpdateRequester.create(context,new ComponentName(context,provider)).requestUpdateAll();
+   }
+   return;
+  }
+
   if("weather_swapped".equals(intent.getStringExtra("command"))){
    context.getSharedPreferences("fixture",0).edit().putBoolean("weather_swapped",intent.getBooleanExtra("enabled",false)).commit();
    androidx.wear.watchface.complications.datasource.ComplicationDataSourceUpdateRequester.create(context,new ComponentName(context,FixtureService.Weather.class)).requestUpdateAll();
+   return;
+  }
+  if("unknown_long_title".equals(intent.getStringExtra("command"))){
+   context.getSharedPreferences("fixture",0).edit().putBoolean("unknown_long_title",intent.getBooleanExtra("enabled",false)).commit();
+   androidx.wear.watchface.complications.datasource.ComplicationDataSourceUpdateRequester.create(context,new ComponentName(context,FixtureService.Heart.class)).requestUpdateAll();
+   return;
+  }
+  if("long_title".equals(intent.getStringExtra("command"))){
+   context.getSharedPreferences("fixture",0).edit().putBoolean("long_title",intent.getBooleanExtra("enabled",false)).commit();
+   androidx.wear.watchface.complications.datasource.ComplicationDataSourceUpdateRequester.create(context,new ComponentName(context,FixtureService.Heart.class)).requestUpdateAll();
    return;
   }
   if("alternate".equals(intent.getStringExtra("command"))){

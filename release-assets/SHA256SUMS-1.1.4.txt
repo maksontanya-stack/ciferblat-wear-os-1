@@ -1,0 +1,2 @@
+13d7812952ebba6e2a9d581096b7e8e91261adbfdd61bd27f1498c71442b9b9a  Ciferblat-Wear-OS-1.1.4.apk
+3f03449b100b391cb014e71d329f65ed0921f6a324bfeb41f8399cb23b823880  Ciferblat-Wear-OS-1.1.4-GeminiMan.zip

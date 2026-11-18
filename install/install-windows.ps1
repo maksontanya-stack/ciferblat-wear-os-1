@@ -37,7 +37,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Connection failed.' }
     $sdk = (& $adb -s $target shell getprop ro.build.version.sdk | Out-String).Trim()
     if ($LASTEXITCODE -ne 0 -or $sdk -notmatch '^\d+$') { throw 'Confirm the prompt on the watch. If this computer is no longer paired, run install.cmd to pair again.' }
-    if ([int]$sdk -lt 33) { throw 'This watchface needs Wear OS 4 or newer. Update the watch software first.' }
+    Write-Host ('Watch Android API: ' + $sdk)
+    if ([int]$sdk -lt 36) { throw 'This watchface needs Wear OS 6 or newer. Update the watch software first.' }
     & $adb -s $target install -r $apk
     if ($LASTEXITCODE -ne 0) { throw 'APK installation failed. Read the ADB error above; do not uninstall an existing version just to bypass a signature mismatch.' }
     & $adb disconnect $target

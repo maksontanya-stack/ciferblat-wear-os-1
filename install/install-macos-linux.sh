@@ -28,7 +28,7 @@ read -r -p 'Connection port: ' connect_port
 target="${watch_ip}:${connect_port}"
 "$adb" connect "$target"
 sdk=$("$adb" -s "$target" shell getprop ro.build.version.sdk | tr -d '\r')
-[[ "$sdk" =~ ^[0-9]+$ && "$sdk" -ge 33 ]] || { echo 'Wear OS 4 or newer is required. Update the watch software.'; exit 1; }
+[[ "$sdk" =~ ^[0-9]+$ && "$sdk" -ge 36 ]] || { echo 'Wear OS 6 or newer is required. Update the watch software.'; exit 1; }
 "$adb" -s "$target" install -r wearos1.apk
 "$adb" disconnect "$target"
 echo 'Installed. Long-press watchface > Add watchface > Wear OS 1. Customize theme/data sources. Disable wireless debugging after installation.'

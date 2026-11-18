@@ -1,13 +1,13 @@
 plugins { id("com.android.application") }
 android {
-    namespace = "ru.meta.wearos.classic1"
-    compileSdk = 35
+    namespace = "ru.meta.wearos.classic11"
+    compileSdk = 36
     defaultConfig {
-        applicationId = "ru.meta.wearos.classic1"
-        minSdk = 33
-        targetSdk = 33
-        versionCode = 2
-        versionName = "1.1.0"
+        applicationId = "ru.meta.wearos.classic11"
+        minSdk = 36
+        targetSdk = 36
+        versionCode = 8
+        versionName = "1.1.7"
     }
     buildTypes {
         debug {

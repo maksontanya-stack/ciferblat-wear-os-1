@@ -11,17 +11,27 @@ public abstract class FixtureService extends ComplicationDataSourceService {
     protected abstract String value();
     private PlainComplicationText plain(String value) { return new PlainComplicationText.Builder(value).build(); }
     private ComplicationData data(ComplicationType type) {
-        if(type==ComplicationType.RANGED_VALUE) return new RangedValueComplicationData.Builder(Float.parseFloat(value()),0f,250f,plain("TEST RANGE "+title())).setTitle(plain(title())).build();
-        ShortTextComplicationData.Builder builder = new ShortTextComplicationData.Builder(plain(value()), plain("TEST DATA: " + title() + " " + value())).setTitle(plain(title()));
+        boolean titleless = getSharedPreferences("fixture",0).getBoolean("titleless",false);
+        if(type==ComplicationType.RANGED_VALUE) {
+            RangedValueComplicationData.Builder ranged = new RangedValueComplicationData.Builder(Float.parseFloat(value()),0f,250f,plain("TEST RANGE "+title()));
+            if (!titleless) ranged.setTitle(plain(title()));
+            else ranged.setText(plain(value()));
+            return ranged.build();
+        }
+        ShortTextComplicationData.Builder builder = new ShortTextComplicationData.Builder(plain(value()), plain("TEST DATA: " + title() + " " + value()));
+        if (!titleless) builder.setTitle(plain(title()));
         if (this instanceof Weather) builder.setMonochromaticImage(new MonochromaticImage.Builder(Icon.createWithResource(this, R.drawable.rain)).build());
         return builder.build();
     }
     @Override public void onComplicationRequest(ComplicationRequest request, ComplicationRequestListener listener) {
-        try { listener.onComplicationData(data(request.getComplicationType())); } catch (RemoteException error) { throw new RuntimeException(error); }
+        try {
+            listener.onComplicationData(data(request.getComplicationType()));
+            if (getSharedPreferences("fixture",0).getBoolean("titleless",false)) android.util.Log.i("FIXTURE_PAYLOAD", "TITLELESS_DELIVERED "+getClass().getSimpleName());
+        } catch (RemoteException error) { throw new RuntimeException(error); }
     }
     @Override public ComplicationData getPreviewData(ComplicationType type) { return data(type); }
     public static class Heart extends FixtureService { private boolean alternate(){return getSharedPreferences("fixture",0).getBoolean("alternate",false);}
- protected String title(){return alternate()?"ВЫСОТА":"ПУЛЬС";} protected String value(){return alternate()?"182":"72";} }
+ protected String title(){return getSharedPreferences("fixture",0).getBoolean("unknown_long_title",false)?"ПРОИЗВОЛЬНЫЙ ПОКАЗАТЕЛЬ НОВОГО ПРИЛОЖЕНИЯ":getSharedPreferences("fixture",0).getBoolean("long_title",false)?"МАКСИМАЛЬНАЯ ВЫСОТА НАД УРОВНЕМ МОРЯ":alternate()?"ВЫСОТА":"ПУЛЬС";} protected String value(){return alternate()?"182":"72";} }
     public static class Weather extends FixtureService { private boolean swapped(){return getSharedPreferences("fixture",0).getBoolean("weather_swapped",false);}
  protected String title(){return swapped()?"+4°C":"ПОГОДА";} protected String value(){return swapped()?"ТЕСТ ГОРОД":"+4°C";} }
     public static class Floors extends FixtureService { protected String title(){return "ЭТАЖИ";} protected String value(){return "9";} }
