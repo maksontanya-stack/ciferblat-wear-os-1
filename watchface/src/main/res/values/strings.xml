@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="watch_face_name">Циферблат Wear OS 1</string>
+  <string name="watch_face_name">Циферблат Wear OS 1.1</string>
   <string name="theme">Тема</string>
   <string name="dark">Тёмная</string>
   <string name="light">Светлая</string>
