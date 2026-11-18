@@ -10,6 +10,11 @@ u=S(w,'UserConfigurations')
 theme_config=S(u,'ListConfiguration',id='theme',displayName='theme',defaultValue='0')
 S(theme_config,'ListOption',id='0',displayName='dark')
 S(theme_config,'ListOption',id='1',displayName='light')
+ACCENT_OPTIONS=[('0','accent_original','#ff001b #9d5e61'),('1','accent_amber','#ff9f0a #b97509'),('2','accent_orange','#ff5a36 #b94731'),('3','accent_lime','#b9e44c #6f9227'),('4','accent_turquoise','#28d7c5 #197c73'),('5','accent_blue','#3d8cff #2866ac'),('6','accent_violet','#a675ff #7450b8'),('7','accent_pink','#ff4f92 #ba3c70')]
+FOREGROUND_OPTIONS=[('0','foreground_original','#ddddda #222a31'),('1','foreground_white','#ffffff #ffffff'),('2','foreground_ice','#a8dcff #a8dcff'),('3','foreground_mint','#a7f3d0 #a7f3d0'),('4','foreground_amber','#ffd38a #ffd38a'),('5','foreground_lavender','#d8c0ff #d8c0ff'),('6','foreground_salmon','#ffb6ad #ffb6ad'),('7','foreground_gray','#b6bec9 #b6bec9')]
+for config_id, title, options in [('accent_color','accent_color',ACCENT_OPTIONS),('foreground_color','foreground_color',FOREGROUND_OPTIONS)]:
+ config=S(u,'ColorConfiguration',id=config_id,displayName=title,defaultValue='0')
+ for option_id, option_name, colors in options: S(config,'ColorOption',id=option_id,displayName=option_name,colors=colors)
 CATALOG=json.loads((ROOT/'design/metric-captions.json').read_text())
 METRICS={item['title']:index for index,item in enumerate(CATALOG,1)}
 DEFAULT_CAPTIONS={'heart':'ПУЛЬС','weather':'ПОГОДА','floors':'ЭТАЖИ','battery':'ЗАРЯД','steps':'ШАГИ'}
@@ -45,7 +50,9 @@ def text(el,x,y,width,height,size,fg,fmt,params=(),angle=0):
 
 # Clockwise angles are measured from twelve o'clock. Keep four degrees clear
 # of each red marker; all geometry uses the same reference center and radii.
-FIELD_COLOR='([CONFIGURATION.theme] == "1" ? #222a31 : #ddddda)'
+ACCENT_COLOR='([CONFIGURATION.theme] == "1" ? [CONFIGURATION.accent_color.1] : [CONFIGURATION.accent_color.0])'
+FOREGROUND_COLOR='([CONFIGURATION.theme] == "1" ? [CONFIGURATION.foreground_color.1] : [CONFIGURATION.foreground_color.0])'
+FIELD_COLOR=FOREGROUND_COLOR
 
 SECTORS={'heart':(330,390),'weather':(270,330),'floors':(210,270),'battery':(150,210),'steps':(90,150)}
 
@@ -89,18 +96,27 @@ def clock_images(parent,theme,scope,alpha='255'):
    expression=S(expressions,'Expression',name=key);expression.text=f'[{source}] == {number}'
   for number in range(count):
    compare=S(condition,'Compare',expression=f'{scope}_{theme}_{kind}_{number:02}')
-   image=S(compare,'PartImage',x='0',y='0',width=str(width),height=str(height))
+   image=S(compare,'PartImage',x='0',y='0',width=str(width),height=str(height),tintColor=fg)
+   S(image,'Transform',target='tintColor',value=FOREGROUND_COLOR)
    S(image,'Image',resource=f'{kind}_{theme}_{number:02}')
+
+def colour_overlay(parent, resource, colour):
+ """Tintable static marks use the selected ColorConfiguration palette."""
+ image=S(parent,'PartImage',x='0',y='0',width='920',height='920',tintColor='#ffffff')
+ S(image,'Transform',target='tintColor',value=colour)
+ S(image,'Image',resource=resource)
 
 interactive=group(scene,'interactive')
 ambient(interactive)
 for theme,fg,g in themed(interactive):
  p=S(g,'PartImage',x='0',y='0',width='920',height='920')
  S(p,'Image',resource=f'background_{theme}')
+ colour_overlay(g,f'accent_mask_{theme}',ACCENT_COLOR)
+ colour_overlay(g,f'foreground_mask_{theme}',FOREGROUND_COLOR)
  clock_images(g,theme,'active')
  # Russian weekday regardless of device locale; WFF numbers Sunday as one.
  p=S(g,'PartText',x='599',y='237',width='170',height='52')
- t=S(p,'Text',align='CENTER'); f=S(t,'Font',family='oswald',size='43',weight='BOLD',color=fg)
+ t=S(p,'Text',align='CENTER'); f=S(t,'Font',family='oswald',size='43',weight='BOLD',color=fg); S(f,'Transform',target='color',value=FOREGROUND_COLOR)
  up=S(f,'Upper'); template=S(up,'Template');template.text='%s %s.%s'
  russian_weekday='"СБ"'
  for day,name in reversed(list(enumerate(['ВС','ПН','ВТ','СР','ЧТ','ПТ'],1))): russian_weekday=f'([DAY_OF_WEEK] == {day} ? "{name}" : {russian_weekday})'
