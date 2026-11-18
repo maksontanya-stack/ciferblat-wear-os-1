@@ -16,11 +16,11 @@ for config_id, title, options in [('accent_color','accent_color',ACCENT_OPTIONS)
  config=S(u,'ColorConfiguration',id=config_id,displayName=title,defaultValue='0')
  for option_id, option_name, colors in options: S(config,'ColorOption',id=option_id,displayName=option_name,colors=colors)
 CATALOG=json.loads((ROOT/'design/metric-captions.json').read_text())
-METRICS={item['title']:index for index,item in enumerate(CATALOG,1)}
-DEFAULT_CAPTIONS={'heart':'ПУЛЬС','weather':'ПОГОДА','floors':'ЭТАЖИ','battery':'ЗАРЯД','steps':'ШАГИ'}
+METRICS={item['title']:item['id'] for item in CATALOG}
+DEFAULT_CAPTIONS={'heart':'ПУЛЬС','weather':'ПОГОДА','battery':'ЗАРЯД','steps':'ШАГИ'}
 # Preserve existing theme/slot identifiers, adding an explicit escape hatch for
 # providers that omit TITLE. No static text is painted into the artwork.
-for label in DEFAULT_CAPTIONS:
+for label in ('heart','weather','floors','battery','steps'):
  config=S(u,'ListConfiguration',id='caption_'+label,displayName='caption_'+label,defaultValue='0')
  S(config,'ListOption',id='0',displayName='caption_auto_'+label)
  for item in CATALOG:
@@ -136,7 +136,10 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
   for theme,fg,g in [('shared','#ddddda',cg)]:
    scope=f'{label}_{ctype}_{theme}'
    if ctype=='EMPTY':
-    caption=json.dumps(DEFAULT_CAPTIONS[label],ensure_ascii=False)
+    # The lower-left sector is generic: Samsung does not expose floors as a
+    # complication source on the target watch. With no provider, show only a
+    # dash; with a titleless provider, show only its value.
+    caption=json.dumps(DEFAULT_CAPTIONS.get(label,''),ensure_ascii=False)
     for item in CATALOG:
      caption=f'([CONFIGURATION.caption_{label}] == "{METRICS[item["title"]]}" ? '+json.dumps(item['title'],ensure_ascii=False)+f' : {caption})'
     caption=f'([CONFIGURATION.caption_{label}] == "99" ? "" : {caption})'
@@ -159,7 +162,7 @@ for slot_id,label,x,y,width,height,angle in [(1,'heart',498,91,92,65,15),(2,'wea
     for item in reversed(CATALOG):
      matches=' || '.join('[COMPLICATION.TITLE] == '+json.dumps(alias,ensure_ascii=False) for alias in item['aliases'])
      metric_expr=f'(({matches}) ? {METRICS[item["title"]]} : {metric_expr})'
-    default_id=METRICS[DEFAULT_CAPTIONS[label]]
+    default_id=METRICS[DEFAULT_CAPTIONS[label]] if label in DEFAULT_CAPTIONS else 0
     metric_expr=f'(({has_title}) ? {metric_expr} : {default_id})'
     if label=='weather': metric_expr=f'(({temperature}) ? {METRICS["ПОГОДА"]} : {metric_expr})'
     # List selections are string-valued sources. A forced caption is useful for

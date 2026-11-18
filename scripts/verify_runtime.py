@@ -1,5 +1,6 @@
 """Check runtime coverage, references and configuration rather than only packaging."""
 from pathlib import Path
+import json
 import struct
 import xml.etree.ElementTree as ET
 
@@ -10,6 +11,18 @@ exec(compile((root/'scripts/generate_wff.py').read_text(), 'generate_wff.py', 'e
 if xml.read_bytes() != before:
     raise SystemExit('Generated WFF XML was stale; regenerate and commit it')
 w = ET.parse(xml).getroot()
+# Removed caption choices keep their old numeric IDs reserved so an update
+# cannot reinterpret a previously saved setting as another metric.
+catalog = json.loads((root/'design/metric-captions.json').read_text())
+expected_captions = {2:'ПУЛЬС',3:'ШАГИ',5:'ЗАРЯД',6:'КРОВ. ДАВЛ.',8:'КАЛОРИИ',9:'КИСЛОРОД',10:'СОН',11:'ВОСХОД',12:'ЗАКАТ',13:'БУДИЛЬНИК',14:'ПОГОДА',15:'ТЕМП.',16:'УФ'}
+if {item['id']:item['title'] for item in catalog} != expected_captions:
+    raise SystemExit('Unexpected manual caption catalog or unstable IDs')
+for config in w.find('UserConfigurations').findall('ListConfiguration'):
+    if not config.attrib['id'].startswith('caption_'): continue
+    ids = [int(option.attrib['id']) for option in config.findall('ListOption')]
+    if ids != [0,*expected_captions,99]:
+        raise SystemExit(f'Unexpected caption options: {config.attrib["id"]} {ids}')
+print('PASS: approved caption catalog with stable update IDs')
 # Prevent a repeat of the large per-theme/per-metric scene expansion. This is a
 # complexity budget, not a claim about FPS or execution time on physical watches.
 text_nodes=len(list(w.iter('PartText')))
